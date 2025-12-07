@@ -6,6 +6,7 @@ data/processed/*.json
 # Output files (regenerable)
 outputs/
 *.png
+!website/public/images/*.png
 *.jpg
 
 # Python
