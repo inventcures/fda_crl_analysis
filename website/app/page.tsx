@@ -32,13 +32,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          <h1 className="text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-semibold mb-6 leading-tight tracking-tighter">
             FDA Complete Response Letter
             <br />
             <span className="text-blue-300">Intelligence Platform</span>
           </h1>
 
-          <p className="text-xl mb-8 text-blue-100 max-w-3xl leading-relaxed">
+          <p className="text-lg md:text-xl mb-8 text-blue-100 max-w-3xl leading-relaxed tracking-tight">
             Unlock insights from ~300 FDA rejection letters using advanced NLP, machine learning,
             and interactive data visualization. Predict approval outcomes with 72% accuracy.
           </p>
@@ -86,9 +86,9 @@ export default function HomePage() {
       {/* Key Findings - Card Grid */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-gray-800">Key Findings</h2>
-            <p className="text-xl text-gray-600">Data-driven insights from 300+ FDA Complete Response Letters</p>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-gray-900 tracking-tighter">Key Findings</h2>
+            <p className="text-lg md:text-xl text-gray-600 tracking-tight">Data-driven insights from 300+ FDA Complete Response Letters</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -192,9 +192,9 @@ export default function HomePage() {
       {/* Explore Dashboards - Interactive Cards */}
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-gray-800">Explore Interactive Dashboards</h2>
-            <p className="text-xl text-gray-600">Dive deep into the data with dynamic visualizations</p>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-gray-900 tracking-tighter">Explore Interactive Dashboards</h2>
+            <p className="text-lg md:text-xl text-gray-600 tracking-tight">Dive deep into the data with dynamic visualizations</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">

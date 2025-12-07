@@ -2,33 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --fda-blue: #005ea2;
-  --fda-darkblue: #1a4480;
-  --fda-red: #e52207;
-  --fda-green: #00a91c;
+@layer base {
+  :root {
+    --fda-blue: #005ea2;
+    --fda-darkblue: #1a4480;
+    --fda-red: #e52207;
+    --fda-green: #00a91c;
+  }
+
+  /* Professional Typography */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    letter-spacing: -0.011em;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    line-height: 1.75;
+    letter-spacing: -0.011em;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9em;
+  }
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer components {
+  .stat-card {
+    @apply bg-white rounded-xl shadow-sm p-8 border border-gray-100 hover:shadow-md transition-shadow;
+  }
+
+  .stat-card.approved {
+    @apply border-l-4 border-l-fda-green;
+  }
+
+  .stat-card.unapproved {
+    @apply border-l-4 border-l-fda-red;
+  }
+
+  /* Professional Cards */
+  .content-card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-6;
+  }
+
+  /* Better Buttons */
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200;
+    @apply shadow-sm hover:shadow-md;
+  }
+
+  /* Improved Typography Classes */
+  .prose-scientific {
+    @apply max-w-none;
+  }
+
+  .prose-scientific p {
+    @apply text-gray-700 leading-relaxed mb-4;
+  }
+
+  .prose-scientific h2 {
+    @apply text-gray-900 font-semibold mt-12 mb-6;
+  }
+
+  .prose-scientific h3 {
+    @apply text-gray-900 font-semibold mt-8 mb-4;
+  }
 }
 
-code {
-  font-family: 'Courier New', monospace;
-}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 
-.stat-card {
-  @apply bg-white rounded-lg shadow-md p-6 border-l-4;
-}
+  .tracking-tight {
+    letter-spacing: -0.02em;
+  }
 
-.stat-card.approved {
-  @apply border-fda-green;
-}
-
-.stat-card.unapproved {
-  @apply border-fda-red;
+  .tracking-normal {
+    letter-spacing: -0.011em;
+  }
 }
