@@ -1,0 +1,204 @@
+{
+  "categories": [
+    {
+      "category": "labeling",
+      "category_label": "Labeling",
+      "total": 294,
+      "approved": 201,
+      "unapproved": 93,
+      "rescue_rate": 68.4
+    },
+    {
+      "category": "safety",
+      "category_label": "Safety",
+      "total": 285,
+      "approved": 198,
+      "unapproved": 87,
+      "rescue_rate": 69.5
+    },
+    {
+      "category": "cmc_manufacturing",
+      "category_label": "Cmc Manufacturing",
+      "total": 184,
+      "approved": 158,
+      "unapproved": 26,
+      "rescue_rate": 85.9
+    },
+    {
+      "category": "efficacy",
+      "category_label": "Efficacy",
+      "total": 114,
+      "approved": 84,
+      "unapproved": 30,
+      "rescue_rate": 73.7
+    },
+    {
+      "category": "statistical",
+      "category_label": "Statistical",
+      "total": 98,
+      "approved": 76,
+      "unapproved": 22,
+      "rescue_rate": 77.6
+    },
+    {
+      "category": "clinical_trial_design",
+      "category_label": "Clinical Trial Design",
+      "total": 93,
+      "approved": 73,
+      "unapproved": 20,
+      "rescue_rate": 78.5
+    },
+    {
+      "category": "bioequivalence",
+      "category_label": "Bioequivalence",
+      "total": 83,
+      "approved": 69,
+      "unapproved": 14,
+      "rescue_rate": 83.1
+    },
+    {
+      "category": "rems",
+      "category_label": "Rems",
+      "total": 42,
+      "approved": 35,
+      "unapproved": 7,
+      "rescue_rate": 83.3
+    }
+  ],
+  "cooccurrence": {
+    "categories": [
+      "safety",
+      "efficacy",
+      "cmc_manufacturing",
+      "clinical_trial_design",
+      "bioequivalence",
+      "labeling",
+      "statistical",
+      "rems"
+    ],
+    "matrix": [
+      [
+        285,
+        112,
+        180,
+        92,
+        82,
+        285,
+        97,
+        42
+      ],
+      [
+        112,
+        114,
+        77,
+        64,
+        55,
+        114,
+        67,
+        21
+      ],
+      [
+        180,
+        77,
+        184,
+        70,
+        63,
+        184,
+        73,
+        33
+      ],
+      [
+        92,
+        64,
+        70,
+        93,
+        48,
+        93,
+        64,
+        13
+      ],
+      [
+        82,
+        55,
+        63,
+        48,
+        83,
+        83,
+        47,
+        12
+      ],
+      [
+        285,
+        114,
+        184,
+        93,
+        83,
+        294,
+        98,
+        42
+      ],
+      [
+        97,
+        67,
+        73,
+        64,
+        47,
+        98,
+        98,
+        16
+      ],
+      [
+        42,
+        21,
+        33,
+        13,
+        12,
+        42,
+        16,
+        42
+      ]
+    ]
+  },
+  "key_flags": [
+    {
+      "flag": "has_safety_concerns",
+      "label": "Safety Concerns",
+      "approved": 198,
+      "unapproved": 87,
+      "total": 285,
+      "impact_score": 30.5
+    },
+    {
+      "flag": "requests_new_trial",
+      "label": "New Trial Required",
+      "approved": 23,
+      "unapproved": 9,
+      "total": 32,
+      "impact_score": 28.1
+    },
+    {
+      "flag": "has_efficacy_concerns",
+      "label": "Efficacy Concerns",
+      "approved": 84,
+      "unapproved": 30,
+      "total": 114,
+      "impact_score": 26.3
+    },
+    {
+      "flag": "has_cmc_issues",
+      "label": "CMC Issues",
+      "approved": 158,
+      "unapproved": 26,
+      "total": 184,
+      "impact_score": 14.1
+    },
+    {
+      "flag": "has_clinical_hold",
+      "label": "Clinical Hold",
+      "approved": 0,
+      "unapproved": 0,
+      "total": 0,
+      "impact_score": 0
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "severity": {
+    "approved_mean": 5.402,
+    "unapproved_mean": 4.828,
+    "difference": -0.574
+  },
+  "certainty": {
+    "approved_mean": 0.495,
+    "unapproved_mean": 0.464,
+    "difference": -0.03
+  },
+  "visualizations": [
+    "wordcloud_comparison.png",
+    "wordcloud_severity.png",
+    "bigram_comparison.png",
+    "trigram_comparison.png",
+    "severity_distribution.png",
+    "action_radar.png",
+    "tsne_embeddings.png",
+    "umap_embeddings.png",
+    "cluster_analysis.png",
+    "topic_model.png",
+    "severity_landscape.png",
+    "sentiment_trajectory_sample.png"
+  ]
+}

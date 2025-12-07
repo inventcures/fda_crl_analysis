@@ -1,0 +1,78 @@
+{
+  "models": [
+    {
+      "name": "Gradient Boosting",
+      "accuracy": 74.7,
+      "cv_mean": 85.6,
+      "cv_std": 3.2
+    },
+    {
+      "name": "Random Forest",
+      "accuracy": 76.0,
+      "cv_mean": 85.2,
+      "cv_std": 4.7
+    },
+    {
+      "name": "Logistic Regression",
+      "accuracy": 85.3,
+      "cv_mean": 80.7,
+      "cv_std": 4.9
+    }
+  ],
+  "best_model": {
+    "name": "Gradient Boosting",
+    "accuracy": 74.7,
+    "cv_mean": 85.6,
+    "cv_std": 3.2
+  },
+  "features": [
+    {
+      "feature": "app_type_NDA",
+      "label": "Nda"
+    },
+    {
+      "feature": "has_safety",
+      "label": "Safety"
+    },
+    {
+      "feature": "has_cmc_manufacturing",
+      "label": "Cmc Manufacturing"
+    },
+    {
+      "feature": "has_clinical_trial_design",
+      "label": "Clinical Trial Design"
+    },
+    {
+      "feature": "has_bioequivalence",
+      "label": "Bioequivalence"
+    },
+    {
+      "feature": "has_statistical",
+      "label": "Statistical"
+    },
+    {
+      "feature": "has_rems",
+      "label": "Rems"
+    },
+    {
+      "feature": "has_safety_concerns",
+      "label": "Safety Concerns"
+    },
+    {
+      "feature": "has_cmc_issues",
+      "label": "Cmc Issues"
+    },
+    {
+      "feature": "num_deficiency_categories",
+      "label": "Num Deficiency Categories"
+    },
+    {
+      "feature": "page_count",
+      "label": "Page Count"
+    },
+    {
+      "feature": "text_length",
+      "label": "Text Length"
+    }
+  ]
+}

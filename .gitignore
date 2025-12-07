@@ -1,0 +1,41 @@
+# Data files (large, downloaded)
+data/raw/
+data/processed/*.json
+*.zip
+
+# Output files (regenerable)
+outputs/
+*.png
+*.jpg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API keys (never commit these!)
+.env
+*.env

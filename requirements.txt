@@ -1,0 +1,38 @@
+# FDA CRL Analysis - Requirements
+# ================================
+
+# Core data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# PDF extraction (install at least one)
+pdfplumber>=0.10.0
+pypdf>=3.0.0
+# pymupdf>=1.23.0  # Alternative, faster but larger
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+squarify>=0.4.0  # For treemaps
+
+# Machine Learning
+scikit-learn>=1.3.0
+scipy>=1.11.0
+
+# NLP & Text Analysis
+wordcloud>=1.9.0
+nltk>=3.8.0
+textblob>=0.17.0
+
+# Dimensionality Reduction (optional but recommended)
+umap-learn>=0.5.0
+
+# Web requests
+requests>=2.31.0
+
+# LLM Analysis (optional)
+anthropic>=0.18.0
+
+# Utilities
+tqdm>=4.65.0  # Progress bars
+python-dateutil>=2.8.0

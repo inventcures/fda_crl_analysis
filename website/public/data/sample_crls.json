@@ -1,0 +1,186 @@
+[
+  {
+    "file_hash": "fd4dbf5c8c232337dfffe8164205a049",
+    "drug_name": "213072",
+    "application_number": "213072",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "letter_date": "July 29, 2019",
+    "page_count": 7,
+    "deficiency_categories": [
+      "safety",
+      "efficacy",
+      "cmc_manufacturing",
+      "bioequivalence",
+      "labeling"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": true,
+    "requests_new_trial": false
+  },
+  {
+    "file_hash": "17565adb52aa9eda967c642e589d159d",
+    "drug_name": "208564",
+    "application_number": "208564",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "letter_date": "July 7, 2016",
+    "page_count": 8,
+    "deficiency_categories": [
+      "safety",
+      "efficacy",
+      "cmc_manufacturing",
+      "bioequivalence",
+      "labeling",
+      "statistical"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": true,
+    "requests_new_trial": false
+  },
+  {
+    "file_hash": "628ee85cea9ef634c70127fd676dac28",
+    "drug_name": "Draft Labeling\n6 Page",
+    "application_number": "207987",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "letter_date": "February 12, 2015",
+    "page_count": 7,
+    "deficiency_categories": [
+      "safety",
+      "cmc_manufacturing",
+      "clinical_trial_design",
+      "labeling",
+      "statistical"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": false,
+    "requests_new_trial": false
+  },
+  {
+    "file_hash": "d610c0725a3693bde6010dd9507b7467",
+    "drug_name": null,
+    "application_number": "022335",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "letter_date": "March 26, 2020",
+    "page_count": 11,
+    "deficiency_categories": [
+      "safety",
+      "efficacy",
+      "cmc_manufacturing",
+      "clinical_trial_design",
+      "labeling",
+      "statistical"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": true,
+    "requests_new_trial": false
+  },
+  {
+    "file_hash": "78cd31a534249df52e6af24e9d179713",
+    "drug_name": "209354",
+    "application_number": "209354",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "letter_date": "August 18, 2017",
+    "page_count": 6,
+    "deficiency_categories": [
+      "safety",
+      "clinical_trial_design",
+      "bioequivalence",
+      "labeling"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": false,
+    "requests_new_trial": false
+  },
+  {
+    "file_hash": "3cd0d487478ce1b854f6d1420cf1cd54",
+    "drug_name": "CRL",
+    "application_number": "218828",
+    "application_type": "NDA",
+    "approval_status": "unapproved",
+    "letter_date": null,
+    "page_count": 10,
+    "deficiency_categories": [
+      "safety",
+      "efficacy",
+      "cmc_manufacturing",
+      "clinical_trial_design",
+      "bioequivalence",
+      "labeling",
+      "statistical"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": true,
+    "requests_new_trial": true
+  },
+  {
+    "file_hash": "4af6be116da3c8ebaee9ddeb3df9072f",
+    "drug_name": "CRL",
+    "application_number": "218524",
+    "application_type": "NDA",
+    "approval_status": "unapproved",
+    "letter_date": null,
+    "page_count": 7,
+    "deficiency_categories": [
+      "safety",
+      "labeling"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": false,
+    "requests_new_trial": false
+  },
+  {
+    "file_hash": "c141a8867dbf6bd1b04be3cd2afc459d",
+    "drug_name": "CRL",
+    "application_number": null,
+    "application_type": null,
+    "approval_status": "unapproved",
+    "letter_date": "July 7, 2025",
+    "page_count": 18,
+    "deficiency_categories": [
+      "safety",
+      "efficacy",
+      "cmc_manufacturing",
+      "clinical_trial_design",
+      "labeling"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": true,
+    "requests_new_trial": false
+  },
+  {
+    "file_hash": "5496ab91b576b83d02fd8d4c36d1d9ad",
+    "drug_name": "CRL",
+    "application_number": "218762",
+    "application_type": "NDA",
+    "approval_status": "unapproved",
+    "letter_date": null,
+    "page_count": 5,
+    "deficiency_categories": [
+      "safety",
+      "labeling"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": false,
+    "requests_new_trial": false
+  },
+  {
+    "file_hash": "a9b2a2785ddcc4872b40b859176526ba",
+    "drug_name": "CRL",
+    "application_number": "215818",
+    "application_type": "NDA",
+    "approval_status": "unapproved",
+    "letter_date": null,
+    "page_count": 9,
+    "deficiency_categories": [
+      "safety",
+      "labeling"
+    ],
+    "has_safety_concerns": true,
+    "has_efficacy_concerns": false,
+    "requests_new_trial": false
+  }
+]

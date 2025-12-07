@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --fda-blue: #005ea2;
+  --fda-darkblue: #1a4480;
+  --fda-red: #e52207;
+  --fda-green: #00a91c;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+}
+
+.stat-card {
+  @apply bg-white rounded-lg shadow-md p-6 border-l-4;
+}
+
+.stat-card.approved {
+  @apply border-fda-green;
+}
+
+.stat-card.unapproved {
+  @apply border-fda-red;
+}

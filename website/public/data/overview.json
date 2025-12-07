@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "total_crls": 297,
+    "approved": 202,
+    "unapproved": 95,
+    "approval_rate": 68.0
+  },
+  "application_types": {
+    "BLA": {
+      "total": 75,
+      "approved": 46,
+      "unapproved": 29,
+      "approval_rate": 61.3
+    },
+    "NDA": {
+      "total": 212,
+      "approved": 152,
+      "unapproved": 60,
+      "approval_rate": 71.7
+    },
+    "null": {
+      "total": 10,
+      "approved": 4,
+      "unapproved": 6,
+      "approval_rate": 40.0
+    }
+  },
+  "yearly_trends": []
+}
