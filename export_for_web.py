@@ -12,7 +12,7 @@ def load_json(path: Path) -> Any:
         return json.load(f)
 
 def save_json(data: Any, path: Path):
-    """Save JSON file with pretty formatting"""
+    """Save JSON file with pretty formatting """
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, 'w') as f:
         json.dump(data, f, indent=2)
