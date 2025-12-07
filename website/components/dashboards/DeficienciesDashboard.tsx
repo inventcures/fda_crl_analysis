@@ -103,7 +103,7 @@ export default function DeficienciesDashboard() {
   return (
     <div className="space-y-8">
       {/* Deficiency Frequency */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Deficiency Frequency by Category</h3>
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={frequencyData} layout="vertical" margin={{ left: 100 }}>
@@ -117,8 +117,8 @@ export default function DeficienciesDashboard() {
                   return (
                     <div className="bg-white p-3 border border-gray-300 rounded shadow-lg">
                       <p className="font-semibold">{data.fullName}</p>
-                      <p className="text-sm text-fda-green">Approved: {data.approved}</p>
-                      <p className="text-sm text-fda-red">Unapproved: {data.unapproved}</p>
+                      <p className="text-sm text-success">Approved: {data.approved}</p>
+                      <p className="text-sm text-error">Unapproved: {data.unapproved}</p>
                       <p className="text-sm font-medium">Total: {data.total}</p>
                     </div>
                   )
@@ -134,9 +134,9 @@ export default function DeficienciesDashboard() {
       </div>
 
       {/* Rescue Rates */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Rescue Rates by Deficiency Category</h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-text-secondary mb-4">
           Percentage of CRLs with each deficiency type that were eventually approved
         </p>
         <ResponsiveContainer width="100%" height={400}>
@@ -161,7 +161,7 @@ export default function DeficienciesDashboard() {
             <Bar dataKey="rescue_rate" fill={COLORS.rescueRate} name="Rescue Rate %" />
           </BarChart>
         </ResponsiveContainer>
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-sm text-text-secondary">
           <p className="font-medium mb-2">Key Insights:</p>
           <ul className="list-disc list-inside space-y-1">
             <li>CMC/Manufacturing issues have the highest rescue rate (~86%)</li>
@@ -172,7 +172,7 @@ export default function DeficienciesDashboard() {
       </div>
 
       {/* Radar Chart */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Deficiency Pattern Overview</h3>
         <ResponsiveContainer width="100%" height={400}>
           <RadarChart data={radarData}>
@@ -200,9 +200,9 @@ export default function DeficienciesDashboard() {
       </div>
 
       {/* Key Flags Impact */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Key Flags and Their Impact</h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-text-secondary mb-4">
           Critical indicators found in CRL text and their correlation with approval outcomes
         </p>
         <div className="space-y-4">
@@ -212,35 +212,35 @@ export default function DeficienciesDashboard() {
               <div
                 key={flag.flag}
                 className={`border-l-4 p-4 rounded ${
-                  isHighImpact ? 'border-fda-red bg-red-50' : 'border-fda-green bg-green-50'
+                  isHighImpact ? 'border-error bg-red-50' : 'border-success bg-green-50'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     {isHighImpact ? (
-                      <AlertCircle className="text-fda-red" size={20} />
+                      <AlertCircle className="text-error" size={20} />
                     ) : (
-                      <CheckCircle2 className="text-fda-green" size={20} />
+                      <CheckCircle2 className="text-success" size={20} />
                     )}
                     <h4 className="font-semibold text-lg">{flag.label}</h4>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-gray-800">{flag.impact_score}%</div>
-                    <div className="text-xs text-gray-600">Unapproved rate</div>
+                    <div className="text-2xl font-bold text-text-primary">{flag.impact_score}%</div>
+                    <div className="text-xs text-text-secondary">Unapproved rate</div>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div>
-                    <div className="text-gray-600">Total</div>
+                    <div className="text-text-secondary">Total</div>
                     <div className="font-semibold">{flag.total}</div>
                   </div>
                   <div>
-                    <div className="text-gray-600">Approved</div>
-                    <div className="font-semibold text-fda-green">{flag.approved}</div>
+                    <div className="text-text-secondary">Approved</div>
+                    <div className="font-semibold text-success">{flag.approved}</div>
                   </div>
                   <div>
-                    <div className="text-gray-600">Unapproved</div>
-                    <div className="font-semibold text-fda-red">{flag.unapproved}</div>
+                    <div className="text-text-secondary">Unapproved</div>
+                    <div className="font-semibold text-error">{flag.unapproved}</div>
                   </div>
                 </div>
               </div>
@@ -250,9 +250,9 @@ export default function DeficienciesDashboard() {
       </div>
 
       {/* Co-occurrence Heatmap Image */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Deficiency Co-occurrence Heatmap</h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-text-secondary mb-4">
           Shows which deficiency types commonly appear together in the same CRL
         </p>
         <div className="relative w-full" style={{ height: '600px' }}>

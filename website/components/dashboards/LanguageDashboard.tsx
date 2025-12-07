@@ -29,8 +29,8 @@ interface LanguageData {
 }
 
 const COLORS = {
-  approved: '#00a91c',
-  unapproved: '#e52207',
+  approved: '#059669',  // Muted green (academic palette)
+  unapproved: '#DC2626',  // Muted red (academic palette)
 }
 
 export default function LanguageDashboard() {
@@ -76,63 +76,57 @@ export default function LanguageDashboard() {
     <div className="space-y-8">
       {/* Summary Stats */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-orange-500">
-          <div className="flex items-center gap-3 mb-3">
-            <MessageSquare className="text-orange-500" size={28} />
-            <h3 className="text-xl font-semibold">FDA Severity Score</h3>
-          </div>
+        <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors">
+          <h3 className="text-xl font-semibold text-text-primary mb-4">FDA Severity Score</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <div className="text-sm text-gray-600 mb-1">Approved CRLs</div>
-              <div className="text-2xl font-bold text-fda-green">
+              <div className="text-sm text-text-secondary mb-1">Approved CRLs</div>
+              <div className="text-2xl font-bold text-success">
                 {data.severity.approved_mean.toFixed(3)}
               </div>
             </div>
             <div>
-              <div className="text-sm text-gray-600 mb-1">Unapproved CRLs</div>
-              <div className="text-2xl font-bold text-fda-red">
+              <div className="text-sm text-text-secondary mb-1">Unapproved CRLs</div>
+              <div className="text-2xl font-bold text-error">
                 {data.severity.unapproved_mean.toFixed(3)}
               </div>
             </div>
           </div>
-          <div className="mt-3 pt-3 border-t border-gray-200">
-            <p className="text-sm text-gray-600">
+          <div className="mt-4 pt-4 border-t border-border-light">
+            <p className="text-sm text-text-secondary">
               <span className="font-medium">Difference:</span>{' '}
               {data.severity.difference > 0 ? '+' : ''}
               {data.severity.difference.toFixed(3)}
             </p>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-text-tertiary mt-1">
               Higher severity indicates harsher FDA language
             </p>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
-          <div className="flex items-center gap-3 mb-3">
-            <Brain className="text-purple-500" size={28} />
-            <h3 className="text-xl font-semibold">FDA Certainty Score</h3>
-          </div>
+        <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors">
+          <h3 className="text-xl font-semibold text-text-primary mb-4">FDA Certainty Score</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <div className="text-sm text-gray-600 mb-1">Approved CRLs</div>
-              <div className="text-2xl font-bold text-fda-green">
+              <div className="text-sm text-text-secondary mb-1">Approved CRLs</div>
+              <div className="text-2xl font-bold text-success">
                 {data.certainty.approved_mean.toFixed(3)}
               </div>
             </div>
             <div>
-              <div className="text-sm text-gray-600 mb-1">Unapproved CRLs</div>
-              <div className="text-2xl font-bold text-fda-red">
+              <div className="text-sm text-text-secondary mb-1">Unapproved CRLs</div>
+              <div className="text-2xl font-bold text-error">
                 {data.certainty.unapproved_mean.toFixed(3)}
               </div>
             </div>
           </div>
-          <div className="mt-3 pt-3 border-t border-gray-200">
-            <p className="text-sm text-gray-600">
+          <div className="mt-4 pt-4 border-t border-border-light">
+            <p className="text-sm text-text-secondary">
               <span className="font-medium">Difference:</span>{' '}
               {data.certainty.difference > 0 ? '+' : ''}
               {data.certainty.difference.toFixed(3)}
             </p>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-text-tertiary mt-1">
               Based on modal verbs (must, should, may, etc.)
             </p>
           </div>
@@ -140,8 +134,8 @@ export default function LanguageDashboard() {
       </div>
 
       {/* Comparison Chart */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-semibold mb-4">Language Metrics Comparison</h3>
+      <div className="bg-white border border-border-light p-8">
+        <h3 className="text-xl font-semibold text-text-primary mb-4">Language Metrics Comparison</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={comparisonData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -157,9 +151,9 @@ export default function LanguageDashboard() {
 
       {/* Word Clouds */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-semibold mb-4">Comparative Word Clouds</h3>
-          <p className="text-sm text-gray-600 mb-4">
+        <div className="bg-white border border-border-light p-8">
+          <h3 className="text-xl font-semibold text-text-primary mb-4">Comparative Word Clouds</h3>
+          <p className="text-sm text-text-secondary mb-4">
             Most frequent terms in approved vs. unapproved CRLs
           </p>
           <div className="relative w-full" style={{ height: '400px' }}>
@@ -172,9 +166,9 @@ export default function LanguageDashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-semibold mb-4">Severity-Weighted Word Cloud</h3>
-          <p className="text-sm text-gray-600 mb-4">
+        <div className="bg-white border border-border-light p-8">
+          <h3 className="text-xl font-semibold text-text-primary mb-4">Severity-Weighted Word Cloud</h3>
+          <p className="text-sm text-text-secondary mb-4">
             Terms colored by FDA severity score
           </p>
           <div className="relative w-full" style={{ height: '400px' }}>
@@ -190,9 +184,9 @@ export default function LanguageDashboard() {
 
       {/* N-gram Analysis */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-semibold mb-4">Top Bigrams by Outcome</h3>
-          <p className="text-sm text-gray-600 mb-4">
+        <div className="bg-white border border-border-light p-8">
+          <h3 className="text-xl font-semibold text-text-primary mb-4">Top Bigrams by Outcome</h3>
+          <p className="text-sm text-text-secondary mb-4">
             Most common 2-word phrases in each group
           </p>
           <div className="relative w-full" style={{ height: '400px' }}>
@@ -205,9 +199,9 @@ export default function LanguageDashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-semibold mb-4">Top Trigrams by Outcome</h3>
-          <p className="text-sm text-gray-600 mb-4">
+        <div className="bg-white border border-border-light p-8">
+          <h3 className="text-xl font-semibold text-text-primary mb-4">Top Trigrams by Outcome</h3>
+          <p className="text-sm text-text-secondary mb-4">
             Most common 3-word phrases in each group
           </p>
           <div className="relative w-full" style={{ height: '400px' }}>
@@ -223,9 +217,9 @@ export default function LanguageDashboard() {
 
       {/* Severity & Action Analysis */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-semibold mb-4">Severity Distribution</h3>
-          <p className="text-sm text-gray-600 mb-4">
+        <div className="bg-white border border-border-light p-8">
+          <h3 className="text-xl font-semibold text-text-primary mb-4">Severity Distribution</h3>
+          <p className="text-sm text-text-secondary mb-4">
             Distribution of severity scores across approved vs. unapproved CRLs
           </p>
           <div className="relative w-full" style={{ height: '400px' }}>
@@ -238,9 +232,9 @@ export default function LanguageDashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-semibold mb-4">FDA Action Type Radar</h3>
-          <p className="text-sm text-gray-600 mb-4">
+        <div className="bg-white border border-border-light p-8">
+          <h3 className="text-xl font-semibold text-text-primary mb-4">FDA Action Type Radar</h3>
+          <p className="text-sm text-text-secondary mb-4">
             Types of actions requested by FDA in approved vs. unapproved CRLs
           </p>
           <div className="relative w-full" style={{ height: '400px' }}>
@@ -255,19 +249,16 @@ export default function LanguageDashboard() {
       </div>
 
       {/* Latent Space Visualizations */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <TrendingUp className="text-fda-blue" size={24} />
-          <h3 className="text-xl font-semibold">Semantic Embeddings & Clustering</h3>
-        </div>
-        <p className="text-sm text-gray-600 mb-6">
+      <div className="bg-white border border-border-light p-8">
+        <h3 className="text-xl font-semibold text-text-primary mb-4">Semantic Embeddings & Clustering</h3>
+        <p className="text-sm text-text-secondary mb-6">
           Dimensionality reduction techniques (t-SNE, UMAP) to visualize CRL documents in latent space,
           revealing semantic patterns and clusters.
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div>
-            <h4 className="font-semibold mb-3">t-SNE Embeddings</h4>
+            <h4 className="font-semibold text-text-primary mb-3">t-SNE Embeddings</h4>
             <div className="relative w-full" style={{ height: '400px' }}>
               <Image
                 src="/images/language/tsne_embeddings.png"
@@ -279,7 +270,7 @@ export default function LanguageDashboard() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3">UMAP Embeddings</h4>
+            <h4 className="font-semibold text-text-primary mb-3">UMAP Embeddings</h4>
             <div className="relative w-full" style={{ height: '400px' }}>
               <Image
                 src="/images/language/umap_embeddings.png"
@@ -293,7 +284,7 @@ export default function LanguageDashboard() {
 
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h4 className="font-semibold mb-3">K-Means Cluster Analysis</h4>
+            <h4 className="font-semibold text-text-primary mb-3">K-Means Cluster Analysis</h4>
             <div className="relative w-full" style={{ height: '400px' }}>
               <Image
                 src="/images/language/cluster_analysis.png"
@@ -305,7 +296,7 @@ export default function LanguageDashboard() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3">Severity Landscape</h4>
+            <h4 className="font-semibold text-text-primary mb-3">Severity Landscape</h4>
             <div className="relative w-full" style={{ height: '400px' }}>
               <Image
                 src="/images/language/severity_landscape.png"
@@ -319,12 +310,9 @@ export default function LanguageDashboard() {
       </div>
 
       {/* Topic Modeling */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <FileText className="text-purple-600" size={24} />
-          <h3 className="text-xl font-semibold">Topic Modeling (LDA)</h3>
-        </div>
-        <p className="text-sm text-gray-600 mb-4">
+      <div className="bg-white border border-border-light p-8">
+        <h3 className="text-xl font-semibold text-text-primary mb-4">Topic Modeling (LDA)</h3>
+        <p className="text-sm text-text-secondary mb-4">
           Latent Dirichlet Allocation reveals underlying topics in CRL documents
         </p>
         <div className="relative w-full" style={{ height: '600px' }}>
@@ -338,9 +326,9 @@ export default function LanguageDashboard() {
       </div>
 
       {/* Sample Sentiment Trajectory */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-semibold mb-4">Sentiment Trajectory (Sample Document)</h3>
-        <p className="text-sm text-gray-600 mb-4">
+      <div className="bg-white border border-border-light p-8">
+        <h3 className="text-xl font-semibold text-text-primary mb-4">Sentiment Trajectory (Sample Document)</h3>
+        <p className="text-sm text-text-secondary mb-4">
           How FDA sentiment evolves through a sample CRL document
         </p>
         <div className="relative w-full" style={{ height: '500px' }}>

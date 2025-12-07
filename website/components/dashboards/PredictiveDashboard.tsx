@@ -110,9 +110,9 @@ export default function PredictiveDashboard() {
       )}
 
       {/* Model Comparison */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <div className="flex items-center gap-3 mb-4">
-          <Target className="text-fda-blue" size={24} />
+          <Target className="text-accent" size={24} />
           <h3 className="text-xl font-semibold">Model Performance Comparison</h3>
         </div>
         <ResponsiveContainer width="100%" height={400}>
@@ -126,7 +126,7 @@ export default function PredictiveDashboard() {
             <Bar dataKey="cv_mean" fill={COLORS.cv_mean} name="CV Mean %" />
           </BarChart>
         </ResponsiveContainer>
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-sm text-text-secondary">
           <p className="font-medium mb-2">Interpretation:</p>
           <ul className="list-disc list-inside space-y-1">
             <li>All models significantly outperform random baseline (~50%)</li>
@@ -137,7 +137,7 @@ export default function PredictiveDashboard() {
       </div>
 
       {/* Radar Chart */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Multi-Metric Model Comparison</h3>
         <ResponsiveContainer width="100%" height={400}>
           <RadarChart data={radarData}>
@@ -169,18 +169,18 @@ export default function PredictiveDashboard() {
             <Tooltip />
           </RadarChart>
         </ResponsiveContainer>
-        <p className="mt-4 text-sm text-gray-600">
+        <p className="mt-4 text-sm text-text-secondary">
           Stability = 100 - CV Standard Deviation. Higher is better for all metrics.
         </p>
       </div>
 
       {/* Feature Importance */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <div className="flex items-center gap-3 mb-4">
           <Zap className="text-orange-500" size={24} />
           <h3 className="text-xl font-semibold">Top Predictive Features</h3>
         </div>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-text-secondary mb-4">
           Features used by the machine learning models to predict approval outcomes
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -189,14 +189,14 @@ export default function PredictiveDashboard() {
               key={feature.feature}
               className="bg-gray-50 border border-gray-200 rounded p-3 flex items-center gap-3"
             >
-              <div className="bg-fda-blue text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
+              <div className="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
                 {idx + 1}
               </div>
               <div className="text-sm font-medium text-gray-700">{feature.label}</div>
             </div>
           ))}
         </div>
-        <div className="mt-6 bg-blue-50 border-l-4 border-fda-blue p-4 rounded">
+        <div className="mt-6 bg-blue-50 border-l-4 border-accent p-4 rounded">
           <p className="text-sm text-gray-700">
             <span className="font-semibold">Key Insights:</span> The most important predictors include
             application type (NDA vs BLA vs ANDA), whether a new clinical trial is required,
@@ -206,9 +206,9 @@ export default function PredictiveDashboard() {
       </div>
 
       {/* Feature Importance Image */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Feature Importance (Random Forest)</h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-text-secondary mb-4">
           Relative importance of features in the best-performing Random Forest model
         </p>
         <div className="relative w-full" style={{ height: '500px' }}>
@@ -222,12 +222,12 @@ export default function PredictiveDashboard() {
       </div>
 
       {/* ROC Curves */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <div className="flex items-center gap-3 mb-4">
           <TrendingUp className="text-purple-600" size={24} />
           <h3 className="text-xl font-semibold">ROC Curves</h3>
         </div>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-text-secondary mb-4">
           Receiver Operating Characteristic curves showing the trade-off between
           true positive rate and false positive rate for each model
         </p>
@@ -239,7 +239,7 @@ export default function PredictiveDashboard() {
             style={{ objectFit: 'contain' }}
           />
         </div>
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-sm text-text-secondary">
           <p className="font-medium mb-2">Understanding ROC Curves:</p>
           <ul className="list-disc list-inside space-y-1">
             <li>AUC (Area Under Curve) closer to 1.0 indicates better classification performance</li>
@@ -250,9 +250,9 @@ export default function PredictiveDashboard() {
       </div>
 
       {/* Statistical Comparison */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Statistical Feature Comparison</h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-text-secondary mb-4">
           Statistical significance of feature differences between approved and unapproved CRLs
         </p>
         <div className="relative w-full" style={{ height: '600px' }}>

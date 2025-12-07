@@ -90,48 +90,48 @@ export default function OverviewDashboard() {
     <div className="space-y-8">
       {/* Summary Stats */}
       <div className="grid md:grid-cols-4 gap-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white border border-border-light p-6">
           <div className="flex items-center gap-3 mb-2">
-            <FileText className="text-gray-600" size={24} />
-            <h3 className="text-gray-600 font-medium">Total CRLs</h3>
+            <FileText className="text-text-secondary" size={24} />
+            <h3 className="text-text-secondary font-medium">Total CRLs</h3>
           </div>
-          <p className="text-3xl font-bold text-gray-800">{data.summary.total_crls}</p>
+          <p className="text-3xl font-bold text-text-primary">{data.summary.total_crls}</p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-fda-green">
+        <div className="bg-white border border-border-light p-6 border-l-4 border-success">
           <div className="flex items-center gap-3 mb-2">
-            <CheckCircle className="text-fda-green" size={24} />
-            <h3 className="text-gray-600 font-medium">Approved</h3>
+            <CheckCircle className="text-success" size={24} />
+            <h3 className="text-text-secondary font-medium">Approved</h3>
           </div>
-          <p className="text-3xl font-bold text-fda-green">{data.summary.approved}</p>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-3xl font-bold text-success">{data.summary.approved}</p>
+          <p className="text-sm text-text-tertiary mt-1">
             {data.summary.approval_rate}% of total
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-fda-red">
+        <div className="bg-white border border-border-light p-6 border-l-4 border-error">
           <div className="flex items-center gap-3 mb-2">
-            <XCircle className="text-fda-red" size={24} />
-            <h3 className="text-gray-600 font-medium">Unapproved</h3>
+            <XCircle className="text-error" size={24} />
+            <h3 className="text-text-secondary font-medium">Unapproved</h3>
           </div>
-          <p className="text-3xl font-bold text-fda-red">{data.summary.unapproved}</p>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-3xl font-bold text-error">{data.summary.unapproved}</p>
+          <p className="text-sm text-text-tertiary mt-1">
             {(100 - data.summary.approval_rate).toFixed(1)}% of total
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-fda-blue">
+        <div className="bg-white border border-border-light p-6 border-l-4 border-accent">
           <div className="flex items-center gap-3 mb-2">
-            <TrendingUp className="text-fda-blue" size={24} />
-            <h3 className="text-gray-600 font-medium">Approval Rate</h3>
+            <TrendingUp className="text-accent" size={24} />
+            <h3 className="text-text-secondary font-medium">Approval Rate</h3>
           </div>
-          <p className="text-3xl font-bold text-fda-blue">{data.summary.approval_rate}%</p>
-          <p className="text-sm text-gray-500 mt-1">Eventually approved</p>
+          <p className="text-3xl font-bold text-accent">{data.summary.approval_rate}%</p>
+          <p className="text-sm text-text-tertiary mt-1">Eventually approved</p>
         </div>
       </div>
 
       {/* Approval Status Pie Chart */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Approval Status Distribution</h3>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
@@ -157,7 +157,7 @@ export default function OverviewDashboard() {
       </div>
 
       {/* Application Type Breakdown */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white border border-border-light p-6">
         <h3 className="text-xl font-semibold mb-4">Approval Outcomes by Application Type</h3>
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={appTypeData}>
@@ -170,7 +170,7 @@ export default function OverviewDashboard() {
             <Bar dataKey="unapproved" stackId="a" fill={COLORS.unapproved} name="Unapproved" />
           </BarChart>
         </ResponsiveContainer>
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-sm text-text-secondary">
           <p className="font-medium mb-2">Key Insights:</p>
           <ul className="list-disc list-inside space-y-1">
             {appTypeData
@@ -187,7 +187,7 @@ export default function OverviewDashboard() {
 
       {/* Yearly Trends */}
       {data.yearly_trends.length > 0 && (
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white border border-border-light p-6">
           <h3 className="text-xl font-semibold mb-4">Yearly Trends</h3>
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={data.yearly_trends}>
@@ -220,7 +220,7 @@ export default function OverviewDashboard() {
               />
             </LineChart>
           </ResponsiveContainer>
-          <p className="mt-4 text-sm text-gray-600">
+          <p className="mt-4 text-sm text-text-secondary">
             Note: Data spans 2020-2025. Unapproved CRLs are concentrated in recent years
             (2024-2025) as they haven't had time for resubmission.
           </p>
