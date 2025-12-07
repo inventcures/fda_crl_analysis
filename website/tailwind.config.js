@@ -7,54 +7,54 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif', 'Apple Color Emoji'],
-        mono: ['SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Consolas', 'monospace'],
+        sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['var(--font-ubuntu-mono)', 'SF Mono', 'monospace'],
       },
       colors: {
-        // Academic color palette - muted, professional
+        // Premium, human-centric palette
         page: '#FFFFFF',
-        subtle: '#FAFAFA',
-        muted: '#F5F5F5',
+        subtle: '#F8FAFC', // Slate-50
 
         text: {
-          primary: '#1A1A1A',
-          secondary: '#6B6B6B',
-          tertiary: '#9B9B9B',
+          primary: '#031863', // Deep Navy (Body text from reference)
+          secondary: '#475569', // Slate-600
+          heading: '#2B2B2B', // Dark Gray (Headings from reference)
         },
 
         border: {
-          light: '#E5E5E5',
-          medium: '#D4D4D4',
+          light: '#E2E8F0', // Slate-200
+          medium: '#CBD5E1', // Slate-300
         },
 
         accent: {
-          DEFAULT: '#2563EB',
-          hover: '#1D4ED8',
-          light: '#DBEAFE',
-          subtle: '#EFF6FF',
+          DEFAULT: '#3B82F6', // Blue-500 (Vibrant but not default blue)
+          hover: '#2563EB',
+          light: '#EFF6FF',
+          subtle: '#DBEAFE',
+        },
+
+        // Data visualization colors
+        chart: {
+          1: '#3B82F6', // Blue
+          2: '#F59E0B', // Amber
+          3: '#10B981', // Emerald
+          4: '#8B5CF6', // Violet
+          5: '#EC4899', // Pink
         },
 
         success: {
-          DEFAULT: '#059669',
+          DEFAULT: '#10B981', // Emerald-500
           light: '#D1FAE5',
         },
 
         warning: {
-          DEFAULT: '#D97706',
+          DEFAULT: '#F59E0B', // Amber-500
           light: '#FEF3C7',
         },
 
         error: {
-          DEFAULT: '#DC2626',
+          DEFAULT: '#EF4444', // Red-500
           light: '#FEE2E2',
-        },
-
-        // Legacy FDA colors (for backwards compatibility)
-        fda: {
-          blue: '#2563EB',
-          darkblue: '#1D4ED8',
-          red: '#DC2626',
-          green: '#059669',
         },
       },
       spacing: {

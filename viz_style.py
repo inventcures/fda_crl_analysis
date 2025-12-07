@@ -1,27 +1,28 @@
 """
-Academic visualization style for FDA CRL analysis.
-Muted, professional color palette that looks human-crafted, not AI-generated.
+Premium visualization style for FDA CRL analysis.
+Matches the website's clean, human-centric aesthetic.
 """
 
 import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib as mpl
 
-# Academic color palette (muted, professional)
+# Premium color palette (matches website)
 ACADEMIC_COLORS = {
-    'primary': '#2563EB',      # Muted blue
-    'secondary': '#059669',    # Muted green
-    'tertiary': '#D97706',     # Muted orange
-    'quaternary': '#DC2626',   # Muted red
-    'quinary': '#7C3AED',      # Muted purple
+    'primary': '#3B82F6',      # Blue-500
+    'secondary': '#F59E0B',    # Amber-500
+    'tertiary': '#10B981',     # Emerald-500
+    'quaternary': '#8B5CF6',   # Violet-500
+    'quinary': '#EC4899',      # Pink-500
 
     # Grays for backgrounds and text
-    'gray-50': '#FAFAFA',
-    'gray-100': '#F5F5F5',
-    'gray-200': '#E5E5E5',
-    'gray-300': '#D4D4D4',
-    'gray-600': '#6B6B6B',
-    'gray-900': '#1A1A1A',
+    'gray-50': '#F8FAFC',      # Slate-50
+    'gray-100': '#F1F5F9',     # Slate-100
+    'gray-200': '#E2E8F0',     # Slate-200
+    'gray-300': '#CBD5E1',     # Slate-300
+    'gray-600': '#475569',     # Slate-600
+    'gray-900': '#031863',     # Deep Navy (Text Primary)
+    'heading': '#2B2B2B',      # Dark Gray (Headings)
 }
 
 # Color list for cyclic use
@@ -36,21 +37,19 @@ COLOR_PALETTE = [
 
 def apply_academic_style():
     """
-    Apply academic visualization style to all matplotlib plots.
-
-    This removes the "AI-generated" look by using:
-    - Muted, professional colors (not bright saturated defaults)
-    - Clean white backgrounds (not colored backgrounds)
-    - Subtle gridlines (not bold)
-    - Professional fonts (Helvetica/Arial)
-    - High contrast text (not gray)
-    - Minimal chart junk
+    Apply premium visualization style to all matplotlib plots.
+    
+    Features:
+    - Monospace fonts for titles (matches website headings)
+    - Clean sans-serif for labels
+    - High-contrast, sophisticated color palette
+    - Minimalist grid and chrome
     """
 
     # Set style base
     plt.style.use('seaborn-v0_8-paper')
 
-    # Update matplotlib rcParams for academic aesthetic
+    # Update matplotlib rcParams for premium aesthetic
     mpl.rcParams.update({
         # Figure
         'figure.facecolor': 'white',
@@ -61,54 +60,54 @@ def apply_academic_style():
         # Axes
         'axes.facecolor': 'white',
         'axes.edgecolor': ACADEMIC_COLORS['gray-200'],
-        'axes.linewidth': 0.8,
+        'axes.linewidth': 1.0,
         'axes.grid': True,
         'axes.grid.axis': 'y',
         'axes.axisbelow': True,
-        'axes.labelcolor': ACADEMIC_COLORS['gray-900'],
-        'axes.titlesize': 14,
-        'axes.labelsize': 11,
-        'axes.titleweight': '600',
-        'axes.titlepad': 15,
+        'axes.labelcolor': ACADEMIC_COLORS['gray-600'],
+        'axes.titlesize': 16,
+        'axes.labelsize': 12,
+        'axes.titleweight': 'normal', # Monospace looks better normal
+        'axes.titlepad': 20,
+        'axes.titlecolor': ACADEMIC_COLORS['heading'],
 
         # Grid
         'grid.color': ACADEMIC_COLORS['gray-100'],
-        'grid.linewidth': 0.5,
-        'grid.alpha': 0.8,
+        'grid.linewidth': 1.0,
+        'grid.alpha': 1.0, # Solid but light lines
 
         # Ticks
         'xtick.color': ACADEMIC_COLORS['gray-600'],
         'ytick.color': ACADEMIC_COLORS['gray-600'],
-        'xtick.labelsize': 10,
-        'ytick.labelsize': 10,
-        'xtick.major.width': 0.8,
-        'ytick.major.width': 0.8,
-        'xtick.major.size': 4,
-        'ytick.major.size': 4,
+        'xtick.labelsize': 11,
+        'ytick.labelsize': 11,
+        'xtick.major.width': 1.0,
+        'ytick.major.width': 1.0,
+        'xtick.major.size': 6,
+        'ytick.major.size': 6,
 
         # Legend
-        'legend.frameon': True,
-        'legend.framealpha': 1.0,
-        'legend.facecolor': 'white',
-        'legend.edgecolor': ACADEMIC_COLORS['gray-200'],
-        'legend.fontsize': 10,
-        'legend.title_fontsize': 11,
+        'legend.frameon': False, # Cleaner without frame
+        'legend.fontsize': 11,
+        'legend.title_fontsize': 12,
 
         # Font
-        'font.family': 'sans-serif',
-        'font.sans-serif': ['Helvetica', 'Arial', 'DejaVu Sans', 'Liberation Sans'],
-        'font.size': 11,
+        # Prefer monospace for that "technical/lab" feel
+        'font.family': 'monospace',
+        'font.monospace': ['Ubuntu Mono', 'Consolas', 'Monaco', 'Andale Mono', 'monospace'],
+        'font.sans-serif': ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+        'font.size': 12,
 
         # Lines
-        'lines.linewidth': 1.5,
-        'lines.markersize': 6,
+        'lines.linewidth': 2.0,
+        'lines.markersize': 8,
 
         # Patches (bars, etc.)
-        'patch.linewidth': 0.5,
-        'patch.edgecolor': ACADEMIC_COLORS['gray-200'],
+        'patch.linewidth': 0, # Cleaner bars without borders
+        'patch.edgecolor': 'none',
 
         # Savefig
-        'savefig.dpi': 150,
+        'savefig.dpi': 300,
         'savefig.bbox': 'tight',
         'savefig.facecolor': 'white',
         'savefig.edgecolor': 'white',
@@ -119,12 +118,13 @@ def apply_academic_style():
 
     # Set seaborn palette
     sns.set_palette(COLOR_PALETTE)
-    sns.set_context("paper", font_scale=1.1)
+    sns.set_context("paper", font_scale=1.2)
     sns.set_style("whitegrid", {
         'grid.color': ACADEMIC_COLORS['gray-100'],
-        'grid.linewidth': 0.5,
+        'grid.linewidth': 1.0,
         'axes.edgecolor': ACADEMIC_COLORS['gray-200'],
-        'axes.linewidth': 0.8,
+        'axes.linewidth': 1.0,
+        'font.family': 'monospace', # Ensure seaborn picks this up
     })
 
 
@@ -164,12 +164,13 @@ def get_diverging_palette(n_colors: int = 11) -> list:
     Returns:
         List of hex color codes
     """
-    # Use seaborn to create a diverging palette from muted colors
+    # Use seaborn to create a diverging palette
+    # Blue to Amber (Cool to Warm)
     return sns.diverging_palette(
-        220,  # Blue hue
-        15,   # Orange hue
-        s=60,  # Saturation (muted)
-        l=60,  # Lightness (not too dark)
+        250,  # Blue hue
+        30,   # Amber hue
+        s=90,  # Higher saturation
+        l=60,  # Medium lightness
         n=n_colors,
         center='light'
     ).as_hex()

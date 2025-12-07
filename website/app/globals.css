@@ -4,35 +4,38 @@
 
 @layer base {
   :root {
-    --accent: #2563EB;
-    --accent-hover: #1D4ED8;
-    --text-primary: #1A1A1A;
-    --text-secondary: #6B6B6B;
-    --border-light: #E5E5E5;
+    --accent: #3B82F6;
+    --accent-hover: #2563EB;
+    --text-primary: #031863;
+    --text-secondary: #475569;
+    --border-light: #E2E8F0;
   }
 
-  /* Academic Typography */
+  /* Premium Typography */
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji';
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0em;
-    line-height: 1.7;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+    @apply text-text-primary bg-page;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    letter-spacing: 0em;
-    line-height: 1.3;
+    font-family: var(--font-ubuntu-mono), monospace;
+    font-weight: 400; /* Mono fonts often look better with normal weight */
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    @apply text-text-heading;
   }
 
   h1 {
-    font-size: 3rem;
-    line-height: 1.2;
+    font-size: 3.5rem;
+    line-height: 1.1;
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   h3 {
@@ -40,12 +43,12 @@
   }
 
   p {
-    line-height: 1.7;
+    line-height: 1.75;
     letter-spacing: 0em;
   }
 
   code {
-    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Consolas', monospace;
+    font-family: var(--font-ubuntu-mono), monospace;
     font-size: 0.9em;
   }
 }
