@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Download, Search } from 'lucide-react'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
@@ -22,6 +22,7 @@ export default function PDFViewer({ fileUrl, fileName, searchQuery, initialPage 
   const [numPages, setNumPages] = useState<number>(0)
   const [pageNumber, setPageNumber] = useState(initialPage)
   const [scale, setScale] = useState(1.0)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages)
@@ -47,6 +48,41 @@ export default function PDFViewer({ fileUrl, fileName, searchQuery, initialPage 
 
   const zoomIn = () => setScale(Math.min(3.0, scale + 0.25))
   const zoomOut = () => setScale(Math.max(0.5, scale - 0.25))
+
+  // CRITICAL: Prevent scroll propagation when reaching boundaries
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const element = e.currentTarget
+    const { scrollTop, scrollHeight, clientHeight } = element
+
+    // Scrolling up at the top
+    if (scrollTop === 0 && e.deltaY < 0) {
+      e.preventDefault()
+      e.stopPropagation()
+      return
+    }
+
+    // Scrolling down at the bottom
+    if (scrollTop + clientHeight >= scrollHeight - 1 && e.deltaY > 0) {
+      e.preventDefault()
+      e.stopPropagation()
+      return
+    }
+  }
+
+  // Handle touch events for mobile
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const element = e.currentTarget
+    const { scrollTop, scrollHeight, clientHeight } = element
+
+    // Check if at boundaries
+    const atTop = scrollTop === 0
+    const atBottom = scrollTop + clientHeight >= scrollHeight - 1
+
+    // If at boundary, prevent default to stop overscroll
+    if (atTop || atBottom) {
+      e.stopPropagation()
+    }
+  }
 
   return (
     <div className="flex flex-col h-full">
@@ -110,7 +146,13 @@ export default function PDFViewer({ fileUrl, fileName, searchQuery, initialPage 
       </div>
 
       {/* PDF Canvas - All Pages Scrollable (only this section scrolls) */}
-      <div className="flex-1 overflow-y-auto overflow-x-hidden bg-gray-100">
+      <div
+        ref={scrollContainerRef}
+        className="flex-1 overflow-y-auto overflow-x-hidden bg-gray-100"
+        onWheel={handleWheel}
+        onTouchMove={handleTouchMove}
+        style={{ overscrollBehavior: 'contain' }}
+      >
         <div className="flex flex-col items-center gap-4 p-8">
           <Document
             file={fileUrl}

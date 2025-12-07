@@ -16,9 +16,15 @@ function useScrollLock() {
     const originalBodyWidth = document.body.style.width
     const originalBodyHeight = document.body.style.height
 
-    // Find and hide Navigation
+    // Find elements to hide/lock
     const nav = document.querySelector('nav')
-    const originalNavDisplay = nav ? (nav as HTMLElement).style.display : null
+    const main = document.querySelector('main')
+    const footer = document.querySelector('footer')
+
+    const originalNavDisplay = nav ? (nav as HTMLElement).style.display : ''
+    const originalMainOverflow = main ? (main as HTMLElement).style.overflow : ''
+    const originalMainHeight = main ? (main as HTMLElement).style.height : ''
+    const originalFooterDisplay = footer ? (footer as HTMLElement).style.display : ''
 
     // Lock scroll on root elements with position: fixed for maximum effectiveness
     document.body.style.overflow = 'hidden'
@@ -32,6 +38,18 @@ function useScrollLock() {
       (nav as HTMLElement).style.display = 'none'
     }
 
+    // CRITICAL FIX: Lock main element to prevent scroll propagation
+    if (main) {
+      const mainElement = main as HTMLElement
+      mainElement.style.overflow = 'hidden'
+      mainElement.style.height = '100vh'
+    }
+
+    // Hide Footer
+    if (footer) {
+      (footer as HTMLElement).style.display = 'none'
+    }
+
     // Cleanup on unmount
     return () => {
       document.body.style.overflow = originalBodyOverflow
@@ -40,8 +58,18 @@ function useScrollLock() {
       document.body.style.width = originalBodyWidth
       document.body.style.height = originalBodyHeight
 
-      if (nav && originalNavDisplay !== null) {
+      if (nav) {
         (nav as HTMLElement).style.display = originalNavDisplay
+      }
+
+      if (main) {
+        const mainElement = main as HTMLElement
+        mainElement.style.overflow = originalMainOverflow
+        mainElement.style.height = originalMainHeight
+      }
+
+      if (footer) {
+        (footer as HTMLElement).style.display = originalFooterDisplay
       }
     }
   }, [])
