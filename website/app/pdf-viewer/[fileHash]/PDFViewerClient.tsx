@@ -6,6 +6,25 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
+// Lock body scroll when component mounts
+function useScrollLock() {
+  useEffect(() => {
+    // Save original styles
+    const originalStyle = window.getComputedStyle(document.body).overflow
+    const originalHtmlStyle = window.getComputedStyle(document.documentElement).overflow
+
+    // Lock scroll
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = originalStyle
+      document.documentElement.style.overflow = originalHtmlStyle
+    }
+  }, [])
+}
+
 // Dynamically import PDFViewer with ssr disabled to avoid Node.js build errors
 const PDFViewer = dynamic(() => import('@/components/PDFViewer'), {
   ssr: false,
@@ -21,6 +40,9 @@ interface PDFViewerClientProps {
 }
 
 export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
+  // Lock body scroll when this component is mounted
+  useScrollLock()
+
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('q') || undefined
   const page = searchParams.get('page') ? parseInt(searchParams.get('page')!) : 1
