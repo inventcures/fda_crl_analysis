@@ -14,284 +14,210 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div>
-      {/* Hero Section - Clean, Academic */}
-      <section className="bg-white border-b border-border-light py-20">
-        <div className="container mx-auto max-w-4xl px-6">
-          <div className="space-y-6">
-            <div className="inline-block px-4 py-2 bg-accent-subtle border border-accent-light text-accent text-sm font-medium">
-              FDA Research Analysis • 2020-2025
+    <div className="bg-page min-h-screen">
+      {/* Hero Section */}
+      <section className="border-b border-border-light pt-32 pb-24">
+        <div className="container mx-auto max-w-5xl px-6">
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent-light border border-accent-subtle text-accent font-mono text-xs uppercase tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              FDA Analysis 2020-2025
             </div>
 
-            <h1 className="text-5xl font-bold text-text-primary leading-tight">
-              Understanding Drug Approval Patterns Through Complete Response Letter Analysis
+            <h1 className="text-6xl md:text-7xl font-normal text-text-primary leading-[1.1] tracking-tight">
+              The Logic of <br />
+              <span className="text-text-secondary">Rejection.</span>
             </h1>
 
-            <p className="text-xl text-text-secondary leading-relaxed max-w-3xl">
-              Analyzing 297 FDA Complete Response Letters to identify patterns that distinguish
-              drugs that eventually get approved from those that don't. A systematic study using
-              natural language processing, machine learning, and statistical analysis.
+            <p className="text-xl md:text-2xl text-text-secondary leading-relaxed max-w-2xl font-light">
+              We analyzed nearly 300 FDA Complete Response Letters to map the hidden landscape of drug approval.
+              Here is the blueprint of what separates success from failure.
             </p>
 
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-wrap gap-5 pt-8">
               <Link
-                href="/search"
-                className="px-6 py-3 bg-accent text-white font-medium hover:bg-accent-hover transition-colors"
+                href="/overview"
+                className="px-8 py-4 bg-accent text-white font-mono text-sm hover:bg-accent-hover transition-all shadow-sm hover:shadow-md"
               >
-                Explore CRLs
+                READ THE ANALYSIS
               </Link>
               <Link
-                href="/methodology"
-                className="px-6 py-3 border border-border-medium text-text-primary hover:border-accent transition-colors"
+                href="/search"
+                className="px-8 py-4 border border-border-medium text-text-primary font-mono text-sm hover:border-accent hover:text-accent transition-colors"
               >
-                Methodology
+                SEARCH DATABASE
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Bar - Simple Grid */}
+      {/* Stats Bar - Minimalist */}
       {stats && (
-        <section className="py-12 bg-subtle border-b border-border-light">
+        <section className="py-16 border-b border-border-light bg-subtle">
           <div className="container mx-auto max-w-6xl px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold text-text-primary">{stats.total_crls}</div>
-                <div className="text-sm text-text-secondary mt-2">Total CRLs Analyzed</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+              <div className="space-y-2">
+                <div className="text-5xl font-mono text-text-primary">{stats.total_crls}</div>
+                <div className="text-xs font-mono text-text-secondary uppercase tracking-widest">Letters Parsed</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-success">{stats.approved}</div>
-                <div className="text-sm text-text-secondary mt-2">Eventually Approved</div>
+              <div className="space-y-2">
+                <div className="text-5xl font-mono text-success">{stats.approved}</div>
+                <div className="text-xs font-mono text-text-secondary uppercase tracking-widest">Eventually Approved</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-error">{stats.unapproved}</div>
-                <div className="text-sm text-text-secondary mt-2">Not Yet Approved</div>
+              <div className="space-y-2">
+                <div className="text-5xl font-mono text-error">{stats.unapproved}</div>
+                <div className="text-xs font-mono text-text-secondary uppercase tracking-widest">Terminated</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-text-primary">{stats.approval_rate}%</div>
-                <div className="text-sm text-text-secondary mt-2">Overall Rescue Rate</div>
+              <div className="space-y-2">
+                <div className="text-5xl font-mono text-text-primary">{stats.approval_rate}%</div>
+                <div className="text-xs font-mono text-text-secondary uppercase tracking-widest">Rescue Rate</div>
               </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* Key Findings */}
-      <section className="py-16 bg-white">
+      {/* Narrative Section */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto max-w-6xl px-6">
-          <div className="mb-12">
-            <h2 className="text-3xl font-semibold text-text-primary mb-3">Key Findings</h2>
-            <p className="text-lg text-text-secondary">
-              Critical insights from analyzing Complete Response Letters
+          <div className="mb-16 max-w-2xl">
+            <h2 className="text-4xl text-text-primary mb-6">The Hidden Patterns</h2>
+            <p className="text-xl text-text-secondary font-light leading-relaxed">
+              Rejection isn't random. By decoding the regulatory language, we found distinct signatures that predict whether a drug will eventually reach patients or be abandoned.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Finding 1 */}
-            <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors">
-              <h3 className="text-2xl font-semibold text-text-primary mb-4">
-                Deficiency Patterns
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Insight 1 */}
+            <div className="group cursor-default">
+              <div className="border-t-2 border-text-primary pt-6 mb-4">
+                <span className="font-mono text-sm text-text-secondary">01</span>
+              </div>
+              <h3 className="text-2xl text-text-primary mb-4 group-hover:text-accent transition-colors">
+                Safety is rarely the dealbreaker.
               </h3>
-              <div className="space-y-3 text-text-secondary">
-                <div className="pb-3 border-b border-border-light">
-                  <div className="flex justify-between items-baseline">
-                    <span>Clinical deficiencies</span>
-                    <span className="font-semibold text-text-primary">47%</span>
-                  </div>
+              <p className="text-text-secondary leading-relaxed mb-6">
+                While safety concerns appear in 31% of letters, they are surprisingly recoverable. The real killers are often bureaucratic and manufacturing hurdles that drain resources and time.
+              </p>
+              <div className="bg-subtle p-6 rounded-sm">
+                <div className="flex justify-between items-baseline mb-2">
+                  <span className="font-mono text-sm text-text-secondary">Clinical Deficiencies</span>
+                  <span className="font-mono text-xl text-text-primary">47%</span>
                 </div>
-                <div className="pb-3 border-b border-border-light">
-                  <div className="flex justify-between items-baseline">
-                    <span>CMC/Manufacturing issues</span>
-                    <span className="font-semibold text-text-primary">42%</span>
-                  </div>
-                </div>
-                <div className="pb-3">
-                  <div className="flex justify-between items-baseline">
-                    <span>Safety concerns</span>
-                    <span className="font-semibold text-text-primary">31%</span>
-                  </div>
-                  <p className="text-sm mt-1">Minimal impact on approval outcomes</p>
+                <div className="w-full bg-border-light h-1">
+                  <div className="bg-text-primary h-1" style={{ width: '47%' }}></div>
                 </div>
               </div>
             </div>
 
-            {/* Finding 2 */}
-            <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors">
-              <h3 className="text-2xl font-semibold text-text-primary mb-4">
-                Strongest Approval Predictors
+            {/* Insight 2 */}
+            <div className="group cursor-default">
+              <div className="border-t-2 border-border-medium pt-6 mb-4 group-hover:border-text-primary transition-colors">
+                <span className="font-mono text-sm text-text-secondary">02</span>
+              </div>
+              <h3 className="text-2xl text-text-primary mb-4 group-hover:text-accent transition-colors">
+                The Trial Trap.
               </h3>
-              <div className="space-y-3 text-text-secondary">
-                <div className="pb-3 border-b border-border-light">
-                  <div className="flex justify-between items-baseline mb-1">
-                    <span>No new trial required</span>
-                    <span className="font-semibold text-success">93%</span>
-                  </div>
-                  <p className="text-sm">approval rate</p>
+              <p className="text-text-secondary leading-relaxed mb-6">
+                The single strongest predictor of failure is the requirement for a new clinical trial. If the FDA asks for more data, the odds of approval drop precipitously.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-subtle p-4">
+                  <div className="text-3xl font-mono text-success mb-1">93%</div>
+                  <div className="text-xs text-text-secondary">Approval without new trial</div>
                 </div>
-                <div className="pb-3 border-b border-border-light">
-                  <div className="flex justify-between items-baseline mb-1">
-                    <span>New trial required</span>
-                    <span className="font-semibold text-error">31%</span>
-                  </div>
-                  <p className="text-sm">approval rate</p>
-                </div>
-                <div>
-                  <p>ANDAs significantly outperform NDAs and BLAs in rescue rates</p>
+                <div className="bg-subtle p-4">
+                  <div className="text-3xl font-mono text-error mb-1">31%</div>
+                  <div className="text-xs text-text-secondary">Approval with new trial</div>
                 </div>
               </div>
             </div>
 
-            {/* Finding 3 */}
-            <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors">
-              <h3 className="text-2xl font-semibold text-text-primary mb-4">
-                Language Analysis
+            {/* Insight 3 */}
+            <div className="group cursor-default">
+              <div className="border-t-2 border-border-medium pt-6 mb-4 group-hover:border-text-primary transition-colors">
+                <span className="font-mono text-sm text-text-secondary">03</span>
+              </div>
+              <h3 className="text-2xl text-text-primary mb-4 group-hover:text-accent transition-colors">
+                The Language of Failure.
               </h3>
-              <div className="space-y-3 text-text-secondary">
-                <div className="pb-3 border-b border-border-light">
-                  <div className="flex justify-between items-baseline">
-                    <span>Unapproved CRL severity score</span>
-                    <span className="font-semibold text-error">0.52</span>
-                  </div>
-                </div>
-                <div className="pb-3 border-b border-border-light">
-                  <div className="flex justify-between items-baseline">
-                    <span>Approved CRL severity score</span>
-                    <span className="font-semibold text-success">0.48</span>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-sm">
-                    Unapproved CRLs use significantly more severe regulatory language
-                    and request fundamentally different types of actions from sponsors
-                  </p>
-                </div>
+              <p className="text-text-secondary leading-relaxed mb-6">
+                We trained models to "read" the tone of FDA letters. Unapproved drugs receive letters with significantly harsher, more directive regulatory language.
+              </p>
+              <div className="flex items-center gap-4 text-sm font-mono">
+                <span className="text-error">Severity Score: 0.52</span>
+                <span className="text-border-medium">vs</span>
+                <span className="text-success">0.48 (Approved)</span>
               </div>
             </div>
 
-            {/* Finding 4 */}
-            <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors">
-              <h3 className="text-2xl font-semibold text-text-primary mb-4">
-                Predictive Modeling
-              </h3>
-              <div className="space-y-4">
-                <div className="bg-subtle border border-border-light p-4">
-                  <div className="text-5xl font-bold text-accent mb-2">72%</div>
-                  <div className="text-sm text-text-secondary">
-                    Random Forest cross-validated accuracy
-                  </div>
-                </div>
-                <p className="text-text-secondary">
-                  Top predictive features: new trial requirement, application type,
-                  and total deficiency count
-                </p>
+            {/* Insight 4 */}
+            <div className="group cursor-default">
+              <div className="border-t-2 border-border-medium pt-6 mb-4 group-hover:border-text-primary transition-colors">
+                <span className="font-mono text-sm text-text-secondary">04</span>
               </div>
+              <h3 className="text-2xl text-text-primary mb-4 group-hover:text-accent transition-colors">
+                Predicting Outcomes.
+              </h3>
+              <p className="text-text-secondary leading-relaxed mb-6">
+                Using just a few key features from the initial rejection letter, our Random Forest model can predict the ultimate fate of a drug with 72% accuracy.
+              </p>
+              <Link href="/predictive" className="inline-flex items-center text-accent hover:text-accent-hover font-mono text-sm group-hover:translate-x-1 transition-transform">
+                VIEW MODEL PERFORMANCE &rarr;
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Explore Sections */}
-      <section className="py-16 bg-subtle border-t border-border-light">
+      {/* Explore Grid */}
+      <section className="py-24 bg-subtle border-t border-border-light">
         <div className="container mx-auto max-w-6xl px-6">
-          <div className="mb-12">
-            <h2 className="text-3xl font-semibold text-text-primary mb-3">Explore the Analysis</h2>
-            <p className="text-lg text-text-secondary">
-              Detailed breakdowns and interactive visualizations
-            </p>
+          <div className="flex justify-between items-end mb-12">
+            <h2 className="text-3xl text-text-primary">Dive Deeper</h2>
+            <span className="font-mono text-sm text-text-secondary">EXPLORE THE DATASET</span>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/overview" className="block group">
-              <div className="bg-white border border-border-light p-8 h-full hover:border-accent transition-colors">
-                <h3 className="text-xl font-semibold text-text-primary mb-3">
-                  Overview
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  Approval rates, application type breakdowns, and temporal trends across the dataset
-                </p>
-              </div>
+          <div className="grid md:grid-cols-3 gap-px bg-border-light border border-border-light">
+            <Link href="/overview" className="bg-white p-10 hover:bg-gray-50 transition-colors group">
+              <div className="font-mono text-xs text-accent mb-4">01</div>
+              <h3 className="text-xl text-text-primary mb-3 group-hover:text-accent transition-colors">Overview</h3>
+              <p className="text-text-secondary text-sm leading-relaxed">
+                Comprehensive breakdown of approval rates, temporal trends, and application types.
+              </p>
             </Link>
 
-            <Link href="/deficiencies" className="block group">
-              <div className="bg-white border border-border-light p-8 h-full hover:border-accent transition-colors">
-                <h3 className="text-xl font-semibold text-text-primary mb-3">
-                  Deficiency Analysis
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  Deficiency type patterns, rescue rates by category, and co-occurrence heatmaps
-                </p>
-              </div>
+            <Link href="/deficiencies" className="bg-white p-10 hover:bg-gray-50 transition-colors group">
+              <div className="font-mono text-xs text-accent mb-4">02</div>
+              <h3 className="text-xl text-text-primary mb-3 group-hover:text-accent transition-colors">Deficiencies</h3>
+              <p className="text-text-secondary text-sm leading-relaxed">
+                Deep dive into what actually goes wrong. Heatmaps of co-occurring issues.
+              </p>
             </Link>
 
-            <Link href="/language" className="block group">
-              <div className="bg-white border border-border-light p-8 h-full hover:border-accent transition-colors">
-                <h3 className="text-xl font-semibold text-text-primary mb-3">
-                  Language & NLP
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  Word frequency, sentiment analysis, semantic embeddings, and topic modeling
-                </p>
-              </div>
+            <Link href="/language" className="bg-white p-10 hover:bg-gray-50 transition-colors group">
+              <div className="font-mono text-xs text-accent mb-4">03</div>
+              <h3 className="text-xl text-text-primary mb-3 group-hover:text-accent transition-colors">Language</h3>
+              <p className="text-text-secondary text-sm leading-relaxed">
+                NLP analysis of regulatory tone, sentiment, and semantic embeddings.
+              </p>
             </Link>
 
-            <Link href="/predictive" className="block group">
-              <div className="bg-white border border-border-light p-8 h-full hover:border-accent transition-colors">
-                <h3 className="text-xl font-semibold text-text-primary mb-3">
-                  Predictive Models
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  Machine learning classifiers, ROC curves, feature importance, and model performance
-                </p>
-              </div>
+            <Link href="/predictive" className="bg-white p-10 hover:bg-gray-50 transition-colors group">
+              <div className="font-mono text-xs text-accent mb-4">04</div>
+              <h3 className="text-xl text-text-primary mb-3 group-hover:text-accent transition-colors">Prediction</h3>
+              <p className="text-text-secondary text-sm leading-relaxed">
+                Machine learning models that forecast drug rescue probability.
+              </p>
             </Link>
 
-            <Link href="/search" className="block group">
-              <div className="bg-white border border-border-light p-8 h-full hover:border-accent transition-colors">
-                <h3 className="text-xl font-semibold text-text-primary mb-3">
-                  Search CRLs
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  Full-text search across all 297 letters with integrated PDF viewer
-                </p>
-              </div>
-            </Link>
-
-            <Link href="/methodology" className="block group">
-              <div className="bg-white border border-border-light p-8 h-full hover:border-accent transition-colors">
-                <h3 className="text-xl font-semibold text-text-primary mb-3">
-                  Methodology
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  Data sources, analysis methods, validation approaches, and study limitations
-                </p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Simple CTA */}
-      <section className="py-16 bg-white border-t border-border-light">
-        <div className="container mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl font-semibold text-text-primary mb-4">
-            Start Exploring
-          </h2>
-          <p className="text-lg text-text-secondary mb-8">
-            Search through Complete Response Letters or explore patterns in the data
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Link
-              href="/search"
-              className="px-8 py-3 bg-accent text-white font-medium hover:bg-accent-hover transition-colors"
-            >
-              Search CRLs
-            </Link>
-            <Link
-              href="/overview"
-              className="px-8 py-3 border border-border-medium text-text-primary hover:border-accent transition-colors"
-            >
-              View Analysis
+            <Link href="/search" className="bg-white p-10 hover:bg-gray-50 transition-colors group md:col-span-2">
+              <div className="font-mono text-xs text-accent mb-4">05</div>
+              <h3 className="text-xl text-text-primary mb-3 group-hover:text-accent transition-colors">Search the Database</h3>
+              <p className="text-text-secondary text-sm leading-relaxed max-w-md">
+                Full-text search across all 297 Complete Response Letters with integrated PDF viewer and highlighting.
+              </p>
             </Link>
           </div>
         </div>

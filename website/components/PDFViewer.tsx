@@ -6,9 +6,9 @@ import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Download, Search } from 'lu
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
 
-// Configure PDF.js worker - use multiple CDN fallbacks for reliability
+// Configure PDF.js worker
 if (typeof window !== 'undefined') {
-  pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`
+  pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
 }
 
 interface PDFViewerProps {
@@ -55,14 +55,14 @@ export default function PDFViewer({ fileUrl, fileName, searchQuery, initialPage 
     const { scrollTop, scrollHeight, clientHeight } = element
 
     // Scrolling up at the top
-    if (scrollTop === 0 && e.deltaY < 0) {
+    if (scrollTop <= 0 && e.deltaY < 0) {
       e.preventDefault()
       e.stopPropagation()
       return
     }
 
-    // Scrolling down at the bottom
-    if (scrollTop + clientHeight >= scrollHeight - 1 && e.deltaY > 0) {
+    // Scrolling down at the bottom (with epsilon)
+    if (scrollTop + clientHeight >= scrollHeight - 2 && e.deltaY > 0) {
       e.preventDefault()
       e.stopPropagation()
       return
@@ -148,7 +148,7 @@ export default function PDFViewer({ fileUrl, fileName, searchQuery, initialPage 
       {/* PDF Canvas - All Pages Scrollable (only this section scrolls) */}
       <div
         ref={scrollContainerRef}
-        className="flex-1 overflow-y-auto overflow-x-hidden bg-gray-100"
+        className="flex-1 overflow-y-auto overflow-x-hidden bg-gray-100 touch-pan-y"
         onWheel={handleWheel}
         onTouchMove={handleTouchMove}
         style={{ overscrollBehavior: 'contain' }}
@@ -170,6 +170,7 @@ export default function PDFViewer({ fileUrl, fileName, searchQuery, initialPage 
                 </p>
               </div>
             }
+            onLoadError={(error) => console.error('PDF Load Error:', error)}
           >
             {Array.from(new Array(numPages), (el, index) => (
               <div key={`page_${index + 1}`} id={`page_${index + 1}`} className="mb-4">

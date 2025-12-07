@@ -14,11 +14,11 @@
     "fuse.js": "^7.1.0",
     "lucide-react": "^0.468.0",
     "next": "^15.0.0",
-    "pdfjs-dist": "^5.4.449",
+    "pdfjs-dist": "^3.11.174",
     "plotly.js": "^2.35.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-pdf": "^10.2.0",
+    "react-pdf": "^7.7.1",
     "react-plotly.js": "^2.6.0",
     "recharts": "^2.13.3"
   },

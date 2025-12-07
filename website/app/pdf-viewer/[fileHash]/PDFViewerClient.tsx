@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 // Lock body scroll when component mounts
 function useScrollLock() {
@@ -32,6 +33,8 @@ function useScrollLock() {
     document.body.style.position = 'fixed'
     document.body.style.width = '100%'
     document.body.style.height = '100%'
+    document.body.style.overscrollBehavior = 'none' // Prevent bounce
+    document.documentElement.style.overscrollBehavior = 'none' // Prevent bounce on html too
 
     // Hide Navigation
     if (nav) {
@@ -57,6 +60,8 @@ function useScrollLock() {
       document.body.style.position = originalBodyPosition
       document.body.style.width = originalBodyWidth
       document.body.style.height = originalBodyHeight
+      document.body.style.overscrollBehavior = ''
+      document.documentElement.style.overscrollBehavior = ''
 
       if (nav) {
         (nav as HTMLElement).style.display = originalNavDisplay
@@ -126,7 +131,7 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
   const pdfUrl = `/pdfs/${fileHash}.pdf`
 
   return (
-    <div className="fixed inset-0 z-[9999] flex flex-col bg-white">
+    <div className="fixed inset-0 z-[9999] flex flex-col bg-white h-[100dvh] overscroll-none touch-none">
       {/* Header with metadata - Fixed */}
       <div className="bg-white border-b border-gray-200 p-4 flex-shrink-0">
         <div className="container mx-auto max-w-7xl flex items-center justify-between">
@@ -148,11 +153,10 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
                   {metadata.sponsor_name && <span>{metadata.sponsor_name}</span>}
                   {metadata.letter_date && <span>• {metadata.letter_date}</span>}
                   <span
-                    className={`px-2 py-1 rounded-full text-xs ${
-                      metadata.approval_status === 'approved'
-                        ? 'bg-green-100 text-green-800'
-                        : 'bg-red-100 text-red-800'
-                    }`}
+                    className={`px-2 py-1 rounded-full text-xs ${metadata.approval_status === 'approved'
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-red-100 text-red-800'
+                      }`}
                   >
                     {metadata.approval_status}
                   </span>
@@ -174,13 +178,15 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
       </div>
 
       {/* PDF Viewer - Scrollable Area */}
-      <div className="flex-1 min-h-0">
-        <PDFViewer
-          fileUrl={pdfUrl}
-          fileName={metadata?.original_filename || `${fileHash}.pdf`}
-          searchQuery={searchQuery}
-          initialPage={page}
-        />
+      <div className="flex-1 min-h-0 relative">
+        <ErrorBoundary>
+          <PDFViewer
+            fileUrl={pdfUrl}
+            fileName={metadata?.original_filename || `${fileHash}.pdf`}
+            searchQuery={searchQuery}
+            initialPage={page}
+          />
+        </ErrorBoundary>
       </div>
     </div>
   )

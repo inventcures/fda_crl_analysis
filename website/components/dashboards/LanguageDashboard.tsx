@@ -29,8 +29,8 @@ interface LanguageData {
 }
 
 const COLORS = {
-  approved: '#059669',  // Muted green (academic palette)
-  unapproved: '#DC2626',  // Muted red (academic palette)
+  approved: '#10B981',  // Emerald-500
+  unapproved: '#EF4444',  // Red-500
 }
 
 export default function LanguageDashboard() {
@@ -39,7 +39,12 @@ export default function LanguageDashboard() {
 
   useEffect(() => {
     fetch('/data/language.json')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`)
+        }
+        return res.json()
+      })
       .then(data => {
         setData(data)
         setLoading(false)
@@ -76,57 +81,57 @@ export default function LanguageDashboard() {
     <div className="space-y-8">
       {/* Summary Stats */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors">
-          <h3 className="text-xl font-semibold text-text-primary mb-4">FDA Severity Score</h3>
+        <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors group">
+          <h3 className="text-xl font-mono text-text-primary mb-4 group-hover:text-accent transition-colors">FDA Severity Score</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <div className="text-sm text-text-secondary mb-1">Approved CRLs</div>
-              <div className="text-2xl font-bold text-success">
+              <div className="text-xs font-mono text-text-secondary mb-1 uppercase tracking-wider">Approved CRLs</div>
+              <div className="text-3xl font-mono font-bold text-success">
                 {data.severity.approved_mean.toFixed(3)}
               </div>
             </div>
             <div>
-              <div className="text-sm text-text-secondary mb-1">Unapproved CRLs</div>
-              <div className="text-2xl font-bold text-error">
+              <div className="text-xs font-mono text-text-secondary mb-1 uppercase tracking-wider">Unapproved CRLs</div>
+              <div className="text-3xl font-mono font-bold text-error">
                 {data.severity.unapproved_mean.toFixed(3)}
               </div>
             </div>
           </div>
-          <div className="mt-4 pt-4 border-t border-border-light">
-            <p className="text-sm text-text-secondary">
-              <span className="font-medium">Difference:</span>{' '}
+          <div className="mt-6 pt-4 border-t border-border-light">
+            <p className="text-sm text-text-secondary font-mono">
+              <span className="text-text-primary">Difference:</span>{' '}
               {data.severity.difference > 0 ? '+' : ''}
               {data.severity.difference.toFixed(3)}
             </p>
-            <p className="text-xs text-text-tertiary mt-1">
+            <p className="text-xs text-text-secondary mt-2">
               Higher severity indicates harsher FDA language
             </p>
           </div>
         </div>
 
-        <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors">
-          <h3 className="text-xl font-semibold text-text-primary mb-4">FDA Certainty Score</h3>
+        <div className="bg-white border border-border-light p-8 hover:border-accent transition-colors group">
+          <h3 className="text-xl font-mono text-text-primary mb-4 group-hover:text-accent transition-colors">FDA Certainty Score</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <div className="text-sm text-text-secondary mb-1">Approved CRLs</div>
-              <div className="text-2xl font-bold text-success">
+              <div className="text-xs font-mono text-text-secondary mb-1 uppercase tracking-wider">Approved CRLs</div>
+              <div className="text-3xl font-mono font-bold text-success">
                 {data.certainty.approved_mean.toFixed(3)}
               </div>
             </div>
             <div>
-              <div className="text-sm text-text-secondary mb-1">Unapproved CRLs</div>
-              <div className="text-2xl font-bold text-error">
+              <div className="text-xs font-mono text-text-secondary mb-1 uppercase tracking-wider">Unapproved CRLs</div>
+              <div className="text-3xl font-mono font-bold text-error">
                 {data.certainty.unapproved_mean.toFixed(3)}
               </div>
             </div>
           </div>
-          <div className="mt-4 pt-4 border-t border-border-light">
-            <p className="text-sm text-text-secondary">
-              <span className="font-medium">Difference:</span>{' '}
+          <div className="mt-6 pt-4 border-t border-border-light">
+            <p className="text-sm text-text-secondary font-mono">
+              <span className="text-text-primary">Difference:</span>{' '}
               {data.certainty.difference > 0 ? '+' : ''}
               {data.certainty.difference.toFixed(3)}
             </p>
-            <p className="text-xs text-text-tertiary mt-1">
+            <p className="text-xs text-text-secondary mt-2">
               Based on modal verbs (must, should, may, etc.)
             </p>
           </div>
@@ -135,16 +140,32 @@ export default function LanguageDashboard() {
 
       {/* Comparison Chart */}
       <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-semibold text-text-primary mb-4">Language Metrics Comparison</h3>
+        <h3 className="text-xl font-mono text-text-primary mb-6">Language Metrics Comparison</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={comparisonData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="metric" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="approved" fill={COLORS.approved} name="Approved CRLs" />
-            <Bar dataKey="unapproved" fill={COLORS.unapproved} name="Unapproved CRLs" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+            <XAxis
+              dataKey="metric"
+              tick={{ fill: '#475569', fontSize: 12, fontFamily: 'var(--font-ubuntu-mono)' }}
+              axisLine={{ stroke: '#E2E8F0' }}
+              tickLine={false}
+            />
+            <YAxis
+              tick={{ fill: '#475569', fontSize: 12, fontFamily: 'var(--font-ubuntu-mono)' }}
+              axisLine={false}
+              tickLine={false}
+            />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: '#FFFFFF',
+                borderColor: '#E2E8F0',
+                fontFamily: 'var(--font-ubuntu-mono)',
+                fontSize: '12px'
+              }}
+            />
+            <Legend wrapperStyle={{ fontFamily: 'var(--font-ubuntu-mono)', fontSize: '12px', paddingTop: '20px' }} />
+            <Bar dataKey="approved" fill={COLORS.approved} name="Approved CRLs" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="unapproved" fill={COLORS.unapproved} name="Unapproved CRLs" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -152,11 +173,11 @@ export default function LanguageDashboard() {
       {/* Word Clouds */}
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-white border border-border-light p-8">
-          <h3 className="text-xl font-semibold text-text-primary mb-4">Comparative Word Clouds</h3>
-          <p className="text-sm text-text-secondary mb-4">
+          <h3 className="text-xl font-mono text-text-primary mb-4">Comparative Word Clouds</h3>
+          <p className="text-sm text-text-secondary mb-6 font-light">
             Most frequent terms in approved vs. unapproved CRLs
           </p>
-          <div className="relative w-full" style={{ height: '400px' }}>
+          <div className="relative w-full bg-subtle rounded-sm p-4" style={{ height: '400px' }}>
             <Image
               src="/images/language/wordcloud_comparison.png"
               alt="Word Cloud Comparison"
@@ -167,11 +188,11 @@ export default function LanguageDashboard() {
         </div>
 
         <div className="bg-white border border-border-light p-8">
-          <h3 className="text-xl font-semibold text-text-primary mb-4">Severity-Weighted Word Cloud</h3>
-          <p className="text-sm text-text-secondary mb-4">
+          <h3 className="text-xl font-mono text-text-primary mb-4">Severity-Weighted Word Cloud</h3>
+          <p className="text-sm text-text-secondary mb-6 font-light">
             Terms colored by FDA severity score
           </p>
-          <div className="relative w-full" style={{ height: '400px' }}>
+          <div className="relative w-full bg-subtle rounded-sm p-4" style={{ height: '400px' }}>
             <Image
               src="/images/language/wordcloud_severity.png"
               alt="Severity Word Cloud"

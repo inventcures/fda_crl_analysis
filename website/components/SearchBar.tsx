@@ -23,16 +23,14 @@ export default function SearchBar({
   return (
     <div className="w-full">
       <div
-        className={`relative flex items-center border-2 rounded-lg transition-all ${
-          isFocused
-            ? 'border-fda-blue shadow-lg'
-            : 'border-gray-200 hover:border-gray-300'
-        }`}
+        className={`relative flex items-center border-2 rounded-lg transition-all ${isFocused
+            ? 'border-accent shadow-sm ring-1 ring-accent/20'
+            : 'border-border-light hover:border-border-dark'
+          }`}
       >
         <Search
-          className={`absolute left-4 transition-colors ${
-            isFocused ? 'text-fda-blue' : 'text-gray-400'
-          }`}
+          className={`absolute left-4 transition-colors ${isFocused ? 'text-accent' : 'text-text-secondary'
+            }`}
           size={20}
         />
 
@@ -43,7 +41,7 @@ export default function SearchBar({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder={placeholder}
-          className="w-full pl-12 pr-12 py-4 text-lg rounded-lg focus:outline-none"
+          className="w-full pl-12 pr-12 py-4 text-lg rounded-lg focus:outline-none text-text-primary placeholder:text-text-secondary/50 font-light"
         />
 
         {value && (
@@ -57,8 +55,8 @@ export default function SearchBar({
       </div>
 
       {isSearching && resultCount !== undefined && (
-        <div className="mt-2 text-sm text-gray-600">
-          Found <strong>{resultCount}</strong> result{resultCount !== 1 ? 's' : ''}
+        <div className="mt-2 text-sm text-text-secondary font-mono">
+          Found <strong className="text-text-primary">{resultCount}</strong> result{resultCount !== 1 ? 's' : ''}
         </div>
       )}
     </div>

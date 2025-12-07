@@ -17,9 +17,9 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
 
   if (results.length === 0) {
     return (
-      <div className="text-center py-12">
-        <p className="text-xl text-gray-600">No CRLs found matching your search.</p>
-        <p className="text-sm text-gray-500 mt-2">
+      <div className="text-center py-12 border border-dashed border-border-light rounded-sm bg-subtle">
+        <p className="text-xl text-text-secondary font-light">No CRLs found matching your search.</p>
+        <p className="text-sm text-text-secondary mt-2 font-mono">
           Try different keywords or check your spelling.
         </p>
       </div>
@@ -31,15 +31,15 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
       {results.map(({ item, score }) => (
         <div
           key={item.file_hash}
-          className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow"
+          className="bg-white rounded-sm border border-border-light p-6 hover:border-accent transition-colors group"
         >
           {/* Header */}
           <div className="flex items-start justify-between mb-3">
             <div className="flex-1">
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">
+              <h3 className="text-xl font-mono font-bold text-text-primary mb-2 group-hover:text-accent transition-colors">
                 {item.drug_name || item.application_number || 'Unknown Drug'}
               </h3>
-              <div className="flex items-center gap-3 text-sm text-gray-600">
+              <div className="flex items-center gap-3 text-sm text-text-secondary font-mono">
                 <span>Application: {item.application_number || 'N/A'}</span>
                 {item.sponsor_name && <span>• {item.sponsor_name}</span>}
                 {item.letter_date && <span>• {item.letter_date}</span>}
@@ -48,54 +48,53 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
 
             {/* Status Badge */}
             <span
-              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                item.approval_status === 'approved'
-                  ? 'bg-green-100 text-green-800'
-                  : 'bg-red-100 text-red-800'
-              }`}
+              className={`px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider ${item.approval_status === 'approved'
+                  ? 'bg-success/10 text-success'
+                  : 'bg-error/10 text-error'
+                }`}
             >
               {item.approval_status === 'approved' ? 'Eventually Approved' : 'Not Approved'}
             </span>
           </div>
 
           {/* Snippet */}
-          <p className="text-gray-700 text-sm leading-relaxed mb-4">
+          <p className="text-text-primary text-sm leading-relaxed mb-4 font-light border-l-2 border-border-light pl-4 py-1">
             {item.snippet}
           </p>
 
           {/* Metadata */}
-          <div className="flex items-center gap-4 text-sm flex-wrap">
+          <div className="flex items-center gap-4 text-sm flex-wrap font-mono">
             {item.therapeutic_area && item.therapeutic_area !== 'unknown' && (
-              <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">
+              <span className="bg-accent-light text-accent px-3 py-1 rounded-sm text-xs uppercase tracking-wider">
                 {item.therapeutic_area}
               </span>
             )}
 
             {item.deficiency_categories.length > 0 && (
-              <span className="text-gray-600">
+              <span className="text-text-secondary text-xs">
                 {item.deficiency_categories.length} deficiency categor{item.deficiency_categories.length === 1 ? 'y' : 'ies'}
               </span>
             )}
 
             {item.page_count > 0 && (
-              <span className="text-gray-600">
+              <span className="text-text-secondary text-xs">
                 {item.page_count} pages
               </span>
             )}
 
             {/* Flags */}
             {item.has_safety_concerns && (
-              <span className="bg-red-50 text-red-700 px-2 py-1 rounded text-xs">
+              <span className="bg-red-50 text-error px-2 py-1 rounded-sm text-xs border border-red-100">
                 Safety Concerns
               </span>
             )}
             {item.has_efficacy_concerns && (
-              <span className="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs">
+              <span className="bg-orange-50 text-orange-600 px-2 py-1 rounded-sm text-xs border border-orange-100">
                 Efficacy Concerns
               </span>
             )}
             {item.requests_new_trial && (
-              <span className="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs">
+              <span className="bg-purple-50 text-purple-600 px-2 py-1 rounded-sm text-xs border border-purple-100">
                 New Trial Required
               </span>
             )}
@@ -107,13 +106,13 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
               {item.deficiency_categories.slice(0, 5).map((category) => (
                 <span
                   key={category}
-                  className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs"
+                  className="bg-subtle text-text-secondary px-2 py-1 rounded-sm text-xs font-mono border border-border-light"
                 >
                   {category.replace('_', ' ')}
                 </span>
               ))}
               {item.deficiency_categories.length > 5 && (
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-text-secondary font-mono pt-1">
                   +{item.deficiency_categories.length - 5} more
                 </span>
               )}
@@ -121,10 +120,10 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
           )}
 
           {/* PDF Viewer Link */}
-          <div className="mt-4 flex items-center gap-3">
+          <div className="mt-6 flex items-center gap-3 pt-4 border-t border-border-light">
             <Link
               href={`/pdf-viewer/${item.file_hash}?q=${encodeURIComponent(query)}`}
-              className="flex items-center gap-2 px-4 py-2 bg-fda-blue text-white rounded hover:bg-opacity-90 transition"
+              className="flex items-center gap-2 px-4 py-2 bg-text-primary text-white rounded-sm hover:bg-text-heading transition-colors font-mono text-sm"
             >
               <FileText size={16} />
               View in PDF
@@ -133,7 +132,7 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
             <a
               href={`/pdfs/${item.file_hash}.pdf`}
               download={item.original_filename || `${item.file_hash}.pdf`}
-              className="text-sm text-gray-600 hover:text-fda-blue"
+              className="text-sm text-text-secondary hover:text-accent transition-colors font-mono"
             >
               Download PDF
             </a>
