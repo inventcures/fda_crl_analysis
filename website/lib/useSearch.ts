@@ -9,6 +9,7 @@ export interface SearchResult {
 
 export interface CRLDocument {
   file_hash: string
+  original_filename: string
   application_number: string
   drug_name: string
   sponsor_name: string

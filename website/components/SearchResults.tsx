@@ -132,7 +132,7 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
 
             <a
               href={`/pdfs/${item.file_hash}.pdf`}
-              download
+              download={item.original_filename || `${item.file_hash}.pdf`}
               className="text-sm text-gray-600 hover:text-fda-blue"
             >
               Download PDF

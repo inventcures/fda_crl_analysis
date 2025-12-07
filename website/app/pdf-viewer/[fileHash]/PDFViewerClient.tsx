@@ -54,9 +54,9 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
   const pdfUrl = `/pdfs/${fileHash}.pdf`
 
   return (
-    <div className="h-screen flex flex-col">
-      {/* Header with metadata */}
-      <div className="bg-white border-b border-gray-200 p-4">
+    <div className="h-screen flex flex-col overflow-hidden">
+      {/* Header with metadata - Fixed */}
+      <div className="bg-white border-b border-gray-200 p-4 flex-shrink-0">
         <div className="container mx-auto max-w-7xl flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
@@ -91,10 +91,21 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
         </div>
       </div>
 
-      {/* PDF Viewer */}
-      <div className="flex-1">
+      {/* FDA Copyright Disclaimer - Fixed */}
+      <div className="bg-blue-50 border-y border-blue-200 px-6 py-3 flex-shrink-0">
+        <div className="container mx-auto max-w-7xl">
+          <p className="text-sm text-blue-900 font-medium text-center">
+            <span className="font-bold">📄 FDA Copyright Notice:</span> These files are © U.S. Food and Drug Administration. All rights reserved.
+            Documents are provided here as a service to the drug discovery and research community.
+          </p>
+        </div>
+      </div>
+
+      {/* PDF Viewer - Scrollable Area */}
+      <div className="flex-1 min-h-0">
         <PDFViewer
           fileUrl={pdfUrl}
+          fileName={metadata?.original_filename || `${fileHash}.pdf`}
           searchQuery={searchQuery}
           initialPage={page}
         />

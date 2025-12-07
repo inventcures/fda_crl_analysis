@@ -271,9 +271,14 @@ def export_search_data(parsed_data: List[Dict], output_dir: Path):
     search_data = []
 
     for doc in parsed_data:
+        # Extract original filename from file_path
+        file_path = doc.get('file_path', '')
+        original_filename = file_path.split('/')[-1] if file_path else f"{doc.get('file_hash', 'unknown')}.pdf"
+
         search_doc = {
             # Identifiers
             'file_hash': doc.get('file_hash'),
+            'original_filename': original_filename,
             'application_number': doc.get('application_number'),
             'drug_name': doc.get('drug_name'),
             'sponsor_name': doc.get('sponsor_name'),
