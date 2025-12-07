@@ -54,7 +54,7 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
   const pdfUrl = `/pdfs/${fileHash}.pdf`
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="fixed inset-0 flex flex-col bg-white">
       {/* Header with metadata - Fixed */}
       <div className="bg-white border-b border-gray-200 p-4 flex-shrink-0">
         <div className="container mx-auto max-w-7xl flex items-center justify-between">
