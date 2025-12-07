@@ -10,17 +10,39 @@ import { ArrowLeft } from 'lucide-react'
 function useScrollLock() {
   useEffect(() => {
     // Save original styles
-    const originalStyle = window.getComputedStyle(document.body).overflow
-    const originalHtmlStyle = window.getComputedStyle(document.documentElement).overflow
+    const originalBodyOverflow = document.body.style.overflow
+    const originalHtmlOverflow = document.documentElement.style.overflow
+    const originalBodyPosition = document.body.style.position
+    const originalBodyWidth = document.body.style.width
+    const originalBodyHeight = document.body.style.height
 
-    // Lock scroll
+    // Find and hide Navigation
+    const nav = document.querySelector('nav')
+    const originalNavDisplay = nav ? (nav as HTMLElement).style.display : null
+
+    // Lock scroll on root elements with position: fixed for maximum effectiveness
     document.body.style.overflow = 'hidden'
     document.documentElement.style.overflow = 'hidden'
+    document.body.style.position = 'fixed'
+    document.body.style.width = '100%'
+    document.body.style.height = '100%'
+
+    // Hide Navigation
+    if (nav) {
+      (nav as HTMLElement).style.display = 'none'
+    }
 
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = originalStyle
-      document.documentElement.style.overflow = originalHtmlStyle
+      document.body.style.overflow = originalBodyOverflow
+      document.documentElement.style.overflow = originalHtmlOverflow
+      document.body.style.position = originalBodyPosition
+      document.body.style.width = originalBodyWidth
+      document.body.style.height = originalBodyHeight
+
+      if (nav && originalNavDisplay !== null) {
+        (nav as HTMLElement).style.display = originalNavDisplay
+      }
     }
   }, [])
 }
@@ -76,7 +98,7 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
   const pdfUrl = `/pdfs/${fileHash}.pdf`
 
   return (
-    <div className="fixed inset-0 flex flex-col bg-white">
+    <div className="fixed inset-0 z-[9999] flex flex-col bg-white">
       {/* Header with metadata - Fixed */}
       <div className="bg-white border-b border-gray-200 p-4 flex-shrink-0">
         <div className="container mx-auto max-w-7xl flex items-center justify-between">
