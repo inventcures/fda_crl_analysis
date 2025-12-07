@@ -147,8 +147,8 @@ export default function PredictiveDashboard() {
               }}
             />
             <Legend wrapperStyle={{ fontFamily: 'var(--font-ubuntu-mono)', fontSize: '12px', paddingTop: '20px' }} />
-            <Bar dataKey="accuracy" fill={COLORS.accuracy} name="Test Accuracy %" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="cv_mean" fill={COLORS.cv_mean} name="CV Mean %" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="accuracy" fill={COLORS.accuracy} name="Test Accuracy %" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+            <Bar dataKey="cv_mean" fill={COLORS.cv_mean} name="CV Mean %" radius={[4, 4, 0, 0]} isAnimationActive={false} />
           </BarChart>
         </ResponsiveContainer>
         <div className="mt-6 text-sm text-text-secondary font-mono bg-subtle p-4 rounded-sm">
@@ -184,6 +184,7 @@ export default function PredictiveDashboard() {
               stroke={COLORS.accuracy}
               fill={COLORS.accuracy}
               fillOpacity={0.2}
+              isAnimationActive={false}
             />
             <Radar
               name="CV Accuracy"
@@ -191,6 +192,7 @@ export default function PredictiveDashboard() {
               stroke={COLORS.cv_mean}
               fill={COLORS.cv_mean}
               fillOpacity={0.2}
+              isAnimationActive={false}
             />
             <Radar
               name="Stability"
@@ -198,6 +200,7 @@ export default function PredictiveDashboard() {
               stroke={COLORS.cv_std}
               fill={COLORS.cv_std}
               fillOpacity={0.2}
+              isAnimationActive={false}
             />
             <Legend wrapperStyle={{ fontFamily: 'var(--font-ubuntu-mono)', fontSize: '12px', paddingTop: '20px' }} />
             <Tooltip
