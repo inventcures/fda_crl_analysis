@@ -13,6 +13,7 @@ export default function Navigation() {
     { href: '/deficiencies', label: 'Deficiencies' },
     { href: '/language', label: 'Language' },
     { href: '/predictive', label: 'Predictions' },
+    { href: '/oncology', label: 'Oncology' },
     { href: '/methodology', label: 'Methodology' },
     { href: '/about', label: 'About' },
   ]

@@ -21,6 +21,7 @@ import json
 import sys
 from pathlib import Path
 from datetime import datetime
+from typing import Dict, Any
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
@@ -150,6 +151,84 @@ def run_language_analysis(parsed_data_path: str, output_dir: str):
     return results
 
 
+def run_oncology_analysis(parsed_data_path: str, output_dir: str) -> Dict[str, Any]:
+    """
+    Run complete analysis pipeline filtered for oncology CRLs only.
+
+    Generates:
+    - outputs/oncology/analysis_summary_oncology.json
+    - outputs/oncology/*.png (all standard charts)
+    - outputs/oncology/language/*.png (all NLP visualizations)
+    """
+    print("\n" + "="*60)
+    print("ONCOLOGY-SPECIFIC ANALYSIS")
+    print("="*60)
+
+    oncology_output = Path(output_dir) / "oncology"
+    oncology_output.mkdir(parents=True, exist_ok=True)
+
+    # Statistical analysis
+    analyzer = CRLAnalyzer(
+        data_path=Path(parsed_data_path),
+        therapeutic_area_filter='oncology'
+    )
+
+    # Check if we have oncology CRLs
+    if len(analyzer.df) == 0:
+        print("⚠ No oncology CRLs found in dataset")
+        return {}
+
+    oncology_summary = analyzer.generate_full_analysis(
+        output_dir=oncology_output
+    )
+
+    # Save oncology-specific summary
+    with open(oncology_output / "analysis_summary_oncology.json", 'w') as f:
+        json.dump(oncology_summary, f, indent=2)
+
+    # Language analysis
+    with open(parsed_data_path) as f:
+        all_docs = json.load(f)
+
+    oncology_docs = [d for d in all_docs if d.get('therapeutic_area') == 'oncology']
+
+    if oncology_docs:
+        # Check if we have raw text
+        has_text = sum(1 for d in oncology_docs if d.get('raw_text') and len(d.get('raw_text', '')) > 100)
+        if has_text >= 5:  # Need at least 5 docs with text
+            suite = CRLLanguageAnalysisSuite()
+            lang_output = oncology_output / "language"
+            suite.run_full_analysis(oncology_docs, output_dir=lang_output)
+        else:
+            print(f"⚠ Only {has_text} oncology CRLs have raw text - skipping language analysis")
+
+    # Hypothesis analysis
+    if oncology_docs:
+        from oncology_analysis import OncologyHypothesisAnalyzer
+
+        print("\nAnalyzing oncology-specific hypotheses...")
+        hyp_analyzer = OncologyHypothesisAnalyzer()
+        hyp_results = hyp_analyzer.analyze_hypotheses(oncology_docs)
+
+        # Visualize hypotheses
+        hyp_analyzer.plot_hypothesis_comparison(
+            hyp_results,
+            save_path=oncology_output / "hypothesis_comparison.png"
+        )
+
+        # Add to summary
+        oncology_summary['hypotheses'] = hyp_results
+
+        # Re-save summary with hypothesis data
+        with open(oncology_output / "analysis_summary_oncology.json", 'w') as f:
+            json.dump(oncology_summary, f, indent=2)
+
+    print(f"\n✓ Oncology analysis complete! {len(oncology_docs)} CRLs analyzed")
+    print(f"Results saved to: {oncology_output}")
+
+    return oncology_summary
+
+
 def print_summary_report(summary: dict):
     """Print a summary report to console."""
     print("\n" + "="*60)
@@ -216,7 +295,8 @@ Examples:
     parser.add_argument("--llm-analyze", action="store_true", help="Run LLM deep analysis")
     parser.add_argument("--analyze", action="store_true", help="Run statistical analysis")
     parser.add_argument("--language", action="store_true", help="Run language & sentiment analysis")
-    
+    parser.add_argument("--oncology", action="store_true", help="Run oncology-specific analysis (requires parsed data with therapeutic_area field)")
+
     # Configuration
     parser.add_argument("--data-dir", default="data", help="Data directory (default: data)")
     parser.add_argument("--output-dir", default="outputs", help="Output directory (default: outputs)")
@@ -301,7 +381,19 @@ Examples:
             parsed_data_path=str(parsed_data_path),
             output_dir=args.output_dir
         )
-    
+
+    # Stage 6: Oncology-specific analysis
+    if args.oncology:
+        if not Path(parsed_data_path).exists():
+            print(f"\nError: Parsed data not found at {parsed_data_path}")
+            print("Run with --parse first, or specify --parsed-data path")
+            sys.exit(1)
+
+        oncology_results = run_oncology_analysis(
+            parsed_data_path=str(parsed_data_path),
+            output_dir=args.output_dir
+        )
+
     print("\n" + "="*60)
     print(f"Pipeline complete! Results saved to: {args.output_dir}/")
     print("="*60 + "\n")

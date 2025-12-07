@@ -38,21 +38,29 @@ class CRLAnalyzer:
     
     DEFICIENCY_CATEGORIES = [
         'safety', 'efficacy', 'cmc_manufacturing', 'clinical_trial_design',
-        'bioequivalence', 'labeling', 'statistical', 'rems'
+        'bioequivalence', 'labeling', 'statistical', 'rems', 'oncology_specific'
     ]
     
-    def __init__(self, data_path: Optional[Path] = None):
+    def __init__(self, data_path: Optional[Path] = None, therapeutic_area_filter: Optional[str] = None):
         self.data = None
         self.df = None
+        self.therapeutic_area_filter = therapeutic_area_filter
         if data_path:
             self.load_data(data_path)
-    
+
     def load_data(self, data_path: Path):
-        """Load parsed CRL data."""
+        """Load and optionally filter CRL data by therapeutic area."""
         with open(data_path) as f:
             self.data = json.load(f)
         self.df = pd.DataFrame(self.data)
-        print(f"Loaded {len(self.df)} CRL records")
+
+        # Filter by therapeutic area if specified
+        if self.therapeutic_area_filter:
+            initial_count = len(self.df)
+            self.df = self.df[self.df['therapeutic_area'] == self.therapeutic_area_filter]
+            print(f"Filtered to {len(self.df)} {self.therapeutic_area_filter} CRLs (from {initial_count} total)")
+        else:
+            print(f"Loaded {len(self.df)} CRL records")
         return self.df
     
     def prepare_features(self) -> pd.DataFrame:
@@ -197,14 +205,30 @@ class CRLAnalyzer:
     def build_approval_classifier(self) -> Dict[str, Any]:
         """Build and evaluate classifier for approval prediction."""
         features = self.prepare_features()
-        
+
         # Target
         y = features['approval_status']
         X = features.drop('approval_status', axis=1)
-        
+
         # Handle missing values
         X = X.fillna(0)
-        
+
+        # Check if we have enough samples for classification
+        class_counts = y.value_counts()
+        min_class_size = class_counts.min()
+
+        if min_class_size < 2:
+            print(f"⚠ Insufficient data for classification: only {min_class_size} samples in minority class")
+            print(f"   Class distribution: {dict(class_counts)}")
+            return {
+                'status': 'insufficient_data',
+                'reason': f'Minority class has only {min_class_size} sample(s), need at least 2',
+                'class_distribution': {int(k): int(v) for k, v in class_counts.items()}
+            }
+
+        if len(features) < 10:
+            print(f"⚠ Very small dataset ({len(features)} samples) - results may be unreliable")
+
         # Split
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.25, random_state=42, stratify=y
@@ -540,8 +564,12 @@ class CRLAnalyzer:
         # 2. Classifier
         print("\n2. Building Approval Classifier")
         classifier_results = self.build_approval_classifier()
-        self.plot_feature_importance(classifier_results, save_path=output_dir / "feature_importance.png")
-        self.plot_roc_curves(classifier_results, save_path=output_dir / "roc_curves.png")
+
+        if classifier_results.get('status') != 'insufficient_data':
+            self.plot_feature_importance(classifier_results, save_path=output_dir / "feature_importance.png")
+            self.plot_roc_curves(classifier_results, save_path=output_dir / "roc_curves.png")
+        else:
+            print("   Skipping classifier visualizations due to insufficient data")
         
         # 3. Rescue rates
         print("\n3. Calculating Rescue Rates")
@@ -564,14 +592,14 @@ class CRLAnalyzer:
             'n_unapproved': len(self.df[self.df['approval_status'] == 'unapproved']),
             'deficiency_frequencies': dict(freq['overall']),
             'rescue_rates': rescue_rates.to_dict(orient='records'),
-            'classifier_performance': {
+            'classifier_performance': ({
                 name: {
                     'accuracy': r['test_accuracy'],
                     'cv_mean': r['cv_mean'],
                     'cv_std': r['cv_std']
                 }
                 for name, r in classifier_results['models'].items()
-            },
+            } if classifier_results.get('status') != 'insufficient_data' else classifier_results),
             'significant_features': [k for k, v in stats_results.items() if v.get('significant', False)]
         }
         

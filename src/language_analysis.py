@@ -96,7 +96,13 @@ class FDALanguagePatterns:
         'insufficient evidence': 0.9,
         'cannot determine': 0.85,
         'significant deficiency': 0.85,
-        
+
+        # Oncology-specific high severity
+        'cardiotoxicity concerns': 0.95,
+        'insufficient survival data': 0.9,
+        'no demonstrated survival benefit': 0.95,
+        'unacceptable toxicity profile': 0.95,
+
         # Moderate severity (score: 0.5-0.7)
         'concern': 0.7,
         'deficiency': 0.65,
@@ -106,7 +112,13 @@ class FDALanguagePatterns:
         'not adequate': 0.55,
         'additional information needed': 0.5,
         'requires clarification': 0.5,
-        
+
+        # Oncology-specific moderate severity
+        'tumor response inconsistent': 0.75,
+        'durability concerns': 0.7,
+        'biomarker validation insufficient': 0.65,
+        'narrow therapeutic window': 0.7,
+
         # Lower severity (score: 0.2-0.4)
         'recommend': 0.4,
         'suggest': 0.35,
@@ -143,6 +155,14 @@ class FDALanguagePatterns:
         'rems': 'risk_management',
         'risk evaluation': 'risk_management',
         'mitigation strategy': 'risk_management',
+
+        # Oncology-specific actions
+        'long-term follow-up data': 'data_request',
+        'toxicity monitoring': 'data_request',
+        'dose optimization': 'data_request',
+        'biomarker validation': 'major_study',
+        'expanded trial population': 'major_study',
+        'cardiac monitoring': 'risk_management',
     }
     
     # Confidence/certainty indicators
@@ -901,7 +921,11 @@ class CRLLatentSpaceVisualizer:
             cluster_terms[i] = [feature_names[idx] for idx in top_indices]
         
         # Reduce for visualization
-        pca = PCA(n_components=2, random_state=self.random_state)
+        n_pca_components = min(2, embeddings.shape[0] - 1, embeddings.shape[1])
+        if n_pca_components < 2:
+            print(f"⚠ Insufficient samples for PCA visualization")
+            return None
+        pca = PCA(n_components=n_pca_components, random_state=self.random_state)
         embeddings_2d = pca.fit_transform(embeddings)
         
         # Plot
@@ -1107,8 +1131,14 @@ class CRLLatentSpaceVisualizer:
         
         # Create embeddings and reduce
         embeddings, _ = self.create_tfidf_embeddings(texts)
-        
-        pca = PCA(n_components=min(50, embeddings.shape[1]), random_state=self.random_state)
+
+        # PCA components must be <= min(n_samples, n_features)
+        n_components = min(50, embeddings.shape[0] - 1, embeddings.shape[1])
+        if n_components < 2:
+            print(f"⚠ Insufficient samples ({embeddings.shape[0]}) for PCA - skipping severity landscape")
+            return None
+
+        pca = PCA(n_components=n_components, random_state=self.random_state)
         embeddings_pca = pca.fit_transform(embeddings)
         
         tsne = TSNE(n_components=2, perplexity=min(30, len(valid_docs)-1), random_state=self.random_state)

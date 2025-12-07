@@ -45,7 +45,8 @@ class CRLDocument:
     application_type: Optional[str] = None  # NDA, BLA, ANDA
     sponsor_name: Optional[str] = None
     letter_date: Optional[str] = None
-    
+    therapeutic_area: Optional[str] = None  # 'oncology', 'cardiology', 'neurology', 'unknown'
+
     # Content
     raw_text: str = ""
     page_count: int = 0
@@ -121,6 +122,42 @@ class CRLParser:
         'rems': [
             'rems', 'risk evaluation', 'mitigation strategy', 'medication guide',
             'patient registry', 'restricted distribution'
+        ],
+        'oncology_specific': [
+            # Efficacy endpoints
+            'overall survival', 'progression-free survival', 'pfs', 'os',
+            'objective response rate', 'orr', 'complete response', 'partial response',
+            'disease-free survival', 'dfs', 'time to progression', 'ttp',
+            'durability of response', 'tumor response', 'tumor burden',
+            # Safety concerns
+            'cardiotoxicity', 'hepatotoxicity', 'nephrotoxicity', 'neurotoxicity',
+            'tumor lysis syndrome', 'cytokine release syndrome', 'immunotoxicity',
+            'secondary malignancy', 'grade 3', 'grade 4', 'dose-limiting toxicity',
+            # Trial design
+            'phase 1 trial', 'phase 2 trial', 'phase 3 trial', 'single-arm trial',
+            'historical control', 'basket trial', 'umbrella trial', 'biomarker validation',
+            # Population
+            'refractory', 'resistant', 'metastatic', 'advanced',
+            'first-line', 'second-line', 'heavily pre-treated'
+        ]
+    }
+
+    # Therapeutic area keywords for classification
+    THERAPEUTIC_AREA_KEYWORDS = {
+        'oncology': [
+            'cancer', 'tumor', 'carcinoma', 'lymphoma', 'leukemia', 'melanoma',
+            'chemotherapy', 'immunotherapy', 'checkpoint inhibitor', 'cytotoxic',
+            'oncology', 'oncologic', 'malignancy', 'metastatic',
+            'division of oncology', 'office of oncologic diseases', 'neoplasm',
+            'sarcoma', 'myeloma', 'glioblastoma', 'adenocarcinoma'
+        ],
+        'cardiology': [
+            'cardiac', 'heart', 'cardiovascular', 'hypertension', 'arrhythmia',
+            'coronary', 'myocardial', 'atrial fibrillation', 'heart failure'
+        ],
+        'neurology': [
+            'neurological', 'cns', 'brain', 'alzheimer', 'parkinson', 'seizure',
+            'epilepsy', 'multiple sclerosis', 'stroke', 'neurodegenerative'
         ]
     }
     
@@ -225,7 +262,38 @@ class CRLParser:
             return name_match.group(1)
         
         return None
-    
+
+    def detect_therapeutic_area(self, text: str) -> str:
+        """
+        Detect therapeutic area from CRL text using keywords and FDA division signatures.
+
+        Priority:
+        1. FDA division signatures (most reliable)
+        2. Drug indication keywords (count-based threshold)
+
+        Returns:
+            'oncology', 'cardiology', 'neurology', or 'unknown'
+        """
+        text_lower = text.lower()
+
+        # Check each therapeutic area
+        area_scores = {}
+        for area, keywords in self.THERAPEUTIC_AREA_KEYWORDS.items():
+            # Count keyword occurrences
+            count = sum(1 for kw in keywords if kw in text_lower)
+            area_scores[area] = count
+
+        # Threshold for classification: ≥3 keywords
+        threshold = 3
+
+        # Find area with highest score
+        if area_scores:
+            max_area = max(area_scores.items(), key=lambda x: x[1])
+            if max_area[1] >= threshold:
+                return max_area[0]
+
+        return 'unknown'
+
     def categorize_deficiencies(self, text: str) -> tuple[List[str], Dict[str, int]]:
         """Identify deficiency categories present in the CRL."""
         text_lower = text.lower()
@@ -293,7 +361,8 @@ class CRLParser:
         app_number, app_type = self.extract_application_number(raw_text)
         letter_date = self.extract_date(raw_text)
         drug_name = self.extract_drug_name(raw_text, pdf_path.name)
-        
+        therapeutic_area = self.detect_therapeutic_area(raw_text)
+
         # Categorize deficiencies
         categories, _ = self.categorize_deficiencies(raw_text)
         deficiencies = self.extract_deficiency_sections(raw_text)
@@ -309,6 +378,7 @@ class CRLParser:
             application_number=app_number,
             application_type=app_type,
             letter_date=letter_date,
+            therapeutic_area=therapeutic_area,
             raw_text=raw_text,
             page_count=page_count,
             deficiencies=deficiencies,
