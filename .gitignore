@@ -39,3 +39,4 @@ Thumbs.db
 # API keys (never commit these!)
 .env
 *.env
+.vercel

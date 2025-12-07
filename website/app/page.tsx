@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { ArrowRight, FileText, BarChart3, Brain, TrendingUp, CheckCircle, XCircle, Zap } from 'lucide-react'
+import { ArrowRight, FileText, BarChart3, Brain, TrendingUp, CheckCircle, XCircle, Zap, Search } from 'lucide-react'
 
 export default function HomePage() {
   const [stats, setStats] = useState<any>(null)
@@ -245,6 +245,23 @@ export default function HomePage() {
                 </p>
                 <div className="flex items-center gap-2 text-sm font-semibold">
                   View Language Patterns <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/search" className="group">
+              <div className="bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl p-8 h-full text-white hover:shadow-2xl transition-all transform hover:-translate-y-2 hover:scale-105">
+                <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg inline-block mb-4">
+                  <Search size={32} />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">
+                  Search CRLs
+                </h3>
+                <p className="text-pink-100 mb-4">
+                  Full-text search across 297 Complete Response Letters with PDF viewer
+                </p>
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  Start Searching <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
                 </div>
               </div>
             </Link>

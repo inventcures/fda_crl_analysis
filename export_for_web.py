@@ -262,6 +262,61 @@ def export_sample_crls(parsed_data: List[Dict], output_dir: Path, n_samples: int
     save_json(samples, output_dir / 'sample_crls.json')
     return samples
 
+def export_search_data(parsed_data: List[Dict], output_dir: Path):
+    """
+    Export search-optimized CRL data for client-side search.
+
+    Includes full text but removes unnecessary fields to minimize size.
+    """
+    search_data = []
+
+    for doc in parsed_data:
+        search_doc = {
+            # Identifiers
+            'file_hash': doc.get('file_hash'),
+            'application_number': doc.get('application_number'),
+            'drug_name': doc.get('drug_name'),
+            'sponsor_name': doc.get('sponsor_name'),
+
+            # Metadata
+            'approval_status': doc.get('approval_status'),
+            'therapeutic_area': doc.get('therapeutic_area'),
+            'letter_date': doc.get('letter_date'),
+            'application_type': doc.get('application_type'),
+
+            # Searchable content
+            'raw_text': doc.get('raw_text', ''),
+            'deficiency_categories': doc.get('deficiency_categories', []),
+            'deficiencies_text': ' '.join([
+                d.get('text', '') for d in doc.get('deficiencies', [])
+            ]),
+
+            # Boolean flags
+            'has_safety_concerns': doc.get('has_safety_concerns', False),
+            'has_efficacy_concerns': doc.get('has_efficacy_concerns', False),
+            'has_cmc_issues': doc.get('has_cmc_issues', False),
+            'requests_new_trial': doc.get('requests_new_trial', False),
+
+            # Derived fields for display
+            'snippet': doc.get('raw_text', '')[:200] + '...',  # First 200 chars
+            'page_count': doc.get('page_count', 0),
+        }
+
+        search_data.append(search_doc)
+
+    # Save as JSON (minified to save space)
+    output_path = output_dir / 'search_crls.json'
+    with open(output_path, 'w') as f:
+        json.dump(search_data, f, separators=(',', ':'))  # Minified JSON
+
+    # Print size stats
+    file_size_mb = output_path.stat().st_size / (1024 * 1024)
+    print(f"✓ Search data exported: {output_path}")
+    print(f"  File size: {file_size_mb:.1f}MB")
+    print(f"  Documents: {len(search_data)}")
+
+    return search_data
+
 def main():
     """Main export function"""
     print("=" * 60)
@@ -289,6 +344,10 @@ def main():
     export_language_data(language_summary, web_data_dir)
     export_predictive_data(analysis_summary, web_data_dir)
     export_sample_crls(parsed_data, web_data_dir)
+
+    # Export search data
+    print("\nExporting search data...")
+    export_search_data(parsed_data, web_data_dir)
 
     # Copy images to web public folder
     import shutil

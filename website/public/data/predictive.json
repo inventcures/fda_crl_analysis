@@ -1,29 +1,29 @@
 {
   "models": [
     {
-      "name": "Gradient Boosting",
-      "accuracy": 74.7,
-      "cv_mean": 85.6,
-      "cv_std": 3.2
+      "name": "Random Forest",
+      "accuracy": 73.3,
+      "cv_mean": 81.6,
+      "cv_std": 6.6
     },
     {
-      "name": "Random Forest",
-      "accuracy": 76.0,
-      "cv_mean": 85.2,
-      "cv_std": 4.7
+      "name": "Gradient Boosting",
+      "accuracy": 80.0,
+      "cv_mean": 80.2,
+      "cv_std": 6.7
     },
     {
       "name": "Logistic Regression",
-      "accuracy": 85.3,
-      "cv_mean": 80.7,
-      "cv_std": 4.9
+      "accuracy": 78.7,
+      "cv_mean": 77.5,
+      "cv_std": 6.2
     }
   ],
   "best_model": {
-    "name": "Gradient Boosting",
-    "accuracy": 74.7,
-    "cv_mean": 85.6,
-    "cv_std": 3.2
+    "name": "Random Forest",
+    "accuracy": 73.3,
+    "cv_mean": 81.6,
+    "cv_std": 6.6
   },
   "features": [
     {
