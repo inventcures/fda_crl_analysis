@@ -20,15 +20,12 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-white border-b border-border-light sticky top-0 z-50">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex justify-between items-center py-4">
           <Link href="/" className="flex items-center gap-3">
-            <div className="bg-fda-blue text-white px-3 py-2 rounded font-bold text-lg">
-              FDA
-            </div>
-            <span className="font-semibold text-gray-800 hidden sm:inline">
-              CRL Analysis
+            <span className="font-semibold text-text-primary text-lg">
+              FDA CRL Analysis
             </span>
           </Link>
 
@@ -38,7 +35,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-fda-blue transition font-medium"
+                className="text-text-secondary hover:text-accent transition-colors font-medium"
               >
                 {link.label}
               </Link>
@@ -48,7 +45,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-gray-600 hover:text-fda-blue"
+            className="md:hidden text-text-secondary hover:text-accent"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -56,12 +53,12 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4">
+          <div className="md:hidden pb-4 border-t border-border-light mt-4 pt-4">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-gray-600 hover:text-fda-blue transition"
+                className="block py-2 text-text-secondary hover:text-accent transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}

@@ -23,6 +23,12 @@ warnings.filterwarnings('ignore')
 
 import numpy as np
 import pandas as pd
+
+# Academic visualization style (apply before any plotting)
+import sys
+sys.path.append(str(Path(__file__).parent.parent))
+import viz_style
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.colors import LinearSegmentedColormap
