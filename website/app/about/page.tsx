@@ -40,6 +40,27 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Comprehensive Analysis Report Section */}
+        <section className="bg-white rounded-lg shadow-md p-8 mb-8">
+          <h2 className="text-2xl font-bold mb-4">Comprehensive Analysis Report</h2>
+          <p className="text-lg text-gray-700 mb-6">
+            For a detailed understanding of our methodology, key findings, and a deep dive into oncology targets,
+            please refer to our full analysis report. This report synthesizes data from OpenFDA, PubChem, and Open Targets
+            to provide actionable insights into FDA Complete Response Letters.
+          </p>
+          <a
+            href="https://docs.google.com/document/d/1P7UIii0E6CLk7iLnDqs4eZ3cS4uqJORGi3KOZr5eI_c/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            View Full Analysis Report
+            <svg className="ml-3 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </a>
+        </section>
+
         {/* Target Audience */}
         <section className="bg-white rounded-lg shadow-md p-8 mb-8">
           <div className="flex items-center gap-3 mb-6">

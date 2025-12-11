@@ -31,6 +31,7 @@ export default function Navigation() {
     { href: '/predictive', label: 'Predictions' },
     { href: '/oncology', label: 'Oncology' },
     { href: '/methodology', label: 'Methodology' },
+    { href: 'https://docs.google.com/document/d/1P7UIii0E6CLk7iLnDqs4eZ3cS4uqJORGi3KOZr5eI_c/edit?usp=sharing', label: 'Report', external: true },
     { href: '/about', label: 'About' },
   ]
 
@@ -78,13 +79,25 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-1">
             {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-2 text-sm text-text-secondary hover:text-accent hover:bg-gray-50 rounded-md transition-all font-medium"
-              >
-                {link.label}
-              </Link>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 text-sm text-text-secondary hover:text-accent hover:bg-gray-50 rounded-md transition-all font-medium"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-3 py-2 text-sm text-text-secondary hover:text-accent hover:bg-gray-50 rounded-md transition-all font-medium"
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
         </div>
@@ -110,14 +123,27 @@ export default function Navigation() {
               </div>
             )}
             {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block py-2 px-2 text-text-secondary hover:text-accent hover:bg-gray-50 rounded-md transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </Link>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block py-2 px-2 text-text-secondary hover:text-accent hover:bg-gray-50 rounded-md transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block py-2 px-2 text-text-secondary hover:text-accent hover:bg-gray-50 rounded-md transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
         )}
