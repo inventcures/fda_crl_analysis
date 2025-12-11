@@ -1,0 +1,34 @@
+[
+  {
+    "drug_name": "Darolutamide",
+    "application_number": "213072",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "deficiency_categories": ["oncology_specific"],
+    "openfda_generic_name": "Darolutamide"
+  },
+  {
+    "drug_name": "Sintilimab",
+    "application_number": "761222",
+    "application_type": "BLA",
+    "approval_status": "unapproved",
+    "deficiency_categories": ["oncology_specific", "clinical_trial_design"],
+    "openfda_generic_name": "Sintilimab"
+  },
+  {
+    "drug_name": "Retifanlimab",
+    "application_number": "761155",
+    "application_type": "BLA",
+    "approval_status": "unapproved",
+    "deficiency_categories": ["oncology_specific", "efficacy"],
+    "openfda_generic_name": "Retifanlimab"
+  },
+  {
+    "drug_name": "Granisetron",
+    "application_number": "207987",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "deficiency_categories": ["oncology_specific", "cmc_manufacturing"],
+    "openfda_generic_name": "Granisetron"
+  }
+]

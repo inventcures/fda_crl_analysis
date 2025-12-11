@@ -1,0 +1,216 @@
+[
+  {
+    "drug_name": "Darolutamide",
+    "application_number": "213072",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "deficiency_categories": [
+      "oncology_specific"
+    ],
+    "openfda_generic_name": "Darolutamide",
+    "enriched": {
+      "smiles": null,
+      "open_targets_id": "CHEMBL4297185",
+      "targets": [
+        {
+          "symbol": "AR",
+          "id": "ENSG00000169083",
+          "biotype": "protein_coding",
+          "genetic_constraint": [],
+          "cancer_hallmarks": [
+            {
+              "label": "escaping programmed cell death",
+              "description": "inhibits apoptosis"
+            },
+            {
+              "label": "proliferative signalling",
+              "description": "stimulates proliferation of prostatic epithelial cells"
+            }
+          ],
+          "top_pathways": [
+            "Metabolism of proteins: Ub-specific processing proteases",
+            "Cellular responses to stimuli: HSP90 chaperone cycle for steroid hormone receptors (SHR) in the presence of ligand",
+            "Metabolism of proteins: SUMOylation of intracellular receptors",
+            "Gene expression (Transcription): Nuclear Receptor transcription pathway",
+            "Gene expression (Transcription): RUNX2 regulates osteoblast differentiation"
+          ],
+          "oncology_evidence": {
+            "disease_name": "prostate cancer",
+            "overall_association_score": 0.7995487838083033,
+            "genetic_association_score": 0.8390577531745912,
+            "somatic_mutation_score": 0.42555155832813474
+          }
+        }
+      ]
+    }
+  },
+  {
+    "drug_name": "Sintilimab",
+    "application_number": "761222",
+    "application_type": "BLA",
+    "approval_status": "unapproved",
+    "deficiency_categories": [
+      "oncology_specific",
+      "clinical_trial_design"
+    ],
+    "openfda_generic_name": "Sintilimab",
+    "enriched": {
+      "smiles": null,
+      "open_targets_id": "CHEMBL4297829",
+      "targets": [
+        {
+          "symbol": "PDCD1",
+          "id": "ENSG00000188389",
+          "biotype": "protein_coding",
+          "genetic_constraint": [
+            {
+              "constraintType": "syn",
+              "score": -0.021219000220298767,
+              "oe": 1.003000020980835,
+              "oeLower": 0.8830000162124634,
+              "oeUpper": 1.1399999856948853
+            },
+            {
+              "constraintType": "mis",
+              "score": 1.4210000038146973,
+              "oe": 0.8026400208473206,
+              "oeLower": 0.7310000061988831,
+              "oeUpper": 0.8820000290870667
+            },
+            {
+              "constraintType": "lof",
+              "score": 0.029637999832630157,
+              "oe": 0.5252100229263306,
+              "oeLower": 0.3230000138282776,
+              "oeUpper": 0.890999972820282
+            }
+          ],
+          "cancer_hallmarks": [],
+          "top_pathways": [
+            "Disease: Potential therapeutics for SARS",
+            "Immune System: Co-inhibition by PD-1",
+            "Immune System: PD-L1(CD274) glycosylation and translocation to plasma membrane"
+          ],
+          "oncology_evidence": {
+            "disease_name": "non-small cell lung carcinoma",
+            "overall_association_score": 0.6233407724178877,
+            "genetic_association_score": 0.0,
+            "somatic_mutation_score": 0.0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "drug_name": "Retifanlimab",
+    "application_number": "761155",
+    "application_type": "BLA",
+    "approval_status": "unapproved",
+    "deficiency_categories": [
+      "oncology_specific",
+      "efficacy"
+    ],
+    "openfda_generic_name": "Retifanlimab",
+    "enriched": {
+      "smiles": null,
+      "open_targets_id": "CHEMBL4298037",
+      "targets": [
+        {
+          "symbol": "PDCD1",
+          "id": "ENSG00000188389",
+          "biotype": "protein_coding",
+          "genetic_constraint": [
+            {
+              "constraintType": "syn",
+              "score": -0.021219000220298767,
+              "oe": 1.003000020980835,
+              "oeLower": 0.8830000162124634,
+              "oeUpper": 1.1399999856948853
+            },
+            {
+              "constraintType": "mis",
+              "score": 1.4210000038146973,
+              "oe": 0.8026400208473206,
+              "oeLower": 0.7310000061988831,
+              "oeUpper": 0.8820000290870667
+            },
+            {
+              "constraintType": "lof",
+              "score": 0.029637999832630157,
+              "oe": 0.5252100229263306,
+              "oeLower": 0.3230000138282776,
+              "oeUpper": 0.890999972820282
+            }
+          ],
+          "cancer_hallmarks": [],
+          "top_pathways": [
+            "Disease: Potential therapeutics for SARS",
+            "Immune System: Co-inhibition by PD-1",
+            "Immune System: PD-L1(CD274) glycosylation and translocation to plasma membrane"
+          ],
+          "oncology_evidence": {
+            "disease_name": "non-small cell lung carcinoma",
+            "overall_association_score": 0.6233407724178877,
+            "genetic_association_score": 0.0,
+            "somatic_mutation_score": 0.0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "drug_name": "Granisetron",
+    "application_number": "207987",
+    "application_type": "NDA",
+    "approval_status": "approved",
+    "deficiency_categories": [
+      "oncology_specific",
+      "cmc_manufacturing"
+    ],
+    "openfda_generic_name": "Granisetron",
+    "enriched": {
+      "smiles": null,
+      "open_targets_id": "CHEMBL289469",
+      "targets": [
+        {
+          "symbol": "HTR3A",
+          "id": "ENSG00000166736",
+          "biotype": "protein_coding",
+          "genetic_constraint": [
+            {
+              "constraintType": "syn",
+              "score": -1.0130000114440918,
+              "oe": 1.1162999868392944,
+              "oeLower": 1.0130000114440918,
+              "oeUpper": 1.2309999465942383
+            },
+            {
+              "constraintType": "mis",
+              "score": -0.21502000093460083,
+              "oe": 1.023800015449524,
+              "oeLower": 0.9580000042915344,
+              "oeUpper": 1.093999981880188
+            },
+            {
+              "constraintType": "lof",
+              "score": 8.982799747092596e-12,
+              "oe": 0.7971900105476379,
+              "oeLower": 0.6200000047683716,
+              "oeUpper": 1.034000039100647
+            }
+          ],
+          "cancer_hallmarks": [],
+          "top_pathways": [
+            "Neuronal System: Neurotransmitter receptors and postsynaptic signal transmission"
+          ],
+          "oncology_evidence": {
+            "disease_name": "cancer",
+            "overall_association_score": 0.5948915719593042,
+            "genetic_association_score": 0.0,
+            "somatic_mutation_score": 0.0
+          }
+        }
+      ]
+    }
+  }
+]
