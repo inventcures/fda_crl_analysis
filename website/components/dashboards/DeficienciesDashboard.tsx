@@ -16,6 +16,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   Radar,
+  LabelList
 } from 'recharts'
 import { AlertCircle, CheckCircle2 } from 'lucide-react'
 
@@ -43,9 +44,11 @@ interface DeficiencyData {
 }
 
 const COLORS = {
-  approved: '#10B981', // Emerald-500
-  unapproved: '#EF4444', // Red-500
-  rescueRate: '#3B82F6', // Blue-500
+  approved: '#059669', // Emerald-600
+  unapproved: '#94a3b8', // Slate-400
+  rescueRate: '#3b82f6', // Blue-500
+  grid: '#e2e8f0',
+  text: '#64748b'
 }
 
 export default function DeficienciesDashboard() {
@@ -54,12 +57,7 @@ export default function DeficienciesDashboard() {
 
   useEffect(() => {
     fetch('/data/deficiencies.json')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`)
-        }
-        return res.json()
-      })
+      .then(res => res.json())
       .then(data => {
         setData(data)
         setLoading(false)
@@ -70,248 +68,204 @@ export default function DeficienciesDashboard() {
       })
   }, [])
 
-  if (loading) {
-    return <div className="text-center py-12">Loading...</div>
-  }
+  if (loading) return <div className="text-center py-12 text-gray-500">Loading dashboard...</div>
+  if (!data) return <div className="text-center py-12 text-red-500">Failed to load data</div>
 
-  if (!data) {
-    return <div className="text-center py-12 text-red-600">Failed to load data</div>
-  }
+  // Prepare frequency data - Sorted by total count for vertical chart
+  const frequencyData = [...data.categories]
+    .sort((a, b) => b.total - a.total)
+    .map(cat => ({
+      name: cat.category_label,
+      total: cat.total,
+      approved: cat.approved,
+      unapproved: cat.unapproved,
+    }))
 
-  // Prepare frequency data
-  const frequencyData = data.categories.map(cat => ({
-    name: cat.category_label.length > 20
-      ? cat.category_label.substring(0, 20) + '...'
-      : cat.category_label,
-    fullName: cat.category_label,
-    total: cat.total,
-    approved: cat.approved,
-    unapproved: cat.unapproved,
-  }))
-
-  // Prepare rescue rate data
-  const rescueData = data.categories.map(cat => ({
-    name: cat.category_label.length > 20
-      ? cat.category_label.substring(0, 20) + '...'
-      : cat.category_label,
-    fullName: cat.category_label,
-    rescue_rate: cat.rescue_rate,
-  }))
+  // Prepare rescue rate data - Sorted by rescue rate
+  const rescueData = [...data.categories]
+    .sort((a, b) => b.rescue_rate - a.rescue_rate)
+    .map(cat => ({
+      name: cat.category_label,
+      rescue_rate: cat.rescue_rate,
+    }))
 
   // Prepare radar chart data
   const radarData = data.categories.slice(0, 6).map(cat => ({
     category: cat.category_label.split(' ').slice(0, 2).join(' '),
-    frequency: Math.round((cat.total / 300) * 100), // Normalize to percentage
+    frequency: Math.round((cat.total / 300) * 100), // Normalize
     rescue_rate: cat.rescue_rate,
   }))
 
   return (
-    <div className="space-y-8">
-      {/* Deficiency Frequency */}
-      <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-mono text-text-primary mb-6">Deficiency Frequency by Category</h3>
-        <ResponsiveContainer width="100%" height={400}>
-          <BarChart data={frequencyData} layout="vertical" margin={{ left: 100 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" horizontal={false} />
-            <XAxis
-              type="number"
-              tick={{ fill: '#475569', fontSize: 12, fontFamily: 'var(--font-ubuntu-mono)' }}
-              axisLine={{ stroke: '#E2E8F0' }}
-              tickLine={false}
-            />
-            <YAxis
-              dataKey="name"
-              type="category"
-              width={100}
-              tick={{ fill: '#475569', fontSize: 11, fontFamily: 'var(--font-ubuntu-mono)' }}
-              axisLine={false}
-              tickLine={false}
-            />
-            <Tooltip
-              content={({ active, payload }) => {
-                if (active && payload && payload.length) {
-                  const data = payload[0].payload
-                  return (
-                    <div className="bg-white p-4 border border-border-light shadow-lg font-mono text-sm">
-                      <p className="font-bold mb-2 text-text-primary">{data.fullName}</p>
-                      <div className="space-y-1">
-                        <p className="text-success">Approved: {data.approved}</p>
-                        <p className="text-error">Unapproved: {data.unapproved}</p>
-                        <p className="text-text-secondary pt-1 border-t border-border-light mt-1">Total: {data.total}</p>
-                      </div>
-                    </div>
-                  )
-                }
-                return null
-              }}
-            />
-            <Legend wrapperStyle={{ fontFamily: 'var(--font-ubuntu-mono)', fontSize: '12px', paddingTop: '20px' }} />
-            <Bar dataKey="approved" fill={COLORS.approved} name="Approved" radius={[0, 4, 4, 0]} barSize={20} />
-            <Bar dataKey="unapproved" fill={COLORS.unapproved} name="Unapproved" radius={[0, 4, 4, 0]} barSize={20} />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      {/* Rescue Rates */}
-      <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-mono text-text-primary mb-4">Rescue Rates by Deficiency Category</h3>
-        <p className="text-sm text-text-secondary mb-6 font-light">
-          Percentage of CRLs with each deficiency type that were eventually approved
-        </p>
-        <ResponsiveContainer width="100%" height={400}>
-          <BarChart data={rescueData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
-            <XAxis
-              dataKey="name"
-              angle={-45}
-              textAnchor="end"
-              height={120}
-              tick={{ fill: '#475569', fontSize: 11, fontFamily: 'var(--font-ubuntu-mono)' }}
-              axisLine={{ stroke: '#E2E8F0' }}
-              tickLine={false}
-            />
-            <YAxis
-              domain={[0, 100]}
-              label={{ value: 'Rescue Rate (%)', angle: -90, position: 'insideLeft', style: { fontFamily: 'var(--font-ubuntu-mono)', fill: '#64748B' } }}
-              tick={{ fill: '#475569', fontSize: 12, fontFamily: 'var(--font-ubuntu-mono)' }}
-              axisLine={false}
-              tickLine={false}
-            />
-            <Tooltip
-              content={({ active, payload }) => {
-                if (active && payload && payload.length) {
-                  const data = payload[0].payload
-                  return (
-                    <div className="bg-white p-4 border border-border-light shadow-lg font-mono text-sm">
-                      <p className="font-bold mb-2 text-text-primary">{data.fullName}</p>
-                      <p className="text-accent">Rescue Rate: {data.rescue_rate}%</p>
-                    </div>
-                  )
-                }
-                return null
-              }}
-            />
-            <Bar dataKey="rescue_rate" fill={COLORS.rescueRate} name="Rescue Rate %" radius={[4, 4, 0, 0]} />
-          </BarChart>
-        </ResponsiveContainer>
-        <div className="mt-6 text-sm text-text-secondary font-mono bg-subtle p-4 rounded-sm">
-          <p className="font-bold mb-2 text-text-primary">KEY INSIGHTS:</p>
-          <ul className="list-none space-y-1">
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              CMC/Manufacturing issues have the highest rescue rate (~86%)
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              Safety and Labeling issues have lower rescue rates (~68-69%)
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              Suggests manufacturing issues are more easily resolved than safety concerns
-            </li>
-          </ul>
+    <div className="space-y-12 max-w-5xl mx-auto">
+      
+      {/* SECTION 1: Frequency */}
+      <section>
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold text-gray-900">Deficiency Frequency</h2>
+          <p className="text-gray-500 text-sm">Most common issues cited in CRLs, broken down by final approval outcome.</p>
         </div>
-      </div>
+        
+        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+          <ResponsiveContainer width="100%" height={500}>
+            <BarChart 
+              layout="vertical" 
+              data={frequencyData} 
+              margin={{ top: 20, right: 30, left: 60, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke={COLORS.grid} />
+              <XAxis type="number" hide />
+              <YAxis 
+                dataKey="name" 
+                type="category" 
+                width={120} 
+                tick={{ fill: '#334155', fontSize: 13, fontWeight: 500 }} 
+                axisLine={false}
+                tickLine={false}
+              />
+              <Tooltip 
+                 cursor={{ fill: '#f1f5f9' }}
+                 contentStyle={{ borderRadius: '6px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+              />
+              <Legend verticalAlign="top" align="right" iconType="circle" />
+              <Bar dataKey="approved" name="Approved" stackId="a" fill={COLORS.approved} barSize={24} radius={[0, 4, 4, 0]} />
+              <Bar dataKey="unapproved" name="Unapproved" stackId="a" fill={COLORS.unapproved} barSize={24} radius={[0, 4, 4, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </section>
 
-      {/* Radar Chart */}
-      <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-mono text-text-primary mb-6">Deficiency Pattern Overview</h3>
-        <ResponsiveContainer width="100%" height={400}>
-          <RadarChart data={radarData}>
-            <PolarGrid stroke="#E2E8F0" />
-            <PolarAngleAxis dataKey="category" tick={{ fill: '#475569', fontSize: 12, fontFamily: 'var(--font-ubuntu-mono)' }} />
-            <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fill: '#94A3B8', fontSize: 10 }} axisLine={false} />
-            <Radar
-              name="Frequency %"
-              dataKey="frequency"
-              stroke={COLORS.rescueRate}
-              fill={COLORS.rescueRate}
-              fillOpacity={0.2}
-            />
-            <Radar
-              name="Rescue Rate %"
-              dataKey="rescue_rate"
-              stroke={COLORS.approved}
-              fill={COLORS.approved}
-              fillOpacity={0.2}
-            />
-            <Legend wrapperStyle={{ fontFamily: 'var(--font-ubuntu-mono)', fontSize: '12px', paddingTop: '20px' }} />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: '#FFFFFF',
-                borderColor: '#E2E8F0',
-                fontFamily: 'var(--font-ubuntu-mono)',
-                fontSize: '12px'
-              }}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
-      </div>
+      {/* SECTION 2: Rescue Rates */}
+      <section>
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold text-gray-900">Rescue Rates</h2>
+          <p className="text-gray-500 text-sm">Percentage of CRLs with specific deficiencies that were eventually approved.</p>
+        </div>
 
-      {/* Key Flags Impact */}
-      <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-mono text-text-primary mb-4">Key Flags and Their Impact</h3>
-        <p className="text-sm text-text-secondary mb-6 font-light">
-          Critical indicators found in CRL text and their correlation with approval outcomes
-        </p>
-        <div className="space-y-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart data={rescueData} margin={{ top: 20, right: 30, left: 20, bottom: 40 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={COLORS.grid} />
+              <XAxis
+                dataKey="name"
+                angle={-45}
+                textAnchor="end"
+                interval={0}
+                tick={{ fill: COLORS.text, fontSize: 12 }}
+                axisLine={false}
+                tickLine={false}
+                dy={10}
+              />
+              <YAxis
+                domain={[0, 100]}
+                tick={{ fill: COLORS.text, fontSize: 12 }}
+                axisLine={false}
+                tickLine={false}
+                label={{ value: '% Approved', angle: -90, position: 'insideLeft', style: { fill: COLORS.text } }}
+              />
+              <Tooltip 
+                 cursor={{ fill: '#f1f5f9' }}
+                 contentStyle={{ borderRadius: '6px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+              />
+              <Bar dataKey="rescue_rate" name="Rescue Rate %" fill={COLORS.rescueRate} radius={[4, 4, 0, 0]}>
+                <LabelList dataKey="rescue_rate" position="top" formatter={(val: number) => `${val}%`} fill={COLORS.text} fontSize={12} />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+          
+          <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md">
+            <h4 className="text-sm font-bold text-blue-900 uppercase mb-2">Key Insights</h4>
+            <ul className="text-sm text-blue-800 space-y-1">
+              <li>• <strong>CMC/Manufacturing</strong> issues have the highest rescue rate (~86%).</li>
+              <li>• <strong>Safety</strong> and <strong>Labeling</strong> issues are harder to resolve (~69% rescue rate).</li>
+              <li>• This suggests manufacturing issues are often technical hurdles, while safety concerns are fundamental.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: Key Flags */}
+      <section>
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold text-gray-900">Critical Indicators</h2>
+          <p className="text-gray-500 text-sm">Specific terms in CRLs that strongly correlate with final outcomes.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4">
           {data.key_flags.map(flag => {
             const isHighImpact = flag.impact_score > 50
             return (
               <div
                 key={flag.flag}
-                className={`border-l-4 p-5 rounded-sm transition-all hover:shadow-sm ${isHighImpact ? 'border-error bg-red-50/30' : 'border-success bg-green-50/30'
-                  }`}
+                className={`p-5 rounded-lg border transition-all ${
+                  isHighImpact 
+                    ? 'border-red-200 bg-red-50 hover:shadow-md' 
+                    : 'border-green-200 bg-green-50 hover:shadow-md'
+                }`}
               >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    {isHighImpact ? (
-                      <AlertCircle className="text-error" size={20} />
-                    ) : (
-                      <CheckCircle2 className="text-success" size={20} />
-                    )}
-                    <h4 className="font-mono font-medium text-lg text-text-primary">{flag.label}</h4>
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex items-center gap-2">
+                    {isHighImpact ? <AlertCircle className="text-red-500" size={20} /> : <CheckCircle2 className="text-green-500" size={20} />}
+                    <h4 className="font-bold text-gray-900">{flag.label}</h4>
                   </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-mono font-bold text-text-primary">{flag.impact_score}%</div>
-                    <div className="text-xs text-text-secondary uppercase tracking-wider">Unapproved rate</div>
-                  </div>
+                  <span className={`text-2xl font-bold ${isHighImpact ? 'text-red-600' : 'text-green-600'}`}>
+                    {flag.impact_score}%
+                  </span>
                 </div>
-                <div className="grid grid-cols-3 gap-4 text-sm font-mono">
-                  <div>
-                    <div className="text-text-secondary text-xs uppercase tracking-wider mb-1">Total</div>
-                    <div className="font-bold">{flag.total}</div>
+                <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">Unapproval Rate</p>
+                
+                <div className="grid grid-cols-3 gap-2 text-sm">
+                  <div className="bg-white/60 p-2 rounded">
+                    <div className="text-xs text-gray-500">Total</div>
+                    <div className="font-semibold">{flag.total}</div>
                   </div>
-                  <div>
-                    <div className="text-text-secondary text-xs uppercase tracking-wider mb-1">Approved</div>
-                    <div className="font-bold text-success">{flag.approved}</div>
+                  <div className="bg-white/60 p-2 rounded">
+                    <div className="text-xs text-gray-500">Apprv</div>
+                    <div className="font-semibold text-green-600">{flag.approved}</div>
                   </div>
-                  <div>
-                    <div className="text-text-secondary text-xs uppercase tracking-wider mb-1">Unapproved</div>
-                    <div className="font-bold text-error">{flag.unapproved}</div>
+                  <div className="bg-white/60 p-2 rounded">
+                    <div className="text-xs text-gray-500">Unapprv</div>
+                    <div className="font-semibold text-red-600">{flag.unapproved}</div>
                   </div>
                 </div>
               </div>
             )
           })}
         </div>
-      </div>
+      </section>
 
-      {/* Co-occurrence Heatmap Image */}
-      <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-mono text-text-primary mb-4">Deficiency Co-occurrence Heatmap</h3>
-        <p className="text-sm text-text-secondary mb-6 font-light">
-          Shows which deficiency types commonly appear together in the same CRL
-        </p>
-        <div className="relative w-full bg-subtle rounded-sm p-4" style={{ height: '600px' }}>
-          <Image
-            src="/images/cooccurrence_heatmap.png"
-            alt="Deficiency Co-occurrence Heatmap"
-            fill
-            style={{ objectFit: 'contain' }}
-          />
+      {/* SECTION 4: Radar & Heatmap (Visual Overview) */}
+      <section className="grid md:grid-cols-2 gap-8">
+        <div>
+           <h3 className="text-lg font-bold text-gray-900 mb-4">Deficiency Profile</h3>
+           <div className="bg-white border border-gray-200 rounded-lg p-4 h-[400px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
+                  <PolarGrid stroke="#e2e8f0" />
+                  <PolarAngleAxis dataKey="category" tick={{ fill: '#64748b', fontSize: 11 }} />
+                  <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                  <Radar name="Frequency %" dataKey="frequency" stroke={COLORS.rescueRate} fill={COLORS.rescueRate} fillOpacity={0.3} />
+                  <Radar name="Rescue Rate %" dataKey="rescue_rate" stroke={COLORS.approved} fill={COLORS.approved} fillOpacity={0.3} />
+                  <Legend wrapperStyle={{ fontSize: '12px' }} />
+                  <Tooltip contentStyle={{ borderRadius: '6px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                </RadarChart>
+              </ResponsiveContainer>
+           </div>
         </div>
-      </div>
+        
+        <div>
+           <h3 className="text-lg font-bold text-gray-900 mb-4">Co-occurrence Heatmap</h3>
+           <div className="bg-white border border-gray-200 rounded-lg p-2 h-[400px] relative">
+              <Image
+                src="/images/cooccurrence_heatmap.png"
+                alt="Deficiency Co-occurrence Heatmap"
+                fill
+                style={{ objectFit: 'contain' }}
+                className="p-2"
+              />
+           </div>
+        </div>
+      </section>
     </div>
   )
 }

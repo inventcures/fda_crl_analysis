@@ -16,6 +16,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   Radar,
+  LabelList
 } from 'recharts'
 import { Award, Target, TrendingUp, Zap } from 'lucide-react'
 
@@ -39,9 +40,11 @@ interface PredictiveData {
 }
 
 const COLORS = {
-  accuracy: '#3B82F6', // Blue-500
-  cv_mean: '#10B981', // Emerald-500
-  cv_std: '#EF4444', // Red-500
+  accuracy: '#3b82f6', // Blue-500
+  cv_mean: '#059669', // Emerald-600
+  cv_std: '#ef4444', // Red-500
+  grid: '#e2e8f0',
+  text: '#64748b'
 }
 
 export default function PredictiveDashboard() {
@@ -50,12 +53,7 @@ export default function PredictiveDashboard() {
 
   useEffect(() => {
     fetch('/data/predictive.json')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`)
-        }
-        return res.json()
-      })
+      .then(res => res.json())
       .then(data => {
         setData(data)
         setLoading(false)
@@ -66,13 +64,8 @@ export default function PredictiveDashboard() {
       })
   }, [])
 
-  if (loading) {
-    return <div className="text-center py-12">Loading...</div>
-  }
-
-  if (!data) {
-    return <div className="text-center py-12 text-red-600">Failed to load data</div>
-  }
+  if (loading) return <div className="text-center py-12 text-gray-500">Loading dashboard...</div>
+  if (!data) return <div className="text-center py-12 text-red-500">Failed to load data</div>
 
   // Prepare radar data for model comparison
   const radarData = data.models.map(model => ({
@@ -83,252 +76,158 @@ export default function PredictiveDashboard() {
   }))
 
   return (
-    <div className="space-y-8">
-      {/* Best Model Highlight */}
+    <div className="space-y-12 max-w-5xl mx-auto">
+      
+      {/* SECTION 1: Best Model */}
       {data.best_model && (
-        <div className="bg-white border border-border-light rounded-sm shadow-sm p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="bg-accent/10 p-3 rounded-full">
-              <Award size={32} className="text-accent" />
+        <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-8">
+          <div className="flex items-center gap-4 mb-6 border-b border-gray-100 pb-4">
+            <div className="bg-green-50 p-3 rounded-full">
+              <Award size={32} className="text-emerald-600" />
             </div>
-            <h3 className="text-2xl font-mono font-bold text-text-primary">Best Performing Model</h3>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">Top Performer: {data.best_model.name}</h2>
+              <p className="text-gray-500 text-sm">Highest cross-validation accuracy with consistent stability.</p>
+            </div>
           </div>
+          
           <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="text-text-secondary text-xs font-mono uppercase tracking-wider mb-2">Model</div>
-              <div className="text-3xl font-mono font-bold text-text-primary">{data.best_model.name}</div>
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
+               <div className="text-xs text-gray-500 uppercase tracking-wider mb-2 font-semibold">Test Accuracy</div>
+               <div className="text-4xl font-bold text-blue-600">{data.best_model.accuracy}%</div>
             </div>
-            <div>
-              <div className="text-text-secondary text-xs font-mono uppercase tracking-wider mb-2">Cross-Validation Accuracy</div>
-              <div className="text-4xl font-mono font-bold text-success">{data.best_model.cv_mean}%</div>
+            <div className="text-center p-4 bg-green-50 rounded-lg">
+               <div className="text-xs text-green-700 uppercase tracking-wider mb-2 font-semibold">Cross-Validation Score</div>
+               <div className="text-4xl font-bold text-emerald-600">{data.best_model.cv_mean}%</div>
+               <div className="text-xs text-green-600 mt-1">±{data.best_model.cv_std}% std dev</div>
             </div>
-            <div>
-              <div className="text-text-secondary text-xs font-mono uppercase tracking-wider mb-2">Test Set Accuracy</div>
-              <div className="text-4xl font-mono font-bold text-accent">{data.best_model.accuracy}%</div>
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
+               <div className="text-xs text-gray-500 uppercase tracking-wider mb-2 font-semibold">Model Type</div>
+               <div className="text-lg font-bold text-gray-800 mt-2">{data.best_model.name}</div>
             </div>
           </div>
-          <div className="mt-6 bg-subtle rounded-sm p-4 border border-border-light">
-            <p className="text-sm text-text-secondary font-light">
-              This model achieved the highest cross-validation accuracy in predicting whether a drug
-              that received a CRL will eventually be approved. ±{data.best_model.cv_std}% standard deviation.
-            </p>
-          </div>
-        </div>
+        </section>
       )}
 
-      {/* Model Comparison */}
-      <div className="bg-white border border-border-light p-8">
-        <div className="flex items-center gap-3 mb-6">
-          <Target className="text-accent" size={24} />
-          <h3 className="text-xl font-mono text-text-primary">Model Performance Comparison</h3>
+      {/* SECTION 2: Model Comparison */}
+      <section>
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold text-gray-900">Model Benchmarking</h2>
+          <p className="text-gray-500 text-sm">Comparing generalization performance across different algorithms.</p>
         </div>
-        <ResponsiveContainer width="100%" height={400}>
-          <BarChart data={data.models}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
-            <XAxis
-              dataKey="name"
-              tick={{ fill: '#475569', fontSize: 12, fontFamily: 'var(--font-ubuntu-mono)' }}
-              axisLine={{ stroke: '#E2E8F0' }}
-              tickLine={false}
-            />
-            <YAxis
-              domain={[0, 100]}
-              label={{ value: 'Accuracy (%)', angle: -90, position: 'insideLeft', style: { fontFamily: 'var(--font-ubuntu-mono)', fill: '#64748B' } }}
-              tick={{ fill: '#475569', fontSize: 12, fontFamily: 'var(--font-ubuntu-mono)' }}
-              axisLine={false}
-              tickLine={false}
-            />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: '#FFFFFF',
-                borderColor: '#E2E8F0',
-                fontFamily: 'var(--font-ubuntu-mono)',
-                fontSize: '12px'
-              }}
-            />
-            <Legend wrapperStyle={{ fontFamily: 'var(--font-ubuntu-mono)', fontSize: '12px', paddingTop: '20px' }} />
-            <Bar dataKey="accuracy" fill={COLORS.accuracy} name="Test Accuracy %" radius={[4, 4, 0, 0]} isAnimationActive={false} />
-            <Bar dataKey="cv_mean" fill={COLORS.cv_mean} name="CV Mean %" radius={[4, 4, 0, 0]} isAnimationActive={false} />
-          </BarChart>
-        </ResponsiveContainer>
-        <div className="mt-6 text-sm text-text-secondary font-mono bg-subtle p-4 rounded-sm">
-          <p className="font-bold mb-2 text-text-primary">INTERPRETATION:</p>
-          <ul className="list-none space-y-1">
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              All models significantly outperform random baseline (~50%)
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              Ensemble methods (Random Forest, Gradient Boosting) show strong generalization
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              Cross-validation scores are more reliable than single test set results
-            </li>
-          </ul>
-        </div>
-      </div>
 
-      {/* Radar Chart */}
-      <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-mono text-text-primary mb-6">Multi-Metric Model Comparison</h3>
-        <ResponsiveContainer width="100%" height={400}>
-          <RadarChart data={radarData}>
-            <PolarGrid stroke="#E2E8F0" />
-            <PolarAngleAxis dataKey="name" tick={{ fill: '#475569', fontSize: 12, fontFamily: 'var(--font-ubuntu-mono)' }} />
-            <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fill: '#94A3B8', fontSize: 10 }} axisLine={false} />
-            <Radar
-              name="Test Accuracy"
-              dataKey="accuracy"
-              stroke={COLORS.accuracy}
-              fill={COLORS.accuracy}
-              fillOpacity={0.2}
-              isAnimationActive={false}
-            />
-            <Radar
-              name="CV Accuracy"
-              dataKey="cv_mean"
-              stroke={COLORS.cv_mean}
-              fill={COLORS.cv_mean}
-              fillOpacity={0.2}
-              isAnimationActive={false}
-            />
-            <Radar
-              name="Stability"
-              dataKey="stability"
-              stroke={COLORS.cv_std}
-              fill={COLORS.cv_std}
-              fillOpacity={0.2}
-              isAnimationActive={false}
-            />
-            <Legend wrapperStyle={{ fontFamily: 'var(--font-ubuntu-mono)', fontSize: '12px', paddingTop: '20px' }} />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: '#FFFFFF',
-                borderColor: '#E2E8F0',
-                fontFamily: 'var(--font-ubuntu-mono)',
-                fontSize: '12px'
-              }}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
-        <p className="mt-6 text-sm text-text-secondary font-mono text-center">
-          Stability = 100 - CV Standard Deviation. Higher is better for all metrics.
-        </p>
-      </div>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Bar Chart */}
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-gray-800 mb-4">Accuracy Comparison</h3>
+            <ResponsiveContainer width="100%" height={350}>
+              <BarChart data={data.models} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={COLORS.grid} />
+                <XAxis 
+                  dataKey="name" 
+                  tick={{ fill: COLORS.text, fontSize: 11 }} 
+                  axisLine={false} 
+                  tickLine={false} 
+                  interval={0}
+                  angle={-15}
+                  textAnchor="end"
+                  height={60}
+                />
+                <YAxis 
+                  domain={[0, 100]} 
+                  tick={{ fill: COLORS.text, fontSize: 11 }} 
+                  axisLine={false} 
+                  tickLine={false} 
+                />
+                <Tooltip 
+                   cursor={{ fill: '#f1f5f9' }}
+                   contentStyle={{ borderRadius: '6px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                />
+                <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} />
+                <Bar dataKey="cv_mean" name="CV Mean Accuracy" fill={COLORS.cv_mean} radius={[4, 4, 0, 0]} />
+                <Bar dataKey="accuracy" name="Test Set Accuracy" fill={COLORS.accuracy} radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
 
-      {/* Feature Importance */}
-      <div className="bg-white border border-border-light p-8">
-        <div className="flex items-center gap-3 mb-4">
-          <Zap className="text-accent" size={24} />
-          <h3 className="text-xl font-mono text-text-primary">Top Predictive Features</h3>
+          {/* Radar Chart */}
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-gray-800 mb-4">Multi-Metric Profile</h3>
+            <ResponsiveContainer width="100%" height={350}>
+              <RadarChart data={radarData} outerRadius="70%">
+                <PolarGrid stroke={COLORS.grid} />
+                <PolarAngleAxis dataKey="name" tick={{ fill: COLORS.text, fontSize: 11 }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                <Radar name="Test Acc" dataKey="accuracy" stroke={COLORS.accuracy} fill={COLORS.accuracy} fillOpacity={0.1} />
+                <Radar name="CV Mean" dataKey="cv_mean" stroke={COLORS.cv_mean} fill={COLORS.cv_mean} fillOpacity={0.3} />
+                <Legend wrapperStyle={{ fontSize: '12px' }} />
+                <Tooltip contentStyle={{ borderRadius: '6px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
-        <p className="text-sm text-text-secondary mb-6 font-light">
-          Features used by the machine learning models to predict approval outcomes
-        </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {data.features.map((feature, idx) => (
-            <div
-              key={feature.feature}
-              className="bg-subtle border border-border-light rounded-sm p-4 flex items-center gap-3 transition-colors hover:border-accent"
-            >
-              <div className="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center font-mono font-bold text-sm">
-                {idx + 1}
-              </div>
-              <div className="text-sm font-medium text-text-primary font-mono">{feature.label}</div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8 bg-accent-light border-l-4 border-accent p-5 rounded-sm">
-          <p className="text-sm text-text-primary">
-            <span className="font-bold font-mono uppercase tracking-wider block mb-2">Key Insights:</span>
-            The most important predictors include application type (NDA vs BLA vs ANDA), whether a new clinical trial is required,
-            and the presence of specific deficiency types (safety, CMC, bioequivalence).
-          </p>
-        </div>
-      </div>
+      </section>
 
-      {/* Feature Importance Image */}
-      <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-mono text-text-primary mb-4">Feature Importance (Random Forest)</h3>
-        <p className="text-sm text-text-secondary mb-6 font-light">
-          Relative importance of features in the best-performing Random Forest model
-        </p>
-        <div className="relative w-full bg-subtle rounded-sm p-4" style={{ height: '500px' }}>
-          <Image
-            src="/images/feature_importance.png"
-            alt="Feature Importance"
-            fill
-            style={{ objectFit: 'contain' }}
-          />
+      {/* SECTION 3: Feature Importance */}
+      <section>
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold text-gray-900">Predictive Drivers</h2>
+          <p className="text-gray-500 text-sm">Which features carry the most weight in predicting approval outcomes?</p>
         </div>
-      </div>
 
-      {/* ROC Curves */}
-      <div className="bg-white border border-border-light p-8">
-        <div className="flex items-center gap-3 mb-4">
-          <TrendingUp className="text-accent" size={24} />
-          <h3 className="text-xl font-mono text-text-primary">ROC Curves</h3>
-        </div>
-        <p className="text-sm text-text-secondary mb-6 font-light">
-          Receiver Operating Characteristic curves showing the trade-off between
-          true positive rate and false positive rate for each model
-        </p>
-        <div className="relative w-full bg-subtle rounded-sm p-4" style={{ height: '500px' }}>
-          <Image
-            src="/images/roc_curves.png"
-            alt="ROC Curves"
-            fill
-            style={{ objectFit: 'contain' }}
-          />
-        </div>
-        <div className="mt-6 text-sm text-text-secondary font-mono bg-subtle p-4 rounded-sm">
-          <p className="font-bold mb-2 text-text-primary">UNDERSTANDING ROC CURVES:</p>
-          <ul className="list-none space-y-1">
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              AUC (Area Under Curve) closer to 1.0 indicates better classification performance
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              All models perform significantly better than random (diagonal line, AUC = 0.5)
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">→</span>
-              Curves closer to top-left corner indicate better true/false positive trade-offs
-            </li>
-          </ul>
-        </div>
-      </div>
+        <div className="grid lg:grid-cols-3 gap-8">
+           {/* Feature List */}
+           <div className="lg:col-span-1 space-y-3">
+              <h3 className="font-bold text-gray-700 uppercase text-xs tracking-wider mb-3">Top Features</h3>
+              {data.features.map((feature, idx) => (
+                <div key={feature.feature} className="bg-white border border-gray-200 p-3 rounded flex items-center gap-3 shadow-sm">
+                   <div className="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">
+                     {idx + 1}
+                   </div>
+                   <span className="text-sm font-medium text-gray-700">{feature.label}</span>
+                </div>
+              ))}
+           </div>
 
-      {/* Statistical Comparison */}
-      <div className="bg-white border border-border-light p-8">
-        <h3 className="text-xl font-mono text-text-primary mb-4">Statistical Feature Comparison</h3>
-        <p className="text-sm text-text-secondary mb-6 font-light">
-          Statistical significance of feature differences between approved and unapproved CRLs
-        </p>
-        <div className="relative w-full bg-subtle rounded-sm p-4" style={{ height: '600px' }}>
-          <Image
-            src="/images/statistical_comparison.png"
-            alt="Statistical Comparison"
-            fill
-            style={{ objectFit: 'contain' }}
-          />
+           {/* Feature Importance Plot */}
+           <div className="lg:col-span-2 bg-white border border-gray-200 rounded-lg p-4 h-[400px] relative">
+              <Image
+                src="/images/feature_importance.png"
+                alt="Feature Importance"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Methodology Note */}
-      <div className="bg-subtle border border-border-light rounded-sm p-6">
-        <h4 className="font-mono font-bold mb-3 text-text-primary">Methodology Notes</h4>
-        <ul className="space-y-2 text-sm text-text-secondary font-mono">
-          <li>• <span className="font-bold text-text-primary">Training:</span> Models trained on ~240 CRLs with 5-fold cross-validation</li>
-          <li>• <span className="font-bold text-text-primary">Test Set:</span> ~60 held-out CRLs for final evaluation</li>
-          <li>• <span className="font-bold text-text-primary">Features:</span> Deficiency categories, application type, document metadata, language patterns</li>
-          <li>• <span className="font-bold text-text-primary">Baseline:</span> Random guessing achieves ~68% accuracy (due to class imbalance toward approved)</li>
-          <li>• <span className="font-bold text-text-primary">Caveat:</span> Small dataset limits model generalization; interpret with caution</li>
-        </ul>
-      </div>
+      {/* SECTION 4: ROC & Stats */}
+      <section className="grid md:grid-cols-2 gap-8">
+        <div>
+           <h3 className="text-lg font-bold text-gray-900 mb-4">ROC Curves</h3>
+           <div className="bg-white border border-gray-200 rounded-lg p-2 h-[400px] relative">
+             <Image
+               src="/images/roc_curves.png"
+               alt="ROC Curves"
+               fill
+               style={{ objectFit: 'contain' }}
+             />
+           </div>
+           <p className="mt-2 text-xs text-gray-500 text-center">Trade-off between True Positive Rate and False Positive Rate.</p>
+        </div>
+
+        <div>
+           <h3 className="text-lg font-bold text-gray-900 mb-4">Statistical Significance</h3>
+           <div className="bg-white border border-gray-200 rounded-lg p-2 h-[400px] relative">
+             <Image
+               src="/images/statistical_comparison.png"
+               alt="Statistical Comparison"
+               fill
+               style={{ objectFit: 'contain' }}
+             />
+           </div>
+        </div>
+      </section>
     </div>
   )
 }

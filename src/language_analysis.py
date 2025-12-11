@@ -1193,7 +1193,63 @@ class CRLLatentSpaceVisualizer:
             plt.savefig(save_path, dpi=150, bbox_inches='tight')
         
         return fig
-
+    def get_clustering_data(self,
+                           documents: List[Dict],
+                           n_clusters: int = 5,
+                           perplexity: int = 30) -> Dict[str, Any]:
+        """Generate clustering data for frontend visualization."""
+        if not HAS_SKLEARN:
+            return {'error': 'sklearn not available'}
+        
+        valid_docs = [d for d in documents if d.get('raw_text') and len(d.get('raw_text', '')) > 100]
+        
+        if len(valid_docs) < 10:
+            return {'error': 'Not enough documents'}
+        
+        texts = [d['raw_text'] for d in valid_docs]
+        
+        # Create embeddings
+        embeddings, vectorizer = self.create_tfidf_embeddings(texts)
+        
+        # PCA reduction first
+        n_components = min(50, embeddings.shape[1], embeddings.shape[0])
+        pca = PCA(n_components=n_components, random_state=self.random_state)
+        embeddings_pca = pca.fit_transform(embeddings)
+        
+        # t-SNE for 2D coordinates
+        perplexity = min(perplexity, len(valid_docs) - 1)
+        tsne = TSNE(n_components=2, perplexity=perplexity, random_state=self.random_state)
+        embeddings_2d = tsne.fit_transform(embeddings_pca)
+        
+        # K-Means clustering
+        kmeans = KMeans(n_clusters=n_clusters, random_state=self.random_state, n_init=10)
+        cluster_labels = kmeans.fit_predict(embeddings)
+        
+        # Get top terms per cluster
+        feature_names = vectorizer.get_feature_names_out()
+        cluster_terms = {}
+        for i in range(n_clusters):
+            center = kmeans.cluster_centers_[i]
+            top_indices = center.argsort()[-5:][::-1]
+            cluster_terms[i] = [feature_names[idx] for idx in top_indices]
+            
+        # Prepare data for frontend
+        points = []
+        for i, doc in enumerate(valid_docs):
+            points.append({
+                'x': float(embeddings_2d[i, 0]),
+                'y': float(embeddings_2d[i, 1]),
+                'cluster': int(cluster_labels[i]),
+                'approval_status': doc['approval_status'],
+                'drug_name': doc.get('drug_name', 'Unknown'),
+                'application_number': doc.get('application_number', 'N/A'),
+                'snippet': doc['raw_text'][:100] + '...'
+            })
+            
+        return {
+            'points': points,
+            'clusters': cluster_terms
+        }
 
 # =============================================================================
 # COMBINED ANALYSIS RUNNER

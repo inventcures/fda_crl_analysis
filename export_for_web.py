@@ -322,6 +322,22 @@ def export_search_data(parsed_data: List[Dict], output_dir: Path):
 
     return search_data
 
+def export_clustering_data(parsed_data: List[Dict], output_dir: Path):
+    """Export clustering data for interactive visualization"""
+    from src.language_analysis import CRLLatentSpaceVisualizer
+    
+    print("  Generating clustering data (this may take a moment)...")
+    visualizer = CRLLatentSpaceVisualizer()
+    clustering_data = visualizer.get_clustering_data(parsed_data)
+    
+    if 'error' not in clustering_data:
+        save_json(clustering_data, output_dir / 'clustering.json')
+        print(f"✓ Clustering data exported: {output_dir / 'clustering.json'}")
+    else:
+        print(f"⚠ Clustering export failed: {clustering_data['error']}")
+    
+    return clustering_data
+
 def main():
     """Main export function"""
     print("=" * 60)
@@ -348,7 +364,9 @@ def main():
     export_deficiency_data(parsed_data, analysis_summary, web_data_dir)
     export_language_data(language_summary, web_data_dir)
     export_predictive_data(analysis_summary, web_data_dir)
+    export_predictive_data(analysis_summary, web_data_dir)
     export_sample_crls(parsed_data, web_data_dir)
+    export_clustering_data(parsed_data, web_data_dir)
 
     # Export search data
     print("\nExporting search data...")
