@@ -17,6 +17,26 @@ Interactive website showcasing analysis of FDA Complete Response Letters (CRLs).
 - **Charts**: Recharts (lightweight, responsive)
 - **Deployment**: Vercel (static export)
 
+## Document View Feature
+
+The website now includes an interactive **Document Viewer** that allows users to explore Complete Response Letters with context-aware highlighting. 
+
+### Features
+- **Visual Highlights**: Key deficiency categories (Safety, Efficacy, CMC) are highlighted directly on the PDF.
+- **Interactive Tooltips**: Hover over highlights to see the category and extracted text.
+- **Deep Linking**: Share specific documents via URL.
+
+### Data Generation
+To generate the highlight data (`crl_highlights.json`), run the following script from the root directory:
+
+```bash
+# Ensure you have the requirements installed
+pip install pdfplumber
+
+# Run the generation script
+python scripts/generate_highlights.py
+```
+
 ## Local Development
 
 ### Prerequisites
