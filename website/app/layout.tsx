@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Ubuntu_Mono, Caveat } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -43,6 +44,7 @@ export default function RootLayout({
         </main>
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-YQXJ75PNDQ" />
     </html>
   )
 }
