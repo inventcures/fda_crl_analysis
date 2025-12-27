@@ -1,5 +1,7 @@
 # FDA Complete Response Letter (CRL) Analysis Pipeline
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/inventcures/fda_crl_analysis)
+
 > **Extract insights from FDA rejection patterns to accelerate drug development**
 
 This toolkit downloads, parses, and analyzes FDA Complete Response Letters from the OpenFDA database to reveal patterns in regulatory decision-making that can help drug developers avoid common pitfalls and increase approval probability.

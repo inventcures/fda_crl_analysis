@@ -2,8 +2,16 @@
 
 import React, { useRef, useState, useCallback, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { FileText, Eye, Search, X, ChevronUp, ChevronDown } from 'lucide-react'
+import { FileText, Eye, Search, X, ChevronUp, ChevronDown, ArrowLeft, Download, ZoomIn, ZoomOut, ExternalLink } from 'lucide-react'
 import Fuse from 'fuse.js'
+import { Document as PDFDocument, Page, pdfjs } from 'react-pdf'
+import 'react-pdf/dist/Page/AnnotationLayer.css'
+import 'react-pdf/dist/Page/TextLayer.css'
+
+// Configure PDF.js worker
+if (typeof window !== 'undefined') {
+  pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
+}
 
 interface Document {
   file_hash: string
@@ -16,6 +24,8 @@ interface Document {
     openfda_brand_name?: string
   }
 }
+
+type ViewMode = 'cards' | 'pdf'
 
 interface DocumentViewerLayoutProps {
   documents: Document[]
@@ -45,6 +55,12 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
   const [statusFilter, setStatusFilter] = useState<'all' | 'approved' | 'unapproved'>('all')
   const [categoryFilters, setCategoryFilters] = useState<string[]>([])
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  // PDF viewing state
+  const [viewMode, setViewMode] = useState<ViewMode>('cards')
+  const [pdfNumPages, setPdfNumPages] = useState<number>(0)
+  const [pdfScale, setPdfScale] = useState(1.0)
+  const pdfScrollRef = useRef<HTMLDivElement>(null)
 
   // Toggle category filter
   const toggleCategory = (categoryId: string) => {
@@ -132,25 +148,72 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
     }
   }, [currentIndex, scrollToCard])
 
+  // PDF viewing functions
+  const openPdfView = useCallback((docIndex?: number) => {
+    // If docIndex provided, set it first
+    if (typeof docIndex === 'number') {
+      setCurrentIndex(docIndex)
+    }
+    setViewMode('pdf')
+    setPdfNumPages(0) // Reset page count for new document
+  }, [])
+
+  const closePdfView = useCallback(() => {
+    setViewMode('cards')
+  }, [])
+
+  const zoomIn = useCallback(() => {
+    setPdfScale(prev => Math.min(2.5, prev + 0.2))
+  }, [])
+
+  const zoomOut = useCallback(() => {
+    setPdfScale(prev => Math.max(0.5, prev - 0.2))
+  }, [])
+
+  // Get PDF URL for current document
+  const currentPdfUrl = useMemo(() => {
+    if (!currentDoc) return null
+    return `/api/document/${currentDoc.file_hash}`
+  }, [currentDoc])
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowDown' || e.key === 'j') {
-        e.preventDefault()
-        goToNext()
-      } else if (e.key === 'ArrowUp' || e.key === 'k') {
-        e.preventDefault()
-        goToPrev()
-      } else if (e.key === 'Enter') {
-        if (currentDoc) {
-          handleViewDocument(currentDoc)
+      // Don't handle if typing in search input
+      if ((e.target as HTMLElement)?.tagName === 'INPUT') return
+
+      if (viewMode === 'pdf') {
+        // PDF view keyboard shortcuts
+        if (e.key === 'Escape' || e.key === 'Backspace') {
+          e.preventDefault()
+          closePdfView()
+        } else if (e.key === '+' || e.key === '=') {
+          e.preventDefault()
+          zoomIn()
+        } else if (e.key === '-') {
+          e.preventDefault()
+          zoomOut()
+        }
+      } else {
+        // Card view keyboard shortcuts
+        if (e.key === 'ArrowDown' || e.key === 'j') {
+          e.preventDefault()
+          goToNext()
+        } else if (e.key === 'ArrowUp' || e.key === 'k') {
+          e.preventDefault()
+          goToPrev()
+        } else if (e.key === 'o' || e.key === 'O' || e.key === 'Enter') {
+          e.preventDefault()
+          if (currentDoc) {
+            openPdfView()
+          }
         }
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [goToNext, goToPrev, currentDoc, handleViewDocument])
+  }, [viewMode, goToNext, goToPrev, currentDoc, openPdfView, closePdfView, zoomIn, zoomOut])
 
   // Handle scroll snap detection
   useEffect(() => {
@@ -197,213 +260,336 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
     <div className="h-screen flex flex-col bg-[#0a0a0a]">
       {/* Two-Pane Layout */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Pane - Full-Screen Snap Scroll Cards */}
+        {/* Left Pane - Cards or PDF View */}
         <div className="w-1/2 flex flex-col bg-[#0a0a0a]">
-          {/* Search & Filters */}
-          <div className="p-4 border-b border-white/10 space-y-3">
-            {/* Search Bar */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by drug name, number..."
-                className="w-full pl-10 pr-10 py-2.5 bg-white/5 border border-white/10 rounded-lg
-                  text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30
-                  focus:border-white/30 transition-all text-sm"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors"
-                >
-                  <X size={16} />
-                </button>
-              )}
-            </div>
-
-            {/* Status Filter */}
-            <div className="flex items-center gap-2">
-              <span className="text-white/40 text-xs uppercase tracking-wider">Status:</span>
-              <div className="flex gap-1">
-                {STATUS_FILTERS.map((filter) => (
+          {viewMode === 'pdf' && currentDoc ? (
+            /* PDF Inline View */
+            <>
+              {/* PDF Toolbar */}
+              <div className="p-3 border-b border-white/10 flex items-center justify-between bg-[#0a0a0a]">
+                <div className="flex items-center gap-3">
                   <button
-                    key={filter.id}
-                    onClick={() => setStatusFilter(filter.id as typeof statusFilter)}
-                    className={`
-                      px-3 py-1.5 rounded-lg text-xs font-medium transition-all
-                      ${statusFilter === filter.id
-                        ? filter.id === 'approved'
-                          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                          : filter.id === 'unapproved'
-                            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
-                            : 'bg-white/20 text-white border border-white/30'
-                        : 'bg-white/5 text-white/50 border border-transparent hover:bg-white/10 hover:text-white/70'}
-                    `}
+                    onClick={closePdfView}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-all text-sm"
                   >
-                    {filter.label}
+                    <ArrowLeft size={16} />
+                    Back
                   </button>
-                ))}
+                  <div className="h-4 w-px bg-white/10" />
+                  <span className="text-white/50 text-sm font-mono">
+                    {currentDoc.application_number}
+                  </span>
+                  <span className="text-white/30 text-sm">
+                    {currentDoc.enriched?.openfda_brand_name || currentDoc.drug_name || ''}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  {/* Zoom Controls */}
+                  <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1">
+                    <button
+                      onClick={zoomOut}
+                      className="p-1.5 rounded hover:bg-white/10 text-white/50 hover:text-white transition-all"
+                      title="Zoom Out (-)"
+                    >
+                      <ZoomOut size={14} />
+                    </button>
+                    <span className="text-[10px] font-mono w-10 text-center text-white/40">
+                      {Math.round(pdfScale * 100)}%
+                    </span>
+                    <button
+                      onClick={zoomIn}
+                      className="p-1.5 rounded hover:bg-white/10 text-white/50 hover:text-white transition-all"
+                      title="Zoom In (+)"
+                    >
+                      <ZoomIn size={14} />
+                    </button>
+                  </div>
+                  {/* Open in full viewer */}
+                  <button
+                    onClick={() => handleViewDocument(currentDoc)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 text-white/50 hover:bg-white/10 hover:text-white transition-all text-xs"
+                    title="Open with Analysis"
+                  >
+                    <ExternalLink size={12} />
+                    Full View
+                  </button>
+                  {/* Download */}
+                  <a
+                    href={currentPdfUrl || '#'}
+                    download={`CRL-${currentDoc.application_number}.pdf`}
+                    className="p-2 rounded-lg bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all"
+                    title="Download PDF"
+                  >
+                    <Download size={14} />
+                  </a>
+                </div>
               </div>
-            </div>
 
-            {/* Category Filters */}
-            <div className="flex items-start gap-2">
-              <span className="text-white/40 text-xs uppercase tracking-wider pt-1.5">Issues:</span>
-              <div className="flex flex-wrap gap-1.5">
-                {CATEGORY_FILTERS.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => toggleCategory(cat.id)}
-                    className={`
-                      px-2.5 py-1 rounded-full text-[11px] font-medium transition-all flex items-center gap-1.5
-                      ${categoryFilters.includes(cat.id)
-                        ? `${cat.color} text-white shadow-lg`
-                        : 'bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70'}
-                    `}
-                  >
-                    <span className={`w-1.5 h-1.5 rounded-full ${categoryFilters.includes(cat.id) ? 'bg-white' : cat.color}`} />
-                    {cat.label}
-                  </button>
-                ))}
-                {categoryFilters.length > 0 && (
-                  <button
-                    onClick={() => setCategoryFilters([])}
-                    className="px-2 py-1 text-[11px] text-white/40 hover:text-white/70 transition-colors"
-                  >
-                    Clear
-                  </button>
+              {/* PDF Content with Scroll */}
+              <div
+                ref={pdfScrollRef}
+                className="flex-1 overflow-y-auto bg-slate-800/50 p-6"
+                style={{ scrollbarWidth: 'thin', scrollbarColor: '#4a5568 #1a202c' }}
+              >
+                <PDFDocument
+                  file={currentPdfUrl}
+                  onLoadSuccess={({ numPages }) => setPdfNumPages(numPages)}
+                  loading={
+                    <div className="flex flex-col items-center justify-center py-32 space-y-4">
+                      <div className="w-12 h-12 border-4 border-white/10 border-t-white/50 rounded-full animate-spin"></div>
+                      <p className="text-white/40 text-xs font-mono uppercase tracking-widest">Loading PDF...</p>
+                    </div>
+                  }
+                  error={
+                    <div className="flex flex-col items-center justify-center py-32 text-rose-400">
+                      <FileText size={48} className="mb-4 opacity-50" />
+                      <p className="text-sm">Failed to load PDF</p>
+                    </div>
+                  }
+                  className="flex flex-col items-center gap-4"
+                >
+                  {Array.from(new Array(pdfNumPages), (_, index) => (
+                    <div key={`page_${index + 1}`} className="shadow-2xl rounded-sm overflow-hidden">
+                      <Page
+                        pageNumber={index + 1}
+                        scale={pdfScale}
+                        renderTextLayer={true}
+                        renderAnnotationLayer={true}
+                        className="bg-white"
+                      />
+                    </div>
+                  ))}
+                </PDFDocument>
+
+                {/* Page count indicator */}
+                {pdfNumPages > 0 && (
+                  <div className="text-center mt-6 text-white/30 text-xs">
+                    {pdfNumPages} page{pdfNumPages !== 1 ? 's' : ''}
+                  </div>
                 )}
               </div>
-            </div>
 
-            {/* Results Count */}
-            <div className="text-white/40 text-xs">
-              {filteredDocs.length} of {documents.length} documents
-              {(statusFilter !== 'all' || categoryFilters.length > 0 || searchQuery) && ' (filtered)'}
-            </div>
-          </div>
+              {/* PDF Navigation Hints */}
+              <div className="p-3 border-t border-white/10 flex items-center justify-center">
+                <div className="text-white/30 text-xs">
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">Esc</kbd>
+                  <span className="ml-2">to go back</span>
+                  <span className="mx-3">•</span>
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">+</kbd>
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px] ml-1">-</kbd>
+                  <span className="ml-2">to zoom</span>
+                </div>
+              </div>
+            </>
+          ) : (
+            /* Card List View */
+            <>
+              {/* Search & Filters */}
+              <div className="p-4 border-b border-white/10 space-y-3">
+                {/* Search Bar */}
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search by drug name, number..."
+                    className="w-full pl-10 pr-10 py-2.5 bg-white/5 border border-white/10 rounded-lg
+                      text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30
+                      focus:border-white/30 transition-all text-sm"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors"
+                    >
+                      <X size={16} />
+                    </button>
+                  )}
+                </div>
 
-          {/* Snap Scroll Container */}
-          <div
-            ref={scrollContainerRef}
-            className="flex-1 overflow-y-auto snap-y snap-mandatory"
-            style={{ scrollBehavior: 'smooth' }}
-          >
-            {filteredDocs.map((doc, index) => (
-              <div
-                key={doc.file_hash}
-                data-card-index={index}
-                className="snap-start h-full min-h-[calc(100vh-120px)] flex items-center justify-center p-8"
-              >
-                <div
-                  onClick={() => setCurrentIndex(index)}
-                  onDoubleClick={() => handleViewDocument(doc)}
-                  className={`
-                    relative w-full max-w-lg cursor-pointer transition-all duration-500
-                    ${index === currentIndex ? 'scale-100 opacity-100' : 'scale-95 opacity-40'}
-                  `}
-                >
-                  {/* Card */}
-                  <div
-                    className={`
-                      relative rounded-2xl p-10 shadow-2xl
-                      ${doc.approval_status === 'approved'
-                        ? 'bg-gradient-to-br from-emerald-900/90 to-emerald-950/90 border border-emerald-500/30'
-                        : 'bg-gradient-to-br from-rose-900/90 to-rose-950/90 border border-rose-500/30'}
-                    `}
-                  >
-                    {/* Card Number (top right) */}
-                    <div className="absolute top-4 right-4 text-white/20 text-sm font-mono">
-                      {index + 1} / {filteredDocs.length}
-                    </div>
-
-                    {/* Main Content */}
-                    <div className="text-center">
-                      {/* Application Number - Hero */}
-                      <div className="text-6xl md:text-7xl font-bold text-white mb-4 tracking-tight">
-                        {doc.application_number || 'N/A'}
-                      </div>
-
-                      {/* Drug Name */}
-                      <div className="text-xl md:text-2xl text-white/70 font-light mb-6">
-                        ({doc.enriched?.openfda_brand_name || doc.drug_name || 'Unknown Drug'})
-                      </div>
-
-                      {/* Status */}
-                      <div
+                {/* Status Filter */}
+                <div className="flex items-center gap-2">
+                  <span className="text-white/40 text-xs uppercase tracking-wider">Status:</span>
+                  <div className="flex gap-1">
+                    {STATUS_FILTERS.map((filter) => (
+                      <button
+                        key={filter.id}
+                        onClick={() => setStatusFilter(filter.id as typeof statusFilter)}
                         className={`
-                          inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
-                          ${doc.approval_status === 'approved'
-                            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                            : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'}
+                          px-3 py-1.5 rounded-lg text-xs font-medium transition-all
+                          ${statusFilter === filter.id
+                            ? filter.id === 'approved'
+                              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                              : filter.id === 'unapproved'
+                                ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                                : 'bg-white/20 text-white border border-white/30'
+                            : 'bg-white/5 text-white/50 border border-transparent hover:bg-white/10 hover:text-white/70'}
                         `}
                       >
-                        {doc.approval_status === 'approved' ? '✓ Eventually Approved' : '✗ Not Approved'}
-                      </div>
+                        {filter.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-                      {/* Date */}
-                      {doc.letter_date && (
-                        <div className="mt-6 text-white/40 text-sm">
-                          {doc.letter_date}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Deficiency Pills */}
-                    {doc.deficiency_categories.length > 0 && (
-                      <div className="mt-8 flex flex-wrap justify-center gap-2">
-                        {doc.deficiency_categories.slice(0, 4).map((cat) => (
-                          <span
-                            key={cat}
-                            className="px-3 py-1 bg-white/5 text-white/50 text-xs rounded-full capitalize"
-                          >
-                            {cat.replace(/_/g, ' ')}
-                          </span>
-                        ))}
-                      </div>
+                {/* Category Filters */}
+                <div className="flex items-start gap-2">
+                  <span className="text-white/40 text-xs uppercase tracking-wider pt-1.5">Issues:</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {CATEGORY_FILTERS.map((cat) => (
+                      <button
+                        key={cat.id}
+                        onClick={() => toggleCategory(cat.id)}
+                        className={`
+                          px-2.5 py-1 rounded-full text-[11px] font-medium transition-all flex items-center gap-1.5
+                          ${categoryFilters.includes(cat.id)
+                            ? `${cat.color} text-white shadow-lg`
+                            : 'bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70'}
+                        `}
+                      >
+                        <span className={`w-1.5 h-1.5 rounded-full ${categoryFilters.includes(cat.id) ? 'bg-white' : cat.color}`} />
+                        {cat.label}
+                      </button>
+                    ))}
+                    {categoryFilters.length > 0 && (
+                      <button
+                        onClick={() => setCategoryFilters([])}
+                        className="px-2 py-1 text-[11px] text-white/40 hover:text-white/70 transition-colors"
+                      >
+                        Clear
+                      </button>
                     )}
                   </div>
                 </div>
-              </div>
-            ))}
 
-            {filteredDocs.length === 0 && (
-              <div className="h-full flex flex-col items-center justify-center text-white/30">
-                <Search size={48} strokeWidth={1} className="mb-4" />
-                <p className="text-lg">No documents found</p>
+                {/* Results Count */}
+                <div className="text-white/40 text-xs">
+                  {filteredDocs.length} of {documents.length} documents
+                  {(statusFilter !== 'all' || categoryFilters.length > 0 || searchQuery) && ' (filtered)'}
+                </div>
               </div>
-            )}
-          </div>
 
-          {/* Navigation Hints */}
-          <div className="p-4 border-t border-white/10 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={goToPrev}
-                disabled={currentIndex === 0}
-                className="p-2 rounded-lg bg-white/5 text-white/50 hover:bg-white/10 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-all"
+              {/* Snap Scroll Container */}
+              <div
+                ref={scrollContainerRef}
+                className="flex-1 overflow-y-auto snap-y snap-mandatory"
+                style={{ scrollBehavior: 'smooth' }}
               >
-                <ChevronUp size={20} />
-              </button>
-              <button
-                onClick={goToNext}
-                disabled={currentIndex >= filteredDocs.length - 1}
-                className="p-2 rounded-lg bg-white/5 text-white/50 hover:bg-white/10 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-all"
-              >
-                <ChevronDown size={20} />
-              </button>
-            </div>
-            <div className="text-white/30 text-xs">
-              <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">↑</kbd>
-              <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px] ml-1">↓</kbd>
-              <span className="ml-2">to navigate</span>
-              <span className="mx-2">•</span>
-              <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">Enter</kbd>
-              <span className="ml-2">to open</span>
-            </div>
-          </div>
+                {filteredDocs.map((doc, index) => (
+                  <div
+                    key={doc.file_hash}
+                    data-card-index={index}
+                    className="snap-start h-full min-h-[calc(100vh-120px)] flex items-center justify-center p-8"
+                  >
+                    <div
+                      onClick={() => openPdfView(index)}
+                      className={`
+                        relative w-full max-w-lg cursor-pointer transition-all duration-500
+                        ${index === currentIndex ? 'scale-100 opacity-100' : 'scale-95 opacity-40'}
+                      `}
+                    >
+                      {/* Card */}
+                      <div
+                        className={`
+                          relative rounded-2xl p-10 shadow-2xl
+                          ${doc.approval_status === 'approved'
+                            ? 'bg-gradient-to-br from-emerald-900/90 to-emerald-950/90 border border-emerald-500/30'
+                            : 'bg-gradient-to-br from-rose-900/90 to-rose-950/90 border border-rose-500/30'}
+                        `}
+                      >
+                        {/* Card Number (top right) */}
+                        <div className="absolute top-4 right-4 text-white/20 text-sm font-mono">
+                          {index + 1} / {filteredDocs.length}
+                        </div>
+
+                        {/* Main Content */}
+                        <div className="text-center">
+                          {/* Application Number - Hero */}
+                          <div className="text-6xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+                            {doc.application_number || 'N/A'}
+                          </div>
+
+                          {/* Drug Name */}
+                          <div className="text-xl md:text-2xl text-white/70 font-light mb-6">
+                            ({doc.enriched?.openfda_brand_name || doc.drug_name || 'Unknown Drug'})
+                          </div>
+
+                          {/* Status */}
+                          <div
+                            className={`
+                              inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
+                              ${doc.approval_status === 'approved'
+                                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                                : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'}
+                            `}
+                          >
+                            {doc.approval_status === 'approved' ? '✓ Eventually Approved' : '✗ Not Approved'}
+                          </div>
+
+                          {/* Date */}
+                          {doc.letter_date && (
+                            <div className="mt-6 text-white/40 text-sm">
+                              {doc.letter_date}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Deficiency Pills */}
+                        {doc.deficiency_categories.length > 0 && (
+                          <div className="mt-8 flex flex-wrap justify-center gap-2">
+                            {doc.deficiency_categories.slice(0, 4).map((cat) => (
+                              <span
+                                key={cat}
+                                className="px-3 py-1 bg-white/5 text-white/50 text-xs rounded-full capitalize"
+                              >
+                                {cat.replace(/_/g, ' ')}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {filteredDocs.length === 0 && (
+                  <div className="h-full flex flex-col items-center justify-center text-white/30">
+                    <Search size={48} strokeWidth={1} className="mb-4" />
+                    <p className="text-lg">No documents found</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Navigation Hints */}
+              <div className="p-4 border-t border-white/10 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={goToPrev}
+                    disabled={currentIndex === 0}
+                    className="p-2 rounded-lg bg-white/5 text-white/50 hover:bg-white/10 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-all"
+                  >
+                    <ChevronUp size={20} />
+                  </button>
+                  <button
+                    onClick={goToNext}
+                    disabled={currentIndex >= filteredDocs.length - 1}
+                    className="p-2 rounded-lg bg-white/5 text-white/50 hover:bg-white/10 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-all"
+                  >
+                    <ChevronDown size={20} />
+                  </button>
+                </div>
+                <div className="text-white/30 text-xs">
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">↑</kbd>
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px] ml-1">↓</kbd>
+                  <span className="ml-2">to navigate</span>
+                  <span className="mx-2">•</span>
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">o</kbd>
+                  <span className="ml-2">to open PDF</span>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Vertical Divider Line */}
