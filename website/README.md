@@ -9,12 +9,17 @@ Interactive website showcasing analysis of FDA Complete Response Letters (CRLs).
 - **Language Analysis**: NLP insights, word clouds, sentiment analysis, and embeddings
 - **Predictive Models**: ML model performance and feature importance
 - **Methodology**: Transparent documentation of methods and limitations
+- **Hybrid Search**: Advanced BM25 + Vector semantic search across all CRLs
+- **PDF Viewer**: Inline PDF viewer with highlight annotations
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 (React 18)
 - **Styling**: Tailwind CSS
 - **Charts**: Recharts (lightweight, responsive)
+- **Search**: Hybrid BM25 + Vector search with transformers.js
+- **Embeddings**: all-MiniLM-L6-v2 (384 dimensions, ~23MB model)
+- **PDF Viewer**: react-pdf with custom highlight overlays
 - **Deployment**: Vercel (static export)
 
 ## Document View Feature
@@ -36,6 +41,57 @@ pip install pdfplumber
 # Run the generation script
 python scripts/generate_highlights.py
 ```
+
+## Hybrid Search Feature
+
+The search functionality combines two powerful search methods:
+
+### Search Modes
+
+| Mode | Description | Best For |
+|------|-------------|----------|
+| **Hybrid** (default) | Combines BM25 + semantic using Reciprocal Rank Fusion | General queries, best of both worlds |
+| **Keyword (BM25)** | Exact term matching with TF-IDF weighting | Drug names, application numbers, exact phrases |
+| **Semantic (AI)** | Vector similarity using sentence embeddings | Conceptual queries like "manufacturing quality issues" |
+
+### Architecture
+
+```
+User Query
+    │
+    ├──► BM25 Search (client-side, instant)
+    │         │
+    └──► Vector Search (transformers.js, ~100ms)
+              │
+    ┌─────────┴─────────┐
+    │ Reciprocal Rank   │
+    │    Fusion (RRF)   │
+    └─────────┬─────────┘
+              ▼
+       Ranked Results
+```
+
+### Embedding Generation
+
+Document embeddings are pre-computed using sentence-transformers:
+
+```bash
+# Generate embeddings for all CRL documents
+python scripts/generate_embeddings.py
+```
+
+This creates `public/data/embeddings.json` (~2.4MB for 297 documents).
+
+### Performance
+
+| Metric | Value |
+|--------|-------|
+| Model size | ~23 MB (cached in IndexedDB) |
+| First load | ~3-5 seconds (model download) |
+| Subsequent loads | <500ms (from cache) |
+| Query embedding | ~50-100ms |
+| BM25 search | <10ms |
+| **Total latency** | **~100-150ms** |
 
 ## Local Development
 
@@ -160,24 +216,36 @@ website/
 │   ├── language/            # Language analysis page
 │   ├── predictive/          # ML models page
 │   ├── methodology/         # Methodology page
+│   ├── search/              # Hybrid search page
+│   ├── pdf-viewer/[fileHash]/ # Inline PDF viewer
 │   ├── about/               # About & FAQ page
 │   ├── layout.tsx           # Root layout
 │   └── globals.css          # Global styles
 ├── components/
 │   ├── Navigation.tsx       # Top navigation bar
 │   ├── Footer.tsx           # Footer component
+│   ├── SearchBar.tsx        # Search input with mode toggle
+│   ├── SearchResults.tsx    # Search results display
 │   └── dashboards/          # Dashboard components
 │       ├── OverviewDashboard.tsx
 │       ├── DeficienciesDashboard.tsx
 │       ├── LanguageDashboard.tsx
 │       └── PredictiveDashboard.tsx
+├── lib/
+│   ├── bm25.ts              # BM25 search implementation
+│   ├── vectorSearch.ts      # Vector similarity search
+│   ├── hybridSearch.ts      # RRF fusion logic
+│   ├── embeddingService.ts  # transformers.js wrapper
+│   └── useHybridSearch.ts   # React hook for search
 ├── public/
 │   ├── data/                # JSON data files
 │   │   ├── overview.json
 │   │   ├── deficiencies.json
 │   │   ├── language.json
 │   │   ├── predictive.json
-│   │   └── sample_crls.json
+│   │   ├── search_crls.json # Search index data
+│   │   └── embeddings.json  # Pre-computed embeddings
+│   ├── pdfs/                # CRL PDF files
 │   └── images/              # Analysis visualizations
 │       ├── *.png            # Main analysis charts
 │       └── language/        # Language analysis charts

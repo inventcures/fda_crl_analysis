@@ -172,6 +172,9 @@ fda_crl_analysis/
 │   ├── llm_analysis.py     # Claude-based deep analysis
 │   ├── analysis.py         # Statistical analysis & visualization
 │   └── language_analysis.py # NLP, sentiment & latent space viz
+├── scripts/
+│   ├── generate_embeddings.py # Generate vector embeddings for search
+│   └── generate_highlights.py # Generate PDF highlight annotations
 ├── data/
 │   ├── raw/
 │   │   ├── approved_crls/  # Downloaded approved CRL PDFs
@@ -194,6 +197,11 @@ fda_crl_analysis/
 │       ├── cluster_analysis.png
 │       ├── topic_model.png
 │       └── severity_landscape.png
+├── website/                # Interactive Next.js website
+│   ├── app/               # Next.js app pages
+│   ├── components/        # React components
+│   ├── lib/               # Search & embedding logic
+│   └── public/data/       # Static data & embeddings
 └── notebooks/
     └── exploratory_analysis.ipynb
 ```
@@ -320,13 +328,39 @@ latent_viz.plot_topic_model(documents, n_topics=5, save_path="topics.png")
 4. **OCR Quality**: Some older PDFs may have extraction errors
 5. **Missing Context**: CRLs don't include sponsor responses or negotiation history
 
+## Interactive Website
+
+The project includes a fully interactive website for exploring CRL data:
+
+**Live Demo**: [https://fda-crl-analysis.vercel.app](https://fda-crl-analysis.vercel.app)
+
+### Website Features
+
+- **Hybrid Search**: BM25 + Vector semantic search across all 297 CRLs
+  - Keyword mode for exact matches (drug names, application numbers)
+  - Semantic mode for conceptual queries ("manufacturing issues", "safety concerns")
+  - Hybrid mode combines both using Reciprocal Rank Fusion
+- **Inline PDF Viewer**: View CRLs with highlight annotations
+- **Interactive Dashboards**: Overview, deficiencies, language analysis, predictive models
+- **Fully Offline**: Uses transformers.js for client-side embeddings (no API calls)
+
+### Running Locally
+
+```bash
+cd website
+npm install
+npm run dev
+# Open http://localhost:3000
+```
+
+See `website/README.md` for detailed documentation.
+
 ## Contributing
 
 Areas for contribution:
 - Additional visualization types (Sankey, network graphs)
 - Time series analysis for temporal trends
 - Integration with Drugs@FDA for approval dates
-- Dashboard/web interface
 - Additional ML models (neural networks, survival analysis)
 
 ## License
