@@ -21,11 +21,39 @@ interface DocumentViewerLayoutProps {
   documents: Document[]
 }
 
+// Define available filters
+const STATUS_FILTERS = [
+  { id: 'all', label: 'All' },
+  { id: 'approved', label: 'Approved' },
+  { id: 'unapproved', label: 'Rejected' },
+] as const
+
+const CATEGORY_FILTERS = [
+  { id: 'oncology_specific', label: 'Oncology', color: 'bg-purple-500' },
+  { id: 'safety', label: 'Safety', color: 'bg-red-500' },
+  { id: 'efficacy', label: 'Efficacy', color: 'bg-orange-500' },
+  { id: 'cmc_manufacturing', label: 'CMC', color: 'bg-yellow-500' },
+  { id: 'clinical_trial_design', label: 'Trial Design', color: 'bg-blue-500' },
+  { id: 'statistical', label: 'Statistical', color: 'bg-cyan-500' },
+  { id: 'bioequivalence', label: 'Bioequiv.', color: 'bg-teal-500' },
+] as const
+
 export default function DocumentViewerLayout({ documents }: DocumentViewerLayoutProps) {
   const router = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
+  const [statusFilter, setStatusFilter] = useState<'all' | 'approved' | 'unapproved'>('all')
+  const [categoryFilters, setCategoryFilters] = useState<string[]>([])
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  // Toggle category filter
+  const toggleCategory = (categoryId: string) => {
+    setCategoryFilters(prev =>
+      prev.includes(categoryId)
+        ? prev.filter(c => c !== categoryId)
+        : [...prev, categoryId]
+    )
+  }
 
   // Setup Fuse.js for search
   const fuse = useMemo(() => {
@@ -41,13 +69,30 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
     })
   }, [documents])
 
-  // Filter documents based on search
+  // Filter documents based on search, status, and categories
   const filteredDocs = useMemo(() => {
-    if (!searchQuery.trim()) {
-      return documents
+    let results = documents
+
+    // Apply status filter
+    if (statusFilter !== 'all') {
+      results = results.filter(doc => doc.approval_status === statusFilter)
     }
-    return fuse.search(searchQuery).map((result) => result.item)
-  }, [searchQuery, fuse, documents])
+
+    // Apply category filters (OR logic - match any selected category)
+    if (categoryFilters.length > 0) {
+      results = results.filter(doc =>
+        categoryFilters.some(cat => doc.deficiency_categories.includes(cat))
+      )
+    }
+
+    // Apply search query
+    if (searchQuery.trim()) {
+      const searchResults = fuse.search(searchQuery).map(r => r.item)
+      results = results.filter(doc => searchResults.some(sr => sr.file_hash === doc.file_hash))
+    }
+
+    return results
+  }, [searchQuery, fuse, documents, statusFilter, categoryFilters])
 
   const currentDoc = filteredDocs[currentIndex] || null
 
@@ -140,13 +185,13 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
     return () => container.removeEventListener('scroll', handleScroll)
   }, [currentIndex])
 
-  // Reset index when search changes
+  // Reset index when filters change
   useEffect(() => {
     setCurrentIndex(0)
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop = 0
     }
-  }, [searchQuery])
+  }, [searchQuery, statusFilter, categoryFilters])
 
   return (
     <div className="h-screen flex flex-col bg-[#0a0a0a]">
@@ -154,15 +199,16 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
       <div className="flex-1 flex overflow-hidden">
         {/* Left Pane - Full-Screen Snap Scroll Cards */}
         <div className="w-1/2 flex flex-col bg-[#0a0a0a]">
-          {/* Search Bar - Minimal */}
-          <div className="p-4 border-b border-white/10">
+          {/* Search & Filters */}
+          <div className="p-4 border-b border-white/10 space-y-3">
+            {/* Search Bar */}
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search..."
+                placeholder="Search by drug name, number..."
                 className="w-full pl-10 pr-10 py-2.5 bg-white/5 border border-white/10 rounded-lg
                   text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30
                   focus:border-white/30 transition-all text-sm"
@@ -175,6 +221,67 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                   <X size={16} />
                 </button>
               )}
+            </div>
+
+            {/* Status Filter */}
+            <div className="flex items-center gap-2">
+              <span className="text-white/40 text-xs uppercase tracking-wider">Status:</span>
+              <div className="flex gap-1">
+                {STATUS_FILTERS.map((filter) => (
+                  <button
+                    key={filter.id}
+                    onClick={() => setStatusFilter(filter.id as typeof statusFilter)}
+                    className={`
+                      px-3 py-1.5 rounded-lg text-xs font-medium transition-all
+                      ${statusFilter === filter.id
+                        ? filter.id === 'approved'
+                          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                          : filter.id === 'unapproved'
+                            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                            : 'bg-white/20 text-white border border-white/30'
+                        : 'bg-white/5 text-white/50 border border-transparent hover:bg-white/10 hover:text-white/70'}
+                    `}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Category Filters */}
+            <div className="flex items-start gap-2">
+              <span className="text-white/40 text-xs uppercase tracking-wider pt-1.5">Issues:</span>
+              <div className="flex flex-wrap gap-1.5">
+                {CATEGORY_FILTERS.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => toggleCategory(cat.id)}
+                    className={`
+                      px-2.5 py-1 rounded-full text-[11px] font-medium transition-all flex items-center gap-1.5
+                      ${categoryFilters.includes(cat.id)
+                        ? `${cat.color} text-white shadow-lg`
+                        : 'bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70'}
+                    `}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full ${categoryFilters.includes(cat.id) ? 'bg-white' : cat.color}`} />
+                    {cat.label}
+                  </button>
+                ))}
+                {categoryFilters.length > 0 && (
+                  <button
+                    onClick={() => setCategoryFilters([])}
+                    className="px-2 py-1 text-[11px] text-white/40 hover:text-white/70 transition-colors"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Results Count */}
+            <div className="text-white/40 text-xs">
+              {filteredDocs.length} of {documents.length} documents
+              {(statusFilter !== 'all' || categoryFilters.length > 0 || searchQuery) && ' (filtered)'}
             </div>
           </div>
 
