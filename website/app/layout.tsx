@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Ubuntu_Mono } from 'next/font/google'
+import { Inter, Ubuntu_Mono, Caveat } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -17,6 +17,12 @@ const ubuntuMono = Ubuntu_Mono({
   variable: '--font-ubuntu-mono',
 })
 
+const caveat = Caveat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-caveat',
+})
+
 export const metadata: Metadata = {
   title: 'FDA CRL Analysis - Insights from Complete Response Letters',
   description: 'Analyzing patterns in FDA Complete Response Letters to understand drug approval outcomes',
@@ -29,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${ubuntuMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${ubuntuMono.variable} ${caveat.variable}`}>
       <body className="bg-gray-50 font-sans antialiased">
         <Navigation />
         <main className="min-h-screen">

@@ -31,53 +31,70 @@ interface InteractivePDFViewerProps {
   highlights?: Highlight[]
 }
 
-const CATEGORY_CONFIG: Record<string, { color: string, hover: string, label: string, icon: any }> = {
-  'critical_efficacy': { 
-    color: 'rgba(239, 68, 68, 0.25)', 
-    hover: 'rgba(239, 68, 68, 0.4)', 
+// Saturated highlighter colors like real markers
+const CATEGORY_CONFIG: Record<string, { color: string, hover: string, solid: string, label: string, icon: any, shortLabel: string }> = {
+  'critical_efficacy': {
+    color: 'rgba(255, 100, 150, 0.45)', // Hot Pink highlighter
+    hover: 'rgba(255, 100, 150, 0.6)',
+    solid: '#ff6496',
     label: 'Critical Efficacy',
+    shortLabel: 'efficacy!',
     icon: Activity
   },
-  'safety_alert': { 
-    color: 'rgba(220, 38, 38, 0.25)', // Darker Red
-    hover: 'rgba(220, 38, 38, 0.4)', 
+  'safety_alert': {
+    color: 'rgba(255, 80, 80, 0.45)', // Red highlighter
+    hover: 'rgba(255, 80, 80, 0.6)',
+    solid: '#ff5050',
     label: 'Safety Alert',
+    shortLabel: 'safety issue',
     icon: AlertTriangle
   },
-  'clinical_design': { 
-    color: 'rgba(249, 115, 22, 0.25)', // Orange
-    hover: 'rgba(249, 115, 22, 0.4)', 
+  'clinical_design': {
+    color: 'rgba(255, 165, 0, 0.45)', // Orange highlighter
+    hover: 'rgba(255, 165, 0, 0.6)',
+    solid: '#ffa500',
     label: 'Study Design',
+    shortLabel: 'study design',
     icon: Info
   },
-  'cmc_quality': { 
-    color: 'rgba(234, 179, 8, 0.25)', // Yellow
-    hover: 'rgba(234, 179, 8, 0.4)', 
+  'cmc_quality': {
+    color: 'rgba(255, 255, 0, 0.5)', // Yellow highlighter
+    hover: 'rgba(255, 255, 0, 0.65)',
+    solid: '#ffff00',
     label: 'CMC / Quality',
+    shortLabel: 'CMC',
     icon: Info
   },
-  'labeling_negotiation': { 
-    color: 'rgba(147, 51, 234, 0.25)', // Purple
-    hover: 'rgba(147, 51, 234, 0.4)', 
+  'labeling_negotiation': {
+    color: 'rgba(200, 150, 255, 0.45)', // Purple highlighter
+    hover: 'rgba(200, 150, 255, 0.6)',
+    solid: '#c896ff',
     label: 'Labeling',
+    shortLabel: 'labeling',
     icon: Info
   },
-  'approval_strength': { 
-    color: 'rgba(34, 197, 94, 0.25)', // Green
-    hover: 'rgba(34, 197, 94, 0.4)', 
+  'approval_strength': {
+    color: 'rgba(100, 255, 150, 0.45)', // Green highlighter
+    hover: 'rgba(100, 255, 150, 0.6)',
+    solid: '#64ff96',
     label: 'Approval Strength',
+    shortLabel: 'good!',
     icon: CheckCircle
   },
-  'mitigating_factor': { 
-    color: 'rgba(14, 165, 233, 0.25)', // Sky Blue
-    hover: 'rgba(14, 165, 233, 0.4)', 
+  'mitigating_factor': {
+    color: 'rgba(100, 200, 255, 0.45)', // Cyan highlighter
+    hover: 'rgba(100, 200, 255, 0.6)',
+    solid: '#64c8ff',
     label: 'Mitigating Factor',
+    shortLabel: 'mitigating',
     icon: CheckCircle
   },
-  'other': { 
-    color: 'rgba(107, 114, 128, 0.25)', 
-    hover: 'rgba(107, 114, 128, 0.4)', 
+  'other': {
+    color: 'rgba(180, 180, 180, 0.4)',
+    hover: 'rgba(180, 180, 180, 0.55)',
+    solid: '#b4b4b4',
     label: 'Other',
+    shortLabel: 'note',
     icon: Info
   }
 }
@@ -190,89 +207,156 @@ export default function InteractivePDFViewer({ fileUrl, fileName, highlights = [
                 const pageHighlights = highlightsByPage[pageNum] || []
                 const pageWidth = pageHighlights[0]?.page_width || 612
                 const pageHeight = pageHighlights[0]?.page_height || 792
+                // Extended width for margin notes
+                const extendedWidth = pageWidth + 180
 
                 return (
-                  <div key={`page_${pageNum}`} id={`page_${pageNum}`} className="relative shadow-xl rounded-sm overflow-hidden group">
-                    <Page
-                      pageNumber={pageNum}
-                      scale={scale}
-                      renderTextLayer={true}
-                      renderAnnotationLayer={true}
-                      className="bg-white"
-                    />
-                    
-                    {/* Highlights Overlay */}
+                  <div key={`page_${pageNum}`} id={`page_${pageNum}`} className="relative group flex">
+                    {/* PDF Page */}
+                    <div className="relative shadow-xl rounded-l-sm overflow-hidden bg-white">
+                      <Page
+                        pageNumber={pageNum}
+                        scale={scale}
+                        renderTextLayer={true}
+                        renderAnnotationLayer={true}
+                        className="bg-white"
+                      />
+
+                      {/* Highlights Overlay */}
+                      {showHighlights && pageHighlights.length > 0 && (
+                        <svg
+                          className="absolute top-0 left-0 pointer-events-none"
+                          style={{
+                            width: `${pageWidth * scale}px`,
+                            height: `${pageHeight * scale}px`,
+                            zIndex: 10
+                          }}
+                          viewBox={`0 0 ${pageWidth} ${pageHeight}`}
+                          preserveAspectRatio="none"
+                        >
+                          {pageHighlights.map((h: any, i) => {
+                            const config = CATEGORY_CONFIG[h.category] || CATEGORY_CONFIG['other']
+                            const isHovered = hoveredIndex === h.globalIndex
+
+                            return (
+                              <g key={i} className="pointer-events-auto">
+                                {/* Main highlight - like a real highlighter mark */}
+                                <rect
+                                  x={h.rect[0] - 2}
+                                  y={h.rect[1] - 1}
+                                  width={h.rect[2] + 4}
+                                  height={h.rect[3] + 2}
+                                  rx={2}
+                                  fill={isHovered ? config.hover : config.color}
+                                  className="cursor-pointer transition-all duration-200"
+                                  style={{ mixBlendMode: 'multiply' }}
+                                  onMouseEnter={() => setHoveredIndex(h.globalIndex)}
+                                  onMouseLeave={() => setHoveredIndex(null)}
+                                  onClick={() => scrollToHighlight(h.page)}
+                                />
+
+                                {/* Underline accent for emphasis */}
+                                {h.trigger_rect && (
+                                  <line
+                                    x1={h.trigger_rect[0]}
+                                    y1={h.trigger_rect[1] + h.trigger_rect[3] + 1}
+                                    x2={h.trigger_rect[0] + h.trigger_rect[2]}
+                                    y2={h.trigger_rect[1] + h.trigger_rect[3] + 1}
+                                    stroke={config.solid}
+                                    strokeWidth={2}
+                                    strokeLinecap="round"
+                                  />
+                                )}
+
+                                {/* Bracket/line to margin */}
+                                <path
+                                  d={`M ${h.rect[0] + h.rect[2] + 5} ${h.rect[1] + h.rect[3]/2}
+                                      L ${pageWidth - 10} ${h.rect[1] + h.rect[3]/2}`}
+                                  stroke={config.solid}
+                                  strokeWidth={isHovered ? 2 : 1.5}
+                                  strokeDasharray={isHovered ? "0" : "3,3"}
+                                  fill="none"
+                                  opacity={isHovered ? 1 : 0.6}
+                                  className="transition-all duration-200"
+                                />
+
+                                {/* Double bracket marks */}
+                                <text
+                                  x={pageWidth - 8}
+                                  y={h.rect[1] + h.rect[3]/2 + 4}
+                                  fill={config.solid}
+                                  fontSize="14"
+                                  fontWeight="bold"
+                                >
+                                  ‖
+                                </text>
+                              </g>
+                            )
+                          })}
+                        </svg>
+                      )}
+                    </div>
+
+                    {/* Margin Notes Column */}
                     {showHighlights && pageHighlights.length > 0 && (
-                      <svg 
-                        className="absolute top-0 left-0 w-full h-full pointer-events-none"
-                        viewBox={`0 0 ${pageWidth} ${pageHeight}`}
-                        style={{ zIndex: 10 }}
+                      <div
+                        className="relative bg-amber-50/80 border-l-2 border-amber-200 shadow-inner"
+                        style={{
+                          width: `${180 * scale}px`,
+                          minHeight: `${pageHeight * scale}px`
+                        }}
                       >
+                        {/* Ruled lines effect */}
+                        <div
+                          className="absolute inset-0 opacity-20"
+                          style={{
+                            backgroundImage: 'repeating-linear-gradient(transparent, transparent 23px, #d97706 24px)',
+                            backgroundSize: '100% 24px'
+                          }}
+                        />
+
+                        {/* Margin annotations */}
                         {pageHighlights.map((h: any, i) => {
                           const config = CATEGORY_CONFIG[h.category] || CATEGORY_CONFIG['other']
                           const isHovered = hoveredIndex === h.globalIndex
-                          
+                          // Position annotation near the highlight's Y position
+                          const yPos = (h.rect[1] / pageHeight) * 100
+
                           return (
-                            <Tooltip.Root key={i} open={isHovered}>
-                              <Tooltip.Trigger asChild>
-                                <g className="cursor-help pointer-events-auto">
-                                  {/* Context Highlight */}
-                                  <rect
-                                    x={h.rect[0] - (isHovered ? 5 : 0)}
-                                    y={h.rect[1] - (isHovered ? 2 : 0)}
-                                    width={h.rect[2] + (isHovered ? 10 : 0)}
-                                    height={h.rect[3] + (isHovered ? 4 : 0)}
-                                    rx={4}
-                                    fill={config.color}
-                                    className={`transition-all duration-300 ease-out ${isHovered ? 'opacity-100' : 'opacity-80'}`}
-                                    style={{ mixBlendMode: 'multiply' }}
-                                    onMouseEnter={() => setHoveredIndex(h.globalIndex)}
-                                    onMouseLeave={() => setHoveredIndex(null)}
-                                  />
-                                  
-                                  {/* Trigger Word Sub-Highlight */}
-                                  {h.trigger_rect && (
-                                    <rect
-                                      x={h.trigger_rect[0]} 
-                                      y={h.trigger_rect[1]} 
-                                      width={h.trigger_rect[2]} 
-                                      height={h.trigger_rect[3]}
-                                      rx={2} 
-                                      fill="transparent" 
-                                      stroke={config.hover.replace('0.4', '1')} 
-                                      strokeWidth={isHovered ? 3 : 2}
-                                      className="animate-pulse"
-                                    />
-                                  )}
-                                  
-                                  {/* Connecting Line (Simulated) */}
-                                  {isHovered && (
-                                     <line 
-                                       x1={h.rect[0] + h.rect[2]} 
-                                       y1={h.rect[1] + h.rect[3]/2} 
-                                       x2={pageWidth} 
-                                       y2={h.rect[1] + h.rect[3]/2} 
-                                       stroke={config.hover.replace('0.4', '1')} 
-                                       strokeWidth={2} 
-                                       strokeDasharray="4"
-                                       className="animate-in fade-in"
-                                     />
-                                  )}
-                                </g>
-                              </Tooltip.Trigger>
-                              <Tooltip.Portal>
-                                <Tooltip.Content
-                                  className="bg-gray-900 text-white p-3 rounded shadow-xl text-xs max-w-xs z-50"
-                                  sideOffset={5}
-                                >
-                                  <p>{h.reason}</p>
-                                  <Tooltip.Arrow className="fill-gray-900" />
-                                </Tooltip.Content>
-                              </Tooltip.Portal>
-                            </Tooltip.Root>
+                            <div
+                              key={i}
+                              className={`absolute left-2 right-2 transition-all duration-200 cursor-pointer ${
+                                isHovered ? 'scale-105 z-10' : ''
+                              }`}
+                              style={{
+                                top: `${Math.min(yPos, 85)}%`,
+                                transform: `rotate(${(i % 3 - 1) * 1.5}deg)` // Slight random rotation
+                              }}
+                              onMouseEnter={() => setHoveredIndex(h.globalIndex)}
+                              onMouseLeave={() => setHoveredIndex(null)}
+                              onClick={() => scrollToHighlight(h.page)}
+                            >
+                              <div
+                                className="p-2 rounded font-handwriting"
+                                style={{
+                                  fontSize: `${16 * scale}px`,
+                                  color: config.solid,
+                                  textShadow: isHovered ? `0 0 8px ${config.color}` : 'none',
+                                  lineHeight: 1.2
+                                }}
+                              >
+                                <span className="font-bold">{config.shortLabel}</span>
+                                {h.type === 'risk' && (
+                                  <span className="ml-1">⚠</span>
+                                )}
+                                {h.type === 'strength' && (
+                                  <span className="ml-1">✓</span>
+                                )}
+                              </div>
+                            </div>
                           )
                         })}
-                      </svg>
+                      </div>
                     )}
                   </div>
                 )

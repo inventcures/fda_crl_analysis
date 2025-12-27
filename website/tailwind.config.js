@@ -9,6 +9,7 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
         mono: ['var(--font-ubuntu-mono)', 'SF Mono', 'monospace'],
+        handwriting: ['var(--font-caveat)', 'Caveat', 'cursive'],
       },
       colors: {
         // Premium, human-centric palette
