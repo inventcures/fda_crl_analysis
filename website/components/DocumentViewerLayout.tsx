@@ -2,11 +2,13 @@
 
 import React, { useRef, useState, useCallback, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { FileText, Eye, EyeOff, Search, X, ChevronUp, ChevronDown, ArrowLeft, Download, ZoomIn, ZoomOut, ExternalLink } from 'lucide-react'
-import Fuse from 'fuse.js'
+import { FileText, Eye, EyeOff, Search, X, ChevronUp, ChevronDown, ArrowLeft, Download, ZoomIn, ZoomOut, ExternalLink, Zap, Type, Brain, Loader2 } from 'lucide-react'
 import { Document as PDFDocument, Page, pdfjs } from 'react-pdf'
+import { sendGAEvent } from '@next/third-parties/google'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
+import { useHybridSearch } from '@/lib/useHybridSearch'
+import { SearchMode } from '@/lib/hybridSearch'
 
 // Configure PDF.js worker
 if (typeof window !== 'undefined') {
@@ -36,7 +38,20 @@ interface Document {
   enriched?: {
     openfda_brand_name?: string
   }
+  [key: string]: any
 }
+
+// Search mode configurations
+const SEARCH_MODES: Array<{
+  mode: SearchMode
+  icon: typeof Zap
+  label: string
+  description: string
+}> = [
+  { mode: 'hybrid', icon: Zap, label: 'Hybrid', description: 'Best of both' },
+  { mode: 'keyword', icon: Type, label: 'Keyword', description: 'Exact match' },
+  { mode: 'semantic', icon: Brain, label: 'Semantic', description: 'AI-powered' },
+]
 
 type ViewMode = 'cards' | 'pdf'
 
@@ -76,7 +91,6 @@ const CATEGORY_FILTERS = [
 export default function DocumentViewerLayout({ documents }: DocumentViewerLayoutProps) {
   const router = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<'all' | 'approved' | 'unapproved'>('all')
   const [categoryFilters, setCategoryFilters] = useState<string[]>([])
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -89,6 +103,23 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
   const [showHighlights, setShowHighlights] = useState(true)
   const [highlightsLoading, setHighlightsLoading] = useState(false)
   const pdfScrollRef = useRef<HTMLDivElement>(null)
+
+  // Use hybrid search hook
+  const {
+    query: searchQuery,
+    setQuery: setSearchQuery,
+    results: searchResults,
+    isSearching,
+    searchMode,
+    setSearchMode,
+    isModelLoading,
+    modelProgress,
+    isSemanticReady,
+    loadModel,
+  } = useHybridSearch(documents, {
+    initialMode: 'hybrid',
+    autoLoadModel: false,
+  })
 
   // Group highlights by page
   const highlightsByPage = useMemo(() => {
@@ -109,23 +140,10 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
     )
   }
 
-  // Setup Fuse.js for search
-  const fuse = useMemo(() => {
-    return new Fuse(documents, {
-      keys: [
-        { name: 'drug_name', weight: 2 },
-        { name: 'application_number', weight: 2 },
-        { name: 'enriched.openfda_brand_name', weight: 2 },
-        { name: 'deficiency_categories', weight: 1 },
-      ],
-      threshold: 0.3,
-      includeScore: true,
-    })
-  }, [documents])
-
-  // Filter documents based on search, status, and categories
+  // Filter documents based on search results, status, and categories
   const filteredDocs = useMemo(() => {
-    let results = documents
+    // Start with search results if query exists, otherwise all documents
+    let results = searchQuery.trim() ? searchResults : documents
 
     // Apply status filter
     if (statusFilter !== 'all') {
@@ -135,23 +153,35 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
     // Apply category filters (OR logic - match any selected category)
     if (categoryFilters.length > 0) {
       results = results.filter(doc =>
-        categoryFilters.some(cat => doc.deficiency_categories.includes(cat))
+        categoryFilters.some(cat => doc.deficiency_categories?.includes(cat))
       )
     }
 
-    // Apply search query
-    if (searchQuery.trim()) {
-      const searchResults = fuse.search(searchQuery).map(r => r.item)
-      results = results.filter(doc => searchResults.some(sr => sr.file_hash === doc.file_hash))
-    }
-
     return results
-  }, [searchQuery, fuse, documents, statusFilter, categoryFilters])
+  }, [searchQuery, searchResults, documents, statusFilter, categoryFilters])
 
   const currentDoc = filteredDocs[currentIndex] || null
 
+  // Track search events
+  useEffect(() => {
+    if (searchQuery.trim() && !isSearching) {
+      sendGAEvent('event', 'search', {
+        search_term: searchQuery,
+        search_mode: searchMode,
+        results_count: searchResults.length,
+      })
+    }
+  }, [searchQuery, isSearching, searchMode, searchResults.length])
+
   const handleViewDocument = useCallback(
-    (doc: Document) => {
+    (doc: Document | { file_hash: string; drug_name?: string; application_number?: string; approval_status?: string }) => {
+      // Track document view in GA
+      sendGAEvent('event', 'view_document', {
+        document_id: doc.file_hash,
+        drug_name: doc.drug_name || 'Unknown',
+        application_number: doc.application_number || 'N/A',
+        approval_status: doc.approval_status || 'unknown',
+      })
       router.push(`/document-view/${doc.file_hash}?from=document-view`)
     },
     [router]
@@ -588,11 +618,14 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search by drug name, number..."
+                    placeholder="Search by drug name, deficiency, sponsor..."
                     className="w-full pl-10 pr-10 py-2.5 bg-white/5 border border-white/10 rounded-lg
                       text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30
                       focus:border-white/30 transition-all text-sm"
                   />
+                  {isSearching && (
+                    <Loader2 className="absolute right-10 top-1/2 -translate-y-1/2 text-white/50 animate-spin" size={16} />
+                  )}
                   {searchQuery && (
                     <button
                       onClick={() => setSearchQuery('')}
@@ -601,6 +634,60 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                       <X size={16} />
                     </button>
                   )}
+                </div>
+
+                {/* Search Mode Toggle */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1">
+                    {SEARCH_MODES.map((modeConfig) => {
+                      const Icon = modeConfig.icon
+                      const isActive = searchMode === modeConfig.mode
+                      const needsModel = (modeConfig.mode === 'semantic' || modeConfig.mode === 'hybrid') && !isSemanticReady
+
+                      return (
+                        <button
+                          key={modeConfig.mode}
+                          onClick={() => {
+                            if (needsModel) loadModel()
+                            setSearchMode(modeConfig.mode)
+                          }}
+                          disabled={isModelLoading && modeConfig.mode === 'semantic'}
+                          title={modeConfig.description}
+                          className={`
+                            flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all
+                            ${isActive
+                              ? 'bg-white/20 text-white'
+                              : 'text-white/50 hover:text-white/70 hover:bg-white/10'}
+                          `}
+                        >
+                          <Icon size={12} />
+                          <span className="hidden sm:inline">{modeConfig.label}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  {/* Model Status */}
+                  <div className="flex items-center gap-2 text-[10px] text-white/40">
+                    {isModelLoading && (
+                      <span className="flex items-center gap-1">
+                        <Loader2 size={10} className="animate-spin" />
+                        Loading AI ({Math.round(modelProgress)}%)
+                      </span>
+                    )}
+                    {!isModelLoading && isSemanticReady && searchMode !== 'keyword' && (
+                      <span className="flex items-center gap-1 text-emerald-400">
+                        <Brain size={10} />
+                        AI Ready
+                      </span>
+                    )}
+                    {!isModelLoading && !isSemanticReady && searchMode !== 'keyword' && (
+                      <button onClick={loadModel} className="text-blue-400 hover:underline flex items-center gap-1">
+                        <Brain size={10} />
+                        Enable AI
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 {/* Status Filter */}
@@ -731,7 +818,7 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                         </div>
 
                         {/* Deficiency Pills */}
-                        {doc.deficiency_categories.length > 0 && (
+                        {doc.deficiency_categories && doc.deficiency_categories.length > 0 && (
                           <div className="mt-8 flex flex-wrap justify-center gap-2">
                             {doc.deficiency_categories.slice(0, 4).map((cat) => (
                               <span
@@ -850,7 +937,7 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                   )}
 
                   {/* Deficiency Categories */}
-                  {currentDoc.deficiency_categories.length > 0 && (
+                  {currentDoc.deficiency_categories && currentDoc.deficiency_categories.length > 0 && (
                     <div>
                       <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">
                         Deficiency Categories

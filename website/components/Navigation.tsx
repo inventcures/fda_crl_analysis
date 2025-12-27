@@ -24,14 +24,13 @@ export default function Navigation() {
 
   const links = [
     { href: '/', label: 'Home' },
-    { href: '/search', label: 'Search' },
+    { href: '/document-view', label: 'Documents' },
     { href: '/overview', label: 'Overview' },
     { href: '/deficiencies', label: 'Deficiencies' },
     { href: '/language', label: 'Language' },
     { href: '/predictive', label: 'Predictions' },
     { href: '/oncology', label: 'Oncology' },
     { href: '/methodology', label: 'Methodology' },
-    { href: '/document-view', label: 'Document View' },
     { href: 'https://docs.google.com/document/d/1vab8o8PoSyGJdtFYLQk0zHD56Cvmo5VlmNPlBQyBURo/edit?usp=sharing', label: 'Report', external: true },
     { href: '/about', label: 'About' },
   ]
