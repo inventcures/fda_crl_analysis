@@ -300,21 +300,12 @@ export default function InteractivePDFViewer({ fileUrl, fileName, highlights = [
                     {/* Margin Notes Column */}
                     {showHighlights && pageHighlights.length > 0 && (
                       <div
-                        className="relative bg-amber-50/80 border-l-2 border-amber-200 shadow-inner"
+                        className="relative bg-slate-50 border-l border-slate-200"
                         style={{
-                          width: `${180 * scale}px`,
+                          width: `${160 * scale}px`,
                           minHeight: `${pageHeight * scale}px`
                         }}
                       >
-                        {/* Ruled lines effect */}
-                        <div
-                          className="absolute inset-0 opacity-20"
-                          style={{
-                            backgroundImage: 'repeating-linear-gradient(transparent, transparent 23px, #d97706 24px)',
-                            backgroundSize: '100% 24px'
-                          }}
-                        />
-
                         {/* Margin annotations */}
                         {pageHighlights.map((h: any, i) => {
                           const config = CATEGORY_CONFIG[h.category] || CATEGORY_CONFIG['other']
@@ -325,33 +316,44 @@ export default function InteractivePDFViewer({ fileUrl, fileName, highlights = [
                           return (
                             <div
                               key={i}
-                              className={`absolute left-2 right-2 transition-all duration-200 cursor-pointer ${
-                                isHovered ? 'scale-105 z-10' : ''
+                              className={`absolute left-1 right-1 transition-all duration-200 cursor-pointer ${
+                                isHovered ? 'z-10' : ''
                               }`}
                               style={{
-                                top: `${Math.min(yPos, 85)}%`,
-                                transform: `rotate(${(i % 3 - 1) * 1.5}deg)` // Slight random rotation
+                                top: `${Math.min(yPos, 90)}%`
                               }}
                               onMouseEnter={() => setHoveredIndex(h.globalIndex)}
                               onMouseLeave={() => setHoveredIndex(null)}
                               onClick={() => scrollToHighlight(h.page)}
                             >
                               <div
-                                className="p-2 rounded font-handwriting"
+                                className={`px-2 py-1 rounded-md border transition-all ${
+                                  isHovered
+                                    ? 'bg-white shadow-md border-slate-300'
+                                    : 'bg-white/80 border-slate-200/50'
+                                }`}
                                 style={{
-                                  fontSize: `${16 * scale}px`,
-                                  color: config.solid,
-                                  textShadow: isHovered ? `0 0 8px ${config.color}` : 'none',
-                                  lineHeight: 1.2
+                                  fontSize: `${11 * scale}px`,
                                 }}
                               >
-                                <span className="font-bold">{config.shortLabel}</span>
-                                {h.type === 'risk' && (
-                                  <span className="ml-1">⚠</span>
-                                )}
-                                {h.type === 'strength' && (
-                                  <span className="ml-1">✓</span>
-                                )}
+                                <div className="flex items-center gap-1">
+                                  <div
+                                    className="w-2 h-2 rounded-full flex-shrink-0"
+                                    style={{ backgroundColor: config.solid }}
+                                  />
+                                  <span
+                                    className="font-semibold text-slate-700 truncate"
+                                    style={{ fontSize: `${10 * scale}px` }}
+                                  >
+                                    {config.shortLabel.toUpperCase()}
+                                  </span>
+                                  {h.type === 'risk' && (
+                                    <span className="text-red-500 flex-shrink-0">⚠</span>
+                                  )}
+                                  {h.type === 'strength' && (
+                                    <span className="text-green-500 flex-shrink-0">✓</span>
+                                  )}
+                                </div>
                               </div>
                             </div>
                           )
