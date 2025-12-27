@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useCallback, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { FileText, Eye, Search, X, ChevronUp, ChevronDown, ArrowLeft, Download, ZoomIn, ZoomOut, ExternalLink } from 'lucide-react'
+import { FileText, Eye, EyeOff, Search, X, ChevronUp, ChevronDown, ArrowLeft, Download, ZoomIn, ZoomOut, ExternalLink } from 'lucide-react'
 import Fuse from 'fuse.js'
 import { Document as PDFDocument, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
@@ -11,6 +11,19 @@ import 'react-pdf/dist/Page/TextLayer.css'
 // Configure PDF.js worker
 if (typeof window !== 'undefined') {
   pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
+}
+
+interface Highlight {
+  page: number
+  rect: number[]
+  trigger_rect?: number[]
+  text: string
+  category: string
+  type: string
+  reason?: string
+  sentiment?: string
+  page_width: number
+  page_height: number
 }
 
 interface Document {
@@ -26,6 +39,18 @@ interface Document {
 }
 
 type ViewMode = 'cards' | 'pdf'
+
+// Highlight category colors (matching InteractivePDFViewer)
+const HIGHLIGHT_COLORS: Record<string, { color: string, solid: string, shortLabel: string }> = {
+  'critical_efficacy': { color: 'rgba(255, 100, 150, 0.45)', solid: '#ff6496', shortLabel: 'efficacy!' },
+  'safety_alert': { color: 'rgba(255, 80, 80, 0.45)', solid: '#ff5050', shortLabel: 'safety' },
+  'clinical_design': { color: 'rgba(255, 165, 0, 0.45)', solid: '#ffa500', shortLabel: 'design' },
+  'cmc_quality': { color: 'rgba(255, 255, 0, 0.5)', solid: '#ffff00', shortLabel: 'CMC' },
+  'labeling_negotiation': { color: 'rgba(200, 150, 255, 0.45)', solid: '#c896ff', shortLabel: 'labeling' },
+  'approval_strength': { color: 'rgba(100, 255, 150, 0.45)', solid: '#64ff96', shortLabel: 'good!' },
+  'mitigating_factor': { color: 'rgba(100, 200, 255, 0.45)', solid: '#64c8ff', shortLabel: 'mitigating' },
+  'other': { color: 'rgba(180, 180, 180, 0.4)', solid: '#b4b4b4', shortLabel: 'note' }
+}
 
 interface DocumentViewerLayoutProps {
   documents: Document[]
@@ -60,7 +85,20 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
   const [viewMode, setViewMode] = useState<ViewMode>('cards')
   const [pdfNumPages, setPdfNumPages] = useState<number>(0)
   const [pdfScale, setPdfScale] = useState(1.0)
+  const [highlights, setHighlights] = useState<Highlight[]>([])
+  const [showHighlights, setShowHighlights] = useState(true)
+  const [highlightsLoading, setHighlightsLoading] = useState(false)
   const pdfScrollRef = useRef<HTMLDivElement>(null)
+
+  // Group highlights by page
+  const highlightsByPage = useMemo(() => {
+    const grouped: Record<number, Highlight[]> = {}
+    highlights.forEach((h) => {
+      if (!grouped[h.page]) grouped[h.page] = []
+      grouped[h.page].push(h)
+    })
+    return grouped
+  }, [highlights])
 
   // Toggle category filter
   const toggleCategory = (categoryId: string) => {
@@ -148,15 +186,43 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
     }
   }, [currentIndex, scrollToCard])
 
+  // Fetch highlights for a document
+  const fetchHighlights = useCallback(async (fileHash: string) => {
+    setHighlightsLoading(true)
+    try {
+      const response = await fetch('/data/crl_highlights.json')
+      if (response.ok) {
+        const data = await response.json()
+        if (data[fileHash]?.highlights) {
+          setHighlights(data[fileHash].highlights)
+        } else {
+          setHighlights([])
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load highlights:', error)
+      setHighlights([])
+    } finally {
+      setHighlightsLoading(false)
+    }
+  }, [])
+
   // PDF viewing functions
   const openPdfView = useCallback((docIndex?: number) => {
     // If docIndex provided, set it first
+    const idx = typeof docIndex === 'number' ? docIndex : currentIndex
     if (typeof docIndex === 'number') {
       setCurrentIndex(docIndex)
     }
     setViewMode('pdf')
     setPdfNumPages(0) // Reset page count for new document
-  }, [])
+
+    // Fetch highlights for the document
+    const doc = filteredDocs[idx]
+    if (doc) {
+      fetchHighlights(doc.file_hash)
+    }
+  }, [currentIndex, filteredDocs, fetchHighlights])
 
   const closePdfView = useCallback(() => {
     setViewMode('cards')
@@ -304,6 +370,21 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                       <ZoomIn size={14} />
                     </button>
                   </div>
+                  {/* Highlights Toggle */}
+                  <button
+                    onClick={() => setShowHighlights(!showHighlights)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs transition-all ${
+                      showHighlights
+                        ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                        : 'bg-white/5 text-white/50 hover:bg-white/10'
+                    }`}
+                    title={showHighlights ? 'Hide Annotations' : 'Show Annotations'}
+                  >
+                    {showHighlights ? <Eye size={12} /> : <EyeOff size={12} />}
+                    {highlights.length > 0 && (
+                      <span className="font-mono">{highlights.length}</span>
+                    )}
+                  </button>
                   {/* Open in full viewer */}
                   <button
                     onClick={() => handleViewDocument(currentDoc)}
@@ -348,17 +429,131 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                   }
                   className="flex flex-col items-center gap-4"
                 >
-                  {Array.from(new Array(pdfNumPages), (_, index) => (
-                    <div key={`page_${index + 1}`} className="shadow-2xl rounded-sm overflow-hidden">
-                      <Page
-                        pageNumber={index + 1}
-                        scale={pdfScale}
-                        renderTextLayer={true}
-                        renderAnnotationLayer={true}
-                        className="bg-white"
-                      />
-                    </div>
-                  ))}
+                  {Array.from(new Array(pdfNumPages), (_, index) => {
+                    const pageNum = index + 1
+                    const pageHighlights = highlightsByPage[pageNum] || []
+                    const pageWidth = pageHighlights[0]?.page_width || 612
+                    const pageHeight = pageHighlights[0]?.page_height || 792
+
+                    return (
+                      <div key={`page_${pageNum}`} className="flex">
+                        {/* PDF Page with Highlights */}
+                        <div className="relative shadow-2xl rounded-l-sm overflow-hidden bg-white">
+                          <Page
+                            pageNumber={pageNum}
+                            scale={pdfScale}
+                            renderTextLayer={true}
+                            renderAnnotationLayer={true}
+                            className="bg-white"
+                          />
+
+                          {/* Highlight Overlay */}
+                          {showHighlights && pageHighlights.length > 0 && (
+                            <svg
+                              className="absolute top-0 left-0 pointer-events-none"
+                              style={{
+                                width: `${pageWidth * pdfScale}px`,
+                                height: `${pageHeight * pdfScale}px`,
+                                zIndex: 10
+                              }}
+                              viewBox={`0 0 ${pageWidth} ${pageHeight}`}
+                              preserveAspectRatio="none"
+                            >
+                              {pageHighlights.map((h, i) => {
+                                const config = HIGHLIGHT_COLORS[h.category] || HIGHLIGHT_COLORS['other']
+                                return (
+                                  <g key={i}>
+                                    {/* Highlight rectangle */}
+                                    <rect
+                                      x={h.rect[0] - 2}
+                                      y={h.rect[1] - 1}
+                                      width={h.rect[2] + 4}
+                                      height={h.rect[3] + 2}
+                                      rx={2}
+                                      fill={config.color}
+                                      style={{ mixBlendMode: 'multiply' }}
+                                    />
+                                    {/* Underline accent */}
+                                    {h.trigger_rect && (
+                                      <line
+                                        x1={h.trigger_rect[0]}
+                                        y1={h.trigger_rect[1] + h.trigger_rect[3] + 1}
+                                        x2={h.trigger_rect[0] + h.trigger_rect[2]}
+                                        y2={h.trigger_rect[1] + h.trigger_rect[3] + 1}
+                                        stroke={config.solid}
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                      />
+                                    )}
+                                    {/* Line to margin */}
+                                    <path
+                                      d={`M ${h.rect[0] + h.rect[2] + 5} ${h.rect[1] + h.rect[3]/2}
+                                          L ${pageWidth - 10} ${h.rect[1] + h.rect[3]/2}`}
+                                      stroke={config.solid}
+                                      strokeWidth={1.5}
+                                      strokeDasharray="3,3"
+                                      fill="none"
+                                      opacity={0.6}
+                                    />
+                                  </g>
+                                )
+                              })}
+                            </svg>
+                          )}
+                        </div>
+
+                        {/* Margin Notes Column */}
+                        {showHighlights && pageHighlights.length > 0 && (
+                          <div
+                            className="relative bg-amber-50/90 border-l-2 border-amber-300 shadow-inner"
+                            style={{
+                              width: `${140 * pdfScale}px`,
+                              minHeight: `${pageHeight * pdfScale}px`
+                            }}
+                          >
+                            {/* Ruled lines effect */}
+                            <div
+                              className="absolute inset-0 opacity-20"
+                              style={{
+                                backgroundImage: 'repeating-linear-gradient(transparent, transparent 23px, #d97706 24px)',
+                                backgroundSize: '100% 24px'
+                              }}
+                            />
+
+                            {/* Margin annotations */}
+                            {pageHighlights.map((h, i) => {
+                              const config = HIGHLIGHT_COLORS[h.category] || HIGHLIGHT_COLORS['other']
+                              const yPos = (h.rect[1] / pageHeight) * 100
+
+                              return (
+                                <div
+                                  key={i}
+                                  className="absolute left-2 right-2"
+                                  style={{
+                                    top: `${Math.min(yPos, 90)}%`,
+                                    transform: `rotate(${(i % 3 - 1) * 1.5}deg)`
+                                  }}
+                                >
+                                  <div
+                                    className="p-1.5 font-handwriting font-bold"
+                                    style={{
+                                      fontSize: `${14 * pdfScale}px`,
+                                      color: config.solid,
+                                      lineHeight: 1.2
+                                    }}
+                                  >
+                                    {config.shortLabel}
+                                    {h.type === 'risk' && ' ⚠'}
+                                    {h.type === 'strength' && ' ✓'}
+                                  </div>
+                                </div>
+                              )
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
                 </PDFDocument>
 
                 {/* Page count indicator */}
