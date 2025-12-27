@@ -13,7 +13,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-import { Brain, MessageSquare, TrendingUp, ChevronDown, ZoomIn, X, Layers, PieChart } from 'lucide-react'
+import { Brain, MessageSquare, TrendingUp, ChevronDown, ZoomIn, X, Layers, PieChart, Sparkles } from 'lucide-react'
+import EmbeddingExplorer from '../EmbeddingExplorer'
 
 interface LanguageData {
   severity: {
@@ -575,45 +576,20 @@ export default function LanguageDashboard() {
           />
         </motion.section>
 
-        {/* SECTION 5: Advanced Semantics */}
+        {/* SECTION 5: Interactive Embedding Explorer */}
         <motion.section variants={itemVariants} className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl border border-purple-200">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-              <Brain size={24} className="text-purple-600" />
-              Latent Semantic Analysis
+              <Sparkles size={24} className="text-purple-600" />
+              Interactive Embedding Explorer
             </h2>
-            <p className="text-gray-600 text-sm">Exploring hidden semantic structures using dimensionality reduction and clustering. Click any visualization to zoom.</p>
+            <p className="text-gray-600 text-sm">
+              Explore semantic relationships between CRL documents. Switch between t-SNE and UMAP projections,
+              color by different attributes, and click any point to view the full document.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <ImageCard
-              src="/images/language/tsne_embeddings.png"
-              alt="t-SNE Embeddings"
-              title="t-SNE Embeddings"
-              onZoom={handleZoom}
-            />
-            <ImageCard
-              src="/images/language/umap_embeddings.png"
-              alt="UMAP Embeddings"
-              title="UMAP Embeddings"
-              onZoom={handleZoom}
-            />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <ImageCard
-              src="/images/language/cluster_analysis.png"
-              alt="Cluster Analysis"
-              title="Cluster Analysis"
-              onZoom={handleZoom}
-            />
-            <ImageCard
-              src="/images/language/severity_landscape.png"
-              alt="Severity Landscape"
-              title="Severity Landscape"
-              onZoom={handleZoom}
-            />
-          </div>
+          <EmbeddingExplorer />
         </motion.section>
 
         {/* SECTION 6: Topic & Sentiment */}
