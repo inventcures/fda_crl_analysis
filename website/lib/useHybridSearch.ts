@@ -28,6 +28,7 @@ interface UseHybridSearchOptions {
   initialMode?: SearchMode
   autoLoadModel?: boolean
   debounceMs?: number
+  initialQuery?: string
 }
 
 interface UseHybridSearchReturn {
@@ -57,6 +58,7 @@ const DEFAULT_OPTIONS: UseHybridSearchOptions = {
   initialMode: 'hybrid',
   autoLoadModel: false,
   debounceMs: 200,
+  initialQuery: '',
 }
 
 export function useHybridSearch(
@@ -66,7 +68,7 @@ export function useHybridSearch(
   const opts = { ...DEFAULT_OPTIONS, ...options }
 
   // State
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState(opts.initialQuery || '')
   const [searchResults, setSearchResults] = useState<HybridSearchResult[]>([])
   const [isSearching, setIsSearching] = useState(false)
   const [isIndexed, setIsIndexed] = useState(false)

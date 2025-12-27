@@ -1,7 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import { notFound } from 'next/navigation'
-import InteractivePDFViewer from '@/components/InteractivePDFViewer'
+import { Suspense } from 'react'
+import DocumentViewerWithNav from '@/components/DocumentViewerWithNav'
 
 // Define types
 interface Highlight {
@@ -26,12 +27,12 @@ export async function generateStaticParams() {
 
 async function getData(id: string) {
   const dataDir = path.join(process.cwd(), 'public', 'data')
-  
+
   // Get CRL metadata
   const crlPath = path.join(dataDir, 'enriched_crls.json')
   const crls = JSON.parse(fs.readFileSync(crlPath, 'utf8'))
   const crl = crls.find((d: any) => d.file_hash === id)
-  
+
   // Get Highlights
   const highlightsPath = path.join(dataDir, 'crl_highlights.json')
   let highlights = []
@@ -56,12 +57,15 @@ export default async function DocumentPage({ params }: { params: Promise<{ id: s
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-64px)] overflow-hidden">
-      <InteractivePDFViewer 
-        fileUrl={`/pdfs/${id}.pdf`}
-        fileName={`${crl.application_number}_CRL.pdf`}
-        highlights={highlights}
-      />
-    </div>
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-[calc(100vh-64px)] bg-slate-900">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-slate-600 border-t-blue-500 rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-slate-400">Loading Document...</p>
+        </div>
+      </div>
+    }>
+      <DocumentViewerWithNav crl={crl} highlights={highlights} />
+    </Suspense>
   )
 }

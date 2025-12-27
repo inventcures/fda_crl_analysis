@@ -152,7 +152,7 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
 
   const handleViewDocument = useCallback(
     (doc: Document) => {
-      router.push(`/document-view/${doc.file_hash}`)
+      router.push(`/document-view/${doc.file_hash}?from=document-view`)
     },
     [router]
   )

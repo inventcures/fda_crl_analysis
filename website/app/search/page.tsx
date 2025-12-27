@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import SearchBar from '@/components/SearchBar'
-import SearchResults from '@/components/SearchResults'
+import SearchResultsStack from '@/components/SearchResultsStack'
 import { useHybridSearch } from '@/lib/useHybridSearch'
 
 interface CRLDocument {
@@ -17,7 +18,11 @@ interface CRLDocument {
   [key: string]: any
 }
 
-export default function SearchPage() {
+// Inner component that uses useSearchParams
+function SearchPageContent() {
+  const searchParams = useSearchParams()
+  const initialQuery = searchParams.get('q') || ''
+
   const [documents, setDocuments] = useState<CRLDocument[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -83,7 +88,7 @@ export default function SearchPage() {
       })
   }, [])
 
-  // Initialize hybrid search
+  // Initialize hybrid search with URL query param if present
   const {
     query,
     setQuery,
@@ -98,6 +103,7 @@ export default function SearchPage() {
   } = useHybridSearch(documents, {
     initialMode: 'hybrid',
     autoLoadModel: false, // User triggers model load
+    initialQuery,
   })
 
   if (loading) {
@@ -192,9 +198,27 @@ export default function SearchPage() {
           </div>
         )}
 
-        {/* Results */}
-        <SearchResults results={results} isSearching={isSearching} query={query} />
+        {/* Results - Stacked Card View */}
+        <SearchResultsStack results={results} isSearching={isSearching} query={query} />
       </div>
     </div>
+  )
+}
+
+// Main export with Suspense boundary for useSearchParams
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-page min-h-screen py-12">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="text-center py-24">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-accent border-r-transparent"></div>
+            <p className="mt-4 text-text-secondary font-mono">Loading search...</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <SearchPageContent />
+    </Suspense>
   )
 }

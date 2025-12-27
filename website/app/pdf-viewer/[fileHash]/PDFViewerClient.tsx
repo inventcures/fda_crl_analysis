@@ -1,9 +1,8 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import ErrorBoundary from '@/components/ErrorBoundary'
 
@@ -98,12 +97,42 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
   // Lock body scroll when this component is mounted
   useScrollLock()
 
+  const router = useRouter()
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('q') || undefined
+  const from = searchParams.get('from')
   const page = searchParams.get('page') ? parseInt(searchParams.get('page')!) : 1
 
   const [metadata, setMetadata] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+
+  // Handle back navigation
+  const handleBack = useCallback(() => {
+    if (from === 'search') {
+      if (searchQuery) {
+        router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+      } else {
+        router.push('/search')
+      }
+    } else if (from === 'document-view') {
+      router.push('/document-view')
+    } else {
+      router.push('/search')
+    }
+  }, [from, searchQuery, router])
+
+  // ESC key handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        handleBack()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleBack])
 
   // Load CRL metadata from search data
   useEffect(() => {
@@ -136,13 +165,13 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
       <div className="bg-white border-b border-gray-200 p-4 flex-shrink-0">
         <div className="container mx-auto max-w-7xl flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link
-              href="/search"
+            <button
+              onClick={handleBack}
               className="flex items-center gap-2 text-fda-blue hover:underline"
             >
               <ArrowLeft size={20} />
-              Back to Search
-            </Link>
+              Back{from === 'search' ? ' to Search' : from === 'document-view' ? ' to Documents' : ' to Search'}
+            </button>
 
             {metadata && (
               <div className="border-l border-gray-300 pl-4">
@@ -163,6 +192,10 @@ export default function PDFViewerClient({ fileHash }: PDFViewerClientProps) {
                 </div>
               </div>
             )}
+          </div>
+          <div className="flex items-center gap-2 text-gray-400 text-xs">
+            <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-[10px]">Esc</kbd>
+            <span>to go back</span>
           </div>
         </div>
       </div>
