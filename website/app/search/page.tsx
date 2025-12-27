@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import SearchBar from '@/components/SearchBar'
 import SearchResults from '@/components/SearchResults'
 import { useHybridSearch } from '@/lib/useHybridSearch'
@@ -21,6 +21,50 @@ export default function SearchPage() {
   const [documents, setDocuments] = useState<CRLDocument[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  // Generate autocomplete suggestions from documents
+  const suggestions = useMemo(() => {
+    const suggestionSet = new Set<string>()
+
+    documents.forEach((doc) => {
+      // Add drug names
+      if (doc.drug_name && doc.drug_name !== 'Unknown') {
+        suggestionSet.add(doc.drug_name)
+      }
+
+      // Add sponsor names
+      if (doc.sponsor_name && doc.sponsor_name !== 'Unknown') {
+        suggestionSet.add(doc.sponsor_name)
+      }
+
+      // Add therapeutic areas
+      if (doc.therapeutic_area && doc.therapeutic_area !== 'unknown') {
+        // Capitalize first letter
+        const area = doc.therapeutic_area.charAt(0).toUpperCase() + doc.therapeutic_area.slice(1)
+        suggestionSet.add(area)
+      }
+
+      // Add deficiency categories (formatted nicely)
+      if (doc.deficiency_categories) {
+        doc.deficiency_categories.forEach((cat) => {
+          // Convert snake_case to Title Case
+          const formatted = cat
+            .split('_')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ')
+          suggestionSet.add(formatted)
+        })
+      }
+
+      // Add application numbers
+      if (doc.application_number) {
+        suggestionSet.add(doc.application_number)
+      }
+    })
+
+    // Sort alphabetically
+    return Array.from(suggestionSet).sort((a, b) => a.localeCompare(b))
+  }, [documents])
 
   // Load search data
   useEffect(() => {
@@ -115,6 +159,7 @@ export default function SearchPage() {
             modelProgress={modelProgress}
             isSemanticReady={isSemanticReady}
             onLoadModel={loadModel}
+            suggestions={suggestions}
           />
         </div>
 
