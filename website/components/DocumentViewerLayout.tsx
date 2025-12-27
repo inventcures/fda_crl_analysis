@@ -173,7 +173,7 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
   // Get PDF URL for current document
   const currentPdfUrl = useMemo(() => {
     if (!currentDoc) return null
-    return `/api/document/${currentDoc.file_hash}`
+    return `/pdfs/${currentDoc.file_hash}.pdf`
   }, [currentDoc])
 
   // Keyboard navigation
