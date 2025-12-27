@@ -55,16 +55,71 @@ const SEARCH_MODES: Array<{
 
 type ViewMode = 'cards' | 'pdf'
 
-// Highlight category colors (matching InteractivePDFViewer)
-const HIGHLIGHT_COLORS: Record<string, { color: string, solid: string, shortLabel: string }> = {
-  'critical_efficacy': { color: 'rgba(255, 100, 150, 0.45)', solid: '#ff6496', shortLabel: 'efficacy!' },
-  'safety_alert': { color: 'rgba(255, 80, 80, 0.45)', solid: '#ff5050', shortLabel: 'safety' },
-  'clinical_design': { color: 'rgba(255, 165, 0, 0.45)', solid: '#ffa500', shortLabel: 'design' },
-  'cmc_quality': { color: 'rgba(255, 255, 0, 0.5)', solid: '#ffff00', shortLabel: 'CMC' },
-  'labeling_negotiation': { color: 'rgba(200, 150, 255, 0.45)', solid: '#c896ff', shortLabel: 'labeling' },
-  'approval_strength': { color: 'rgba(100, 255, 150, 0.45)', solid: '#64ff96', shortLabel: 'good!' },
-  'mitigating_factor': { color: 'rgba(100, 200, 255, 0.45)', solid: '#64c8ff', shortLabel: 'mitigating' },
-  'other': { color: 'rgba(180, 180, 180, 0.4)', solid: '#b4b4b4', shortLabel: 'note' }
+// Highlight category colors - redesigned for visibility
+// badge = background color for margin pill, text = text color, line = connector line color
+const HIGHLIGHT_COLORS: Record<string, {
+  color: string      // PDF highlight overlay
+  solid: string      // Connector line color
+  shortLabel: string // Short annotation label
+  badge: string      // Margin badge background
+  text: string       // Margin badge text color
+}> = {
+  'critical_efficacy': {
+    color: 'rgba(220, 38, 38, 0.25)',
+    solid: '#dc2626',
+    shortLabel: 'EFFICACY',
+    badge: '#fecaca',  // red-200
+    text: '#991b1b'    // red-800
+  },
+  'safety_alert': {
+    color: 'rgba(239, 68, 68, 0.25)',
+    solid: '#ef4444',
+    shortLabel: 'SAFETY',
+    badge: '#fee2e2',  // red-100
+    text: '#b91c1c'    // red-700
+  },
+  'clinical_design': {
+    color: 'rgba(249, 115, 22, 0.25)',
+    solid: '#f97316',
+    shortLabel: 'DESIGN',
+    badge: '#ffedd5',  // orange-100
+    text: '#c2410c'    // orange-700
+  },
+  'cmc_quality': {
+    color: 'rgba(234, 179, 8, 0.3)',
+    solid: '#ca8a04',
+    shortLabel: 'CMC',
+    badge: '#fef3c7',  // amber-100
+    text: '#92400e'    // amber-800
+  },
+  'labeling_negotiation': {
+    color: 'rgba(168, 85, 247, 0.25)',
+    solid: '#a855f7',
+    shortLabel: 'LABELING',
+    badge: '#f3e8ff',  // purple-100
+    text: '#7c3aed'    // violet-600
+  },
+  'approval_strength': {
+    color: 'rgba(34, 197, 94, 0.25)',
+    solid: '#22c55e',
+    shortLabel: 'POSITIVE',
+    badge: '#dcfce7',  // green-100
+    text: '#166534'    // green-800
+  },
+  'mitigating_factor': {
+    color: 'rgba(59, 130, 246, 0.25)',
+    solid: '#3b82f6',
+    shortLabel: 'MITIGATING',
+    badge: '#dbeafe',  // blue-100
+    text: '#1d4ed8'    // blue-700
+  },
+  'other': {
+    color: 'rgba(107, 114, 128, 0.2)',
+    solid: '#6b7280',
+    shortLabel: 'NOTE',
+    badge: '#f3f4f6',  // gray-100
+    text: '#374151'    // gray-700
+  }
 }
 
 interface DocumentViewerLayoutProps {
@@ -535,22 +590,13 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                         {/* Margin Notes Column */}
                         {showHighlights && pageHighlights.length > 0 && (
                           <div
-                            className="relative bg-amber-50/90 border-l-2 border-amber-300 shadow-inner"
+                            className="relative bg-slate-50 border-l border-slate-200"
                             style={{
                               width: `${140 * pdfScale}px`,
                               minHeight: `${pageHeight * pdfScale}px`
                             }}
                           >
-                            {/* Ruled lines effect */}
-                            <div
-                              className="absolute inset-0 opacity-20"
-                              style={{
-                                backgroundImage: 'repeating-linear-gradient(transparent, transparent 23px, #d97706 24px)',
-                                backgroundSize: '100% 24px'
-                              }}
-                            />
-
-                            {/* Margin annotations */}
+                            {/* Margin annotations as readable pills */}
                             {pageHighlights.map((h, i) => {
                               const config = HIGHLIGHT_COLORS[h.category] || HIGHLIGHT_COLORS['other']
                               const yPos = (h.rect[1] / pageHeight) * 100
@@ -558,23 +604,23 @@ export default function DocumentViewerLayout({ documents }: DocumentViewerLayout
                               return (
                                 <div
                                   key={i}
-                                  className="absolute left-2 right-2"
+                                  className="absolute left-1.5 right-1.5"
                                   style={{
-                                    top: `${Math.min(yPos, 90)}%`,
-                                    transform: `rotate(${(i % 3 - 1) * 1.5}deg)`
+                                    top: `${Math.min(yPos, 92)}%`
                                   }}
                                 >
                                   <div
-                                    className="p-1.5 font-handwriting font-bold"
+                                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-semibold shadow-sm border"
                                     style={{
-                                      fontSize: `${14 * pdfScale}px`,
-                                      color: config.solid,
-                                      lineHeight: 1.2
+                                      fontSize: `${Math.max(10, 11 * pdfScale)}px`,
+                                      backgroundColor: config.badge,
+                                      color: config.text,
+                                      borderColor: config.solid + '40'
                                     }}
                                   >
-                                    {config.shortLabel}
-                                    {h.type === 'risk' && ' ⚠'}
-                                    {h.type === 'strength' && ' ✓'}
+                                    <span>{config.shortLabel}</span>
+                                    {h.type === 'risk' && <span className="text-red-600">!</span>}
+                                    {h.type === 'strength' && <span className="text-emerald-600">✓</span>}
                                   </div>
                                 </div>
                               )
