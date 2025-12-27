@@ -21,6 +21,8 @@ import {
   LabelList,
 } from 'recharts'
 import { Award, Target, TrendingUp, Zap, BarChart3, Sparkles } from 'lucide-react'
+import ChartSkeleton, { StatCardSkeletonGrid } from '@/components/ui/ChartSkeleton'
+import { useChartAnimationConfig } from '@/lib/useReducedMotion'
 
 interface PredictiveData {
   models: Array<{
@@ -297,14 +299,18 @@ export default function PredictiveDashboard() {
     }))
   }, [data])
 
+  // Get animation config respecting reduced motion preference
+  const chartAnimConfig = useChartAnimationConfig()
+
   if (loading) {
     return (
-      <div className="space-y-6">
-        <div className="h-32 bg-gray-100 rounded-lg animate-pulse" />
-        <div className="grid grid-cols-2 gap-4">
-          <div className="h-80 bg-gray-100 rounded-lg animate-pulse" />
-          <div className="h-80 bg-gray-100 rounded-lg animate-pulse" />
+      <div className="space-y-6 max-w-5xl mx-auto">
+        <StatCardSkeletonGrid count={4} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <ChartSkeleton type="bar" height={350} />
+          <ChartSkeleton type="radar" height={350} />
         </div>
+        <ChartSkeleton type="bar" height={300} />
       </div>
     )
   }

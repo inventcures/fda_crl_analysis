@@ -20,6 +20,8 @@ import {
   Cell,
 } from 'recharts'
 import { AlertCircle, CheckCircle2, ArrowUpDown, Filter, LayoutGrid, Columns2, Minus } from 'lucide-react'
+import ChartSkeleton from '@/components/ui/ChartSkeleton'
+import { useChartAnimationConfig } from '@/lib/useReducedMotion'
 
 interface DeficiencyData {
   categories: Array<{
@@ -468,11 +470,18 @@ export default function DeficienciesDashboard() {
     return { frequencyData, rescueData, radarData, allCategoryLabels }
   }, [data, selectedCategories, sortMode])
 
+  // Get animation config respecting reduced motion preference
+  const chartAnimConfig = useChartAnimationConfig()
+
   if (loading) {
     return (
-      <div className="space-y-6">
-        <div className="h-16 bg-gray-100 rounded-lg animate-pulse" />
-        <div className="h-96 bg-gray-100 rounded-lg animate-pulse" />
+      <div className="space-y-6 max-w-5xl mx-auto">
+        <ChartSkeleton type="bar" height={400} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <ChartSkeleton type="bar" height={350} />
+          <ChartSkeleton type="radar" height={350} />
+        </div>
+        <ChartSkeleton type="heatmap" height={400} />
       </div>
     )
   }

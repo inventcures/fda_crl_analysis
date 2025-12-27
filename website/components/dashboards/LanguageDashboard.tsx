@@ -15,6 +15,8 @@ import {
 } from 'recharts'
 import { Brain, MessageSquare, TrendingUp, ChevronDown, ZoomIn, X, Layers, PieChart, Sparkles } from 'lucide-react'
 import EmbeddingExplorer from '../EmbeddingExplorer'
+import ChartSkeleton, { StatCardSkeletonGrid } from '@/components/ui/ChartSkeleton'
+import { useChartAnimationConfig } from '@/lib/useReducedMotion'
 
 interface LanguageData {
   severity: {
@@ -400,14 +402,19 @@ export default function LanguageDashboard() {
     ]
   }, [data])
 
+  // Get animation config respecting reduced motion preference
+  const chartAnimConfig = useChartAnimationConfig()
+
   if (loading) {
     return (
-      <div className="space-y-6">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="h-40 bg-gray-100 rounded-lg animate-pulse" />
-          <div className="h-40 bg-gray-100 rounded-lg animate-pulse" />
+      <div className="space-y-6 max-w-5xl mx-auto">
+        <StatCardSkeletonGrid count={2} />
+        <ChartSkeleton type="bar" height={350} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <ChartSkeleton type="wordcloud" height={300} />
+          <ChartSkeleton type="wordcloud" height={300} />
         </div>
-        <div className="h-80 bg-gray-100 rounded-lg animate-pulse" />
+        <ChartSkeleton type="scatter" height={500} />
       </div>
     )
   }

@@ -18,6 +18,8 @@ import {
   ReferenceLine,
 } from 'recharts'
 import { TrendingUp, BarChart3, Percent, Hash, Filter, Calendar } from 'lucide-react'
+import ChartSkeleton, { StatCardSkeletonGrid } from '@/components/ui/ChartSkeleton'
+import { useChartAnimationConfig } from '@/lib/useReducedMotion'
 
 interface OverviewData {
   summary: {
@@ -404,15 +406,15 @@ export default function OverviewDashboard() {
     return { appTypeData: filteredAppTypes, filteredTrends, filteredSummary, allAppTypes }
   }, [data, selectedAppTypes, yearRange, viewMode])
 
+  // Get animation config respecting reduced motion preference
+  const chartAnimConfig = useChartAnimationConfig()
+
   if (loading) {
     return (
-      <div className="space-y-6">
-        <div className="grid grid-cols-3 gap-4">
-          {[1, 2, 3].map(i => (
-            <div key={i} className="h-24 bg-gray-100 rounded-lg animate-pulse" />
-          ))}
-        </div>
-        <div className="h-96 bg-gray-100 rounded-lg animate-pulse" />
+      <div className="space-y-6 max-w-5xl mx-auto">
+        <StatCardSkeletonGrid count={3} />
+        <ChartSkeleton type="bar" height={350} />
+        <ChartSkeleton type="line" height={300} />
       </div>
     )
   }
@@ -519,9 +521,7 @@ export default function OverviewDashboard() {
                     fill={COLORS.approved}
                     barSize={28}
                     radius={[0, 0, 0, 0]}
-                    isAnimationActive={true}
-                    animationDuration={600}
-                    animationEasing="ease-out"
+                    {...chartAnimConfig}
                   >
                     {appTypeData.map((entry, index) => (
                       <Cell
@@ -548,9 +548,7 @@ export default function OverviewDashboard() {
                     fill={COLORS.unapproved}
                     barSize={28}
                     radius={[0, 4, 4, 0]}
-                    isAnimationActive={true}
-                    animationDuration={600}
-                    animationEasing="ease-out"
+                    {...chartAnimConfig}
                   >
                     {appTypeData.map((entry, index) => (
                       <Cell
@@ -644,9 +642,7 @@ export default function OverviewDashboard() {
                   strokeWidth={2}
                   dot={false}
                   strokeDasharray="4 4"
-                  isAnimationActive={true}
-                  animationDuration={800}
-                  animationEasing="ease-out"
+                  {...chartAnimConfig}
                 />
                 <Line
                   type="monotone"
@@ -656,9 +652,7 @@ export default function OverviewDashboard() {
                   strokeWidth={3}
                   dot={{ r: 4, fill: COLORS.approved, strokeWidth: 2, stroke: '#fff' }}
                   activeDot={{ r: 6, stroke: COLORS.approved, strokeWidth: 2 }}
-                  isAnimationActive={true}
-                  animationDuration={1000}
-                  animationEasing="ease-out"
+                  {...chartAnimConfig}
                 />
                 <Line
                   type="monotone"
@@ -667,9 +661,7 @@ export default function OverviewDashboard() {
                   stroke={COLORS.unapproved}
                   strokeWidth={2}
                   dot={{ r: 3, fill: COLORS.unapproved, strokeWidth: 2, stroke: '#fff' }}
-                  isAnimationActive={true}
-                  animationDuration={1000}
-                  animationEasing="ease-out"
+                  {...chartAnimConfig}
                 />
               </LineChart>
             </ResponsiveContainer>
