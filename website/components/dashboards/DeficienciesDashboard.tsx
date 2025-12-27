@@ -22,6 +22,8 @@ import {
 import { AlertCircle, CheckCircle2, ArrowUpDown, Filter, LayoutGrid, Columns2, Minus } from 'lucide-react'
 import ChartSkeleton from '@/components/ui/ChartSkeleton'
 import { useChartAnimationConfig } from '@/lib/useReducedMotion'
+import { useDashboard } from '@/contexts/DashboardContext'
+import FilterToolbar from '@/components/ui/FilterToolbar'
 
 interface DeficiencyData {
   categories: Array<{
@@ -390,11 +392,15 @@ export default function DeficienciesDashboard() {
   const [data, setData] = useState<DeficiencyData | null>(null)
   const [loading, setLoading] = useState(true)
 
-  // Interactive state
+  // Global dashboard state for cross-chart communication
+  const { state: dashboardState, actions: dashboardActions } = useDashboard()
+  const { highlightedCategory } = dashboardState
+  const setHighlightedCategory = dashboardActions.setHighlightedCategory
+
+  // Local interactive state
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [sortMode, setSortMode] = useState<SortMode>('frequency')
   const [comparisonMode, setComparisonMode] = useState<ComparisonMode>('stacked')
-  const [highlightedCategory, setHighlightedCategory] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('/data/deficiencies.json')
@@ -473,6 +479,12 @@ export default function DeficienciesDashboard() {
   // Get animation config respecting reduced motion preference
   const chartAnimConfig = useChartAnimationConfig()
 
+  // Create category label map for FilterToolbar (must be before early returns)
+  const categoryLabelMap = useMemo(() => {
+    if (!data) return {}
+    return Object.fromEntries(data.categories.map(c => [c.category, c.category_label]))
+  }, [data])
+
   if (loading) {
     return (
       <div className="space-y-6 max-w-5xl mx-auto">
@@ -495,6 +507,17 @@ export default function DeficienciesDashboard() {
       animate="visible"
       className="space-y-12 max-w-5xl mx-auto"
     >
+      {/* Active Filters Toolbar */}
+      <FilterToolbar
+        showCategories={true}
+        showYearRange={false}
+        showApproval={false}
+        showTherapeuticAreas={false}
+        showAppTypes={false}
+        categoryLabels={categoryLabelMap}
+        className="mb-6"
+      />
+
       {/* SECTION 1: Frequency */}
       <motion.section variants={itemVariants}>
         <div className="mb-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">

@@ -4,6 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import Providers from '@/components/Providers'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -38,11 +39,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${ubuntuMono.variable} ${caveat.variable}`}>
       <body className="bg-gray-50 font-sans antialiased">
-        <Navigation />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <Providers>
+          <Navigation />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </Providers>
       </body>
       <GoogleAnalytics gaId="G-YQXJ75PNDQ" />
     </html>
