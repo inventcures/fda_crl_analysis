@@ -3,7 +3,19 @@
 import { useState, useEffect } from 'react'
 import SearchBar from '@/components/SearchBar'
 import SearchResults from '@/components/SearchResults'
-import { useSearch, CRLDocument } from '@/lib/useSearch'
+import { useHybridSearch } from '@/lib/useHybridSearch'
+
+interface CRLDocument {
+  file_hash: string
+  drug_name?: string
+  application_number?: string
+  sponsor_name?: string
+  therapeutic_area?: string
+  approval_status?: string
+  letter_date?: string
+  deficiency_categories?: string[]
+  [key: string]: any
+}
 
 export default function SearchPage() {
   const [documents, setDocuments] = useState<CRLDocument[]>([])
@@ -13,24 +25,35 @@ export default function SearchPage() {
   // Load search data
   useEffect(() => {
     fetch('/data/search_crls.json')
-      .then(res => {
+      .then((res) => {
         if (!res.ok) throw new Error('Failed to load search data')
         return res.json()
       })
-      .then(data => {
+      .then((data) => {
         setDocuments(data)
         setLoading(false)
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err.message)
         setLoading(false)
       })
   }, [])
 
-  // Initialize search
-  const { query, setQuery, results, resultCount, isSearching } = useSearch(documents, {
-    threshold: 0.3,
-    includeMatches: true,
+  // Initialize hybrid search
+  const {
+    query,
+    setQuery,
+    results,
+    isSearching,
+    searchMode,
+    setSearchMode,
+    isModelLoading,
+    modelProgress,
+    isSemanticReady,
+    loadModel,
+  } = useHybridSearch(documents, {
+    initialMode: 'hybrid',
+    autoLoadModel: false, // User triggers model load
   })
 
   if (loading) {
@@ -65,41 +88,62 @@ export default function SearchPage() {
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent-light border border-accent-subtle text-accent font-mono text-xs uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-            CRL Database Search
+            Hybrid Search
           </div>
           <h1 className="text-5xl font-normal mb-6 text-text-primary leading-tight">
             Search <span className="text-text-secondary">Complete Response Letters</span>
           </h1>
           <p className="text-xl text-text-secondary font-light max-w-3xl leading-relaxed">
-            Search across <span className="font-mono font-medium text-text-primary">{documents.length}</span> CRLs by drug name, sponsor, deficiencies, or full text.
+            Search across{' '}
+            <span className="font-mono font-medium text-text-primary">{documents.length}</span> CRLs
+            using hybrid BM25 + semantic search.
           </p>
         </div>
       </div>
 
       <div className="container mx-auto px-6 max-w-6xl py-12">
-
         {/* Search Bar */}
         <div className="mb-8">
           <SearchBar
             value={query}
             onChange={setQuery}
-            resultCount={resultCount}
+            resultCount={results.length}
             isSearching={isSearching}
+            searchMode={searchMode}
+            onSearchModeChange={setSearchMode}
+            isModelLoading={isModelLoading}
+            modelProgress={modelProgress}
+            isSemanticReady={isSemanticReady}
+            onLoadModel={loadModel}
           />
         </div>
 
         {/* Search Tips */}
-        {!isSearching && (
+        {!isSearching && !query && (
           <div className="bg-accent-light border-l-4 border-accent p-6 rounded-sm mb-8">
-            <h3 className="font-mono font-bold text-text-primary mb-3">SEARCH TIPS</h3>
+            <h3 className="font-mono font-bold text-text-primary mb-3">SEARCH MODES</h3>
             <ul className="space-y-2 text-sm text-text-primary font-mono">
-              <li>• Search by drug name: "bevacizumab", "keytruda"</li>
-              <li>• Search by sponsor: "genentech", "merck"</li>
-              <li>• Search by deficiency type: "manufacturing", "efficacy", "safety"</li>
-              <li>• Search by therapeutic area: "oncology", "cardiology"</li>
-              <li>• Full-text search works for any content in the CRL</li>
-              <li>• Fuzzy matching handles typos automatically</li>
+              <li>
+                <strong>⚡ Hybrid</strong> — Combines keyword matching + semantic understanding
+                (recommended)
+              </li>
+              <li>
+                <strong>🔤 Keyword (BM25)</strong> — Exact term matching, great for drug names &
+                numbers
+              </li>
+              <li>
+                <strong>🧠 Semantic (AI)</strong> — Finds conceptually similar content (e.g.,
+                "heart problems" → cardiac issues)
+              </li>
             </ul>
+            <div className="mt-4 pt-4 border-t border-accent/20">
+              <h4 className="font-mono font-bold text-text-primary mb-2">EXAMPLE SEARCHES</h4>
+              <ul className="space-y-1 text-sm text-text-secondary font-mono">
+                <li>• Drug names: "keytruda", "opdivo", "herceptin"</li>
+                <li>• Semantic: "manufacturing quality issues", "patient safety concerns"</li>
+                <li>• Deficiencies: "bioequivalence failure", "statistical methodology"</li>
+              </ul>
+            </div>
           </div>
         )}
 

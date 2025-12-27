@@ -2,20 +2,49 @@
 
 import Link from 'next/link'
 import { FileText } from 'lucide-react'
-import { CRLDocument } from '@/lib/useSearch'
+
+// Flexible document type that works with both old and new search
+interface CRLDocument {
+  file_hash: string
+  drug_name?: string
+  application_number?: string
+  sponsor_name?: string
+  therapeutic_area?: string
+  approval_status?: string
+  letter_date?: string
+  deficiency_categories?: string[]
+  snippet?: string
+  page_count?: number
+  has_safety_concerns?: boolean
+  has_efficacy_concerns?: boolean
+  requests_new_trial?: boolean
+  original_filename?: string
+  [key: string]: any
+}
+
+// Accept either wrapped results (from Fuse.js) or plain documents (from hybrid search)
+type SearchResult = { item: CRLDocument; score?: number; matches?: readonly any[] } | CRLDocument
 
 interface SearchResultsProps {
-  results: Array<{ item: CRLDocument; score?: number; matches?: readonly any[] }>
+  results: SearchResult[]
   isSearching: boolean
   query: string
 }
 
+// Helper to normalize result format
+function normalizeResult(result: SearchResult): CRLDocument {
+  if ('item' in result && result.item) {
+    return result.item as CRLDocument
+  }
+  return result as CRLDocument
+}
+
 export default function SearchResults({ results, isSearching, query }: SearchResultsProps) {
-  if (!isSearching) {
+  if (!isSearching && !query) {
     return null
   }
 
-  if (results.length === 0) {
+  if (results.length === 0 && query) {
     return (
       <div className="text-center py-12 border border-dashed border-border-light rounded-sm bg-subtle">
         <p className="text-xl text-text-secondary font-light">No CRLs found matching your search.</p>
@@ -26,13 +55,19 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
     )
   }
 
+  if (results.length === 0) {
+    return null
+  }
+
   return (
     <div className="space-y-4">
-      {results.map(({ item, score }) => (
-        <div
-          key={item.file_hash}
-          className="bg-white rounded-sm border border-border-light p-6 hover:border-accent transition-colors group"
-        >
+      {results.map((result) => {
+        const item = normalizeResult(result)
+        return (
+          <div
+            key={item.file_hash}
+            className="bg-white rounded-sm border border-border-light p-6 hover:border-accent transition-colors group"
+          >
           {/* Header */}
           <div className="flex items-start justify-between mb-3">
             <div className="flex-1">
@@ -70,13 +105,13 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
               </span>
             )}
 
-            {item.deficiency_categories.length > 0 && (
+            {item.deficiency_categories && item.deficiency_categories.length > 0 && (
               <span className="text-text-secondary text-xs">
                 {item.deficiency_categories.length} deficiency categor{item.deficiency_categories.length === 1 ? 'y' : 'ies'}
               </span>
             )}
 
-            {item.page_count > 0 && (
+            {item.page_count && item.page_count > 0 && (
               <span className="text-text-secondary text-xs">
                 {item.page_count} pages
               </span>
@@ -101,7 +136,7 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
           </div>
 
           {/* Deficiency Categories */}
-          {item.deficiency_categories.length > 0 && (
+          {item.deficiency_categories && item.deficiency_categories.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-2">
               {item.deficiency_categories.slice(0, 5).map((category) => (
                 <span
@@ -138,7 +173,8 @@ export default function SearchResults({ results, isSearching, query }: SearchRes
             </a>
           </div>
         </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

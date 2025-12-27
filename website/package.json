@@ -10,6 +10,7 @@
     "export-data": "node scripts/export-data.js"
   },
   "dependencies": {
+    "@huggingface/transformers": "^3.8.1",
     "@radix-ui/react-tooltip": "^1.2.8",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.26",
@@ -24,7 +25,8 @@
     "react-dom": "^18.3.1",
     "react-pdf": "^7.7.1",
     "react-plotly.js": "^2.6.0",
-    "recharts": "^2.13.3"
+    "recharts": "^2.13.3",
+    "wink-bm25-text-search": "^3.1.2"
   },
   "devDependencies": {
     "@types/matter-js": "^0.20.2",
