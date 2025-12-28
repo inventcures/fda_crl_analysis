@@ -1,0 +1,1914 @@
+{
+  "approved": [
+    {
+      "text": "labeling",
+      "value": 3054
+    },
+    {
+      "text": "data",
+      "value": 2680
+    },
+    {
+      "text": "safety",
+      "value": 2346
+    },
+    {
+      "text": "adverse",
+      "value": 2053
+    },
+    {
+      "text": "events",
+      "value": 1788
+    },
+    {
+      "text": "proposed",
+      "value": 1785
+    },
+    {
+      "text": "clinical",
+      "value": 1680
+    },
+    {
+      "text": "include",
+      "value": 1620
+    },
+    {
+      "text": "deficiencies",
+      "value": 1402
+    },
+    {
+      "text": "described",
+      "value": 1268
+    },
+    {
+      "text": "trials",
+      "value": 1184
+    },
+    {
+      "text": "studies",
+      "value": 1183
+    },
+    {
+      "text": "resubmission",
+      "value": 1129
+    },
+    {
+      "text": "original",
+      "value": 1096
+    },
+    {
+      "text": "electronic",
+      "value": 1096
+    },
+    {
+      "text": "study",
+      "value": 1080
+    },
+    {
+      "text": "approved",
+      "value": 1078
+    },
+    {
+      "text": "format",
+      "value": 1073
+    },
+    {
+      "text": "present",
+      "value": 1025
+    },
+    {
+      "text": "food",
+      "value": 1017
+    },
+    {
+      "text": "administration",
+      "value": 884
+    },
+    {
+      "text": "meeting",
+      "value": 869
+    },
+    {
+      "text": "trial",
+      "value": 845
+    },
+    {
+      "text": "update",
+      "value": 842
+    },
+    {
+      "text": "prescribing",
+      "value": 826
+    },
+    {
+      "text": "take",
+      "value": 801
+    },
+    {
+      "text": "serious",
+      "value": 792
+    },
+    {
+      "text": "address",
+      "value": 790
+    },
+    {
+      "text": "name",
+      "value": 778
+    },
+    {
+      "text": "silver",
+      "value": 761
+    },
+    {
+      "text": "describe",
+      "value": 761
+    },
+    {
+      "text": "spring",
+      "value": 759
+    },
+    {
+      "text": "time",
+      "value": 758
+    },
+    {
+      "text": "updated",
+      "value": 744
+    },
+    {
+      "text": "guidance",
+      "value": 738
+    },
+    {
+      "text": "indication",
+      "value": 734
+    },
+    {
+      "text": "dated",
+      "value": 725
+    },
+    {
+      "text": "regulations",
+      "value": 714
+    },
+    {
+      "text": "evaluation",
+      "value": 701
+    },
+    {
+      "text": "resubmit",
+      "value": 700
+    },
+    {
+      "text": "frequencies",
+      "value": 697
+    },
+    {
+      "text": "products",
+      "value": 651
+    },
+    {
+      "text": "action",
+      "value": 631
+    },
+    {
+      "text": "guidances",
+      "value": 631
+    },
+    {
+      "text": "drugs",
+      "value": 606
+    },
+    {
+      "text": "submit",
+      "value": 606
+    },
+    {
+      "text": "consider",
+      "value": 604
+    },
+    {
+      "text": "dose",
+      "value": 588
+    },
+    {
+      "text": "signature",
+      "value": 587
+    },
+    {
+      "text": "marketed",
+      "value": 568
+    },
+    {
+      "text": "final",
+      "value": 564
+    },
+    {
+      "text": "facility",
+      "value": 562
+    },
+    {
+      "text": "adequate",
+      "value": 559
+    },
+    {
+      "text": "actions",
+      "value": 554
+    },
+    {
+      "text": "proprietary",
+      "value": 549
+    },
+    {
+      "text": "completed",
+      "value": 538
+    },
+    {
+      "text": "center",
+      "value": 532
+    },
+    {
+      "text": "research",
+      "value": 522
+    },
+    {
+      "text": "form",
+      "value": 521
+    },
+    {
+      "text": "regulatory",
+      "value": 517
+    },
+    {
+      "text": "clearly",
+      "value": 508
+    },
+    {
+      "text": "current",
+      "value": 504
+    },
+    {
+      "text": "record",
+      "value": 497
+    },
+    {
+      "text": "common",
+      "value": 493
+    },
+    {
+      "text": "cycle",
+      "value": 491
+    },
+    {
+      "text": "narrative",
+      "value": 485
+    },
+    {
+      "text": "reasons",
+      "value": 481
+    },
+    {
+      "text": "using",
+      "value": 481
+    },
+    {
+      "text": "summaries",
+      "value": 481
+    },
+    {
+      "text": "changes",
+      "value": 474
+    },
+    {
+      "text": "tables",
+      "value": 472
+    },
+    {
+      "text": "cover",
+      "value": 472
+    },
+    {
+      "text": "container",
+      "value": 466
+    },
+    {
+      "text": "subjects",
+      "value": 463
+    },
+    {
+      "text": "related",
+      "value": 463
+    },
+    {
+      "text": "risk",
+      "value": 462
+    },
+    {
+      "text": "addition",
+      "value": 446
+    },
+    {
+      "text": "identified",
+      "value": 444
+    },
+    {
+      "text": "respond",
+      "value": 442
+    },
+    {
+      "text": "http",
+      "value": 441
+    },
+    {
+      "text": "items",
+      "value": 435
+    },
+    {
+      "text": "carton",
+      "value": 427
+    },
+    {
+      "text": "report",
+      "value": 426
+    },
+    {
+      "text": "draft",
+      "value": 426
+    },
+    {
+      "text": "checklist",
+      "value": 424
+    },
+    {
+      "text": "srpi",
+      "value": 423
+    },
+    {
+      "text": "listed",
+      "value": 418
+    },
+    {
+      "text": "available",
+      "value": 401
+    },
+    {
+      "text": "additional",
+      "value": 398
+    },
+    {
+      "text": "issues",
+      "value": 396
+    },
+    {
+      "text": "support",
+      "value": 391
+    },
+    {
+      "text": "content",
+      "value": 391
+    },
+    {
+      "text": "pregnancy",
+      "value": 388
+    },
+    {
+      "text": "patients",
+      "value": 375
+    },
+    {
+      "text": "director",
+      "value": 374
+    },
+    {
+      "text": "lactation",
+      "value": 372
+    },
+    {
+      "text": "exposure",
+      "value": 369
+    },
+    {
+      "text": "office",
+      "value": 367
+    },
+    {
+      "text": "ensure",
+      "value": 365
+    },
+    {
+      "text": "industry",
+      "value": 365
+    },
+    {
+      "text": "used",
+      "value": 360
+    },
+    {
+      "text": "within",
+      "value": 356
+    },
+    {
+      "text": "manufacturing",
+      "value": 353
+    },
+    {
+      "text": "patient",
+      "value": 350
+    },
+    {
+      "text": "stability",
+      "value": 347
+    },
+    {
+      "text": "testing",
+      "value": 345
+    },
+    {
+      "text": "human",
+      "value": 342
+    },
+    {
+      "text": "recommendations",
+      "value": 341
+    },
+    {
+      "text": "quality",
+      "value": 340
+    },
+    {
+      "text": "cannot",
+      "value": 337
+    },
+    {
+      "text": "comment",
+      "value": 337
+    },
+    {
+      "text": "change",
+      "value": 331
+    },
+    {
+      "text": "lack",
+      "value": 326
+    },
+    {
+      "text": "rule",
+      "value": 324
+    },
+    {
+      "text": "summary",
+      "value": 323
+    },
+    {
+      "text": "nonclinical",
+      "value": 321
+    },
+    {
+      "text": "case",
+      "value": 321
+    },
+    {
+      "text": "findings",
+      "value": 319
+    },
+    {
+      "text": "resources",
+      "value": 318
+    },
+    {
+      "text": "sections",
+      "value": 317
+    },
+    {
+      "text": "dosage",
+      "value": 316
+    },
+    {
+      "text": "marked",
+      "value": 316
+    },
+    {
+      "text": "questions",
+      "value": 312
+    },
+    {
+      "text": "significant",
+      "value": 311
+    },
+    {
+      "text": "level",
+      "value": 311
+    },
+    {
+      "text": "year",
+      "value": 310
+    },
+    {
+      "text": "determined",
+      "value": 308
+    },
+    {
+      "text": "device",
+      "value": 306
+    },
+    {
+      "text": "results",
+      "value": 303
+    },
+    {
+      "text": "steps",
+      "value": 303
+    },
+    {
+      "text": "signed",
+      "value": 303
+    },
+    {
+      "text": "incorporate",
+      "value": 301
+    },
+    {
+      "text": "received",
+      "value": 300
+    },
+    {
+      "text": "assessment",
+      "value": 300
+    },
+    {
+      "text": "revise",
+      "value": 300
+    },
+    {
+      "text": "discuss",
+      "value": 300
+    },
+    {
+      "text": "representation",
+      "value": 299
+    },
+    {
+      "text": "profile",
+      "value": 296
+    },
+    {
+      "text": "follows",
+      "value": 296
+    },
+    {
+      "text": "appended",
+      "value": 296
+    },
+    {
+      "text": "project",
+      "value": 295
+    },
+    {
+      "text": "manager",
+      "value": 295
+    },
+    {
+      "text": "electronically",
+      "value": 295
+    },
+    {
+      "text": "fully",
+      "value": 292
+    },
+    {
+      "text": "sincerely",
+      "value": 292
+    },
+    {
+      "text": "inspection",
+      "value": 291
+    },
+    {
+      "text": "otherwise",
+      "value": 288
+    },
+    {
+      "text": "event",
+      "value": 288
+    },
+    {
+      "text": "substantial",
+      "value": 287
+    },
+    {
+      "text": "validation",
+      "value": 287
+    }
+  ],
+  "unapproved": [
+    {
+      "text": "labeling",
+      "value": 934
+    },
+    {
+      "text": "safety",
+      "value": 670
+    },
+    {
+      "text": "data",
+      "value": 669
+    },
+    {
+      "text": "adverse",
+      "value": 590
+    },
+    {
+      "text": "events",
+      "value": 519
+    },
+    {
+      "text": "proposed",
+      "value": 499
+    },
+    {
+      "text": "clinical",
+      "value": 458
+    },
+    {
+      "text": "administration",
+      "value": 436
+    },
+    {
+      "text": "food",
+      "value": 423
+    },
+    {
+      "text": "silver",
+      "value": 420
+    },
+    {
+      "text": "spring",
+      "value": 420
+    },
+    {
+      "text": "include",
+      "value": 378
+    },
+    {
+      "text": "deficiencies",
+      "value": 349
+    },
+    {
+      "text": "original",
+      "value": 342
+    },
+    {
+      "text": "electronic",
+      "value": 327
+    },
+    {
+      "text": "resubmission",
+      "value": 324
+    },
+    {
+      "text": "trials",
+      "value": 295
+    },
+    {
+      "text": "studies",
+      "value": 279
+    },
+    {
+      "text": "format",
+      "value": 261
+    },
+    {
+      "text": "study",
+      "value": 251
+    },
+    {
+      "text": "trial",
+      "value": 248
+    },
+    {
+      "text": "described",
+      "value": 246
+    },
+    {
+      "text": "serious",
+      "value": 229
+    },
+    {
+      "text": "present",
+      "value": 222
+    },
+    {
+      "text": "take",
+      "value": 220
+    },
+    {
+      "text": "indication",
+      "value": 219
+    },
+    {
+      "text": "update",
+      "value": 217
+    },
+    {
+      "text": "describe",
+      "value": 217
+    },
+    {
+      "text": "approved",
+      "value": 217
+    },
+    {
+      "text": "resubmit",
+      "value": 211
+    },
+    {
+      "text": "name",
+      "value": 211
+    },
+    {
+      "text": "meeting",
+      "value": 208
+    },
+    {
+      "text": "drugs",
+      "value": 202
+    },
+    {
+      "text": "frequencies",
+      "value": 196
+    },
+    {
+      "text": "regulations",
+      "value": 194
+    },
+    {
+      "text": "guidance",
+      "value": 189
+    },
+    {
+      "text": "record",
+      "value": 181
+    },
+    {
+      "text": "updated",
+      "value": 180
+    },
+    {
+      "text": "products",
+      "value": 179
+    },
+    {
+      "text": "final",
+      "value": 177
+    },
+    {
+      "text": "prescribing",
+      "value": 170
+    },
+    {
+      "text": "pregnancy",
+      "value": 168
+    },
+    {
+      "text": "time",
+      "value": 168
+    },
+    {
+      "text": "consider",
+      "value": 166
+    },
+    {
+      "text": "proprietary",
+      "value": 161
+    },
+    {
+      "text": "lactation",
+      "value": 160
+    },
+    {
+      "text": "actions",
+      "value": 156
+    },
+    {
+      "text": "adequate",
+      "value": 150
+    },
+    {
+      "text": "identified",
+      "value": 149
+    },
+    {
+      "text": "common",
+      "value": 145
+    },
+    {
+      "text": "summaries",
+      "value": 145
+    },
+    {
+      "text": "narrative",
+      "value": 144
+    },
+    {
+      "text": "subjects",
+      "value": 141
+    },
+    {
+      "text": "https",
+      "value": 139
+    },
+    {
+      "text": "clearly",
+      "value": 139
+    },
+    {
+      "text": "cover",
+      "value": 139
+    },
+    {
+      "text": "resources",
+      "value": 136
+    },
+    {
+      "text": "current",
+      "value": 136
+    },
+    {
+      "text": "signature",
+      "value": 135
+    },
+    {
+      "text": "treatment",
+      "value": 134
+    },
+    {
+      "text": "cycle",
+      "value": 130
+    },
+    {
+      "text": "tables",
+      "value": 128
+    },
+    {
+      "text": "prescription",
+      "value": 127
+    },
+    {
+      "text": "marketed",
+      "value": 127
+    },
+    {
+      "text": "respond",
+      "value": 125
+    },
+    {
+      "text": "rule",
+      "value": 124
+    },
+    {
+      "text": "guidances",
+      "value": 121
+    },
+    {
+      "text": "changes",
+      "value": 117
+    },
+    {
+      "text": "address",
+      "value": 116
+    },
+    {
+      "text": "dose",
+      "value": 114
+    },
+    {
+      "text": "addition",
+      "value": 114
+    },
+    {
+      "text": "comment",
+      "value": 112
+    },
+    {
+      "text": "facility",
+      "value": 112
+    },
+    {
+      "text": "related",
+      "value": 110
+    },
+    {
+      "text": "items",
+      "value": 107
+    },
+    {
+      "text": "significant",
+      "value": 107
+    },
+    {
+      "text": "submit",
+      "value": 106
+    },
+    {
+      "text": "reserve",
+      "value": 105
+    },
+    {
+      "text": "otherwise",
+      "value": 105
+    },
+    {
+      "text": "form",
+      "value": 105
+    },
+    {
+      "text": "additional",
+      "value": 104
+    },
+    {
+      "text": "srpi",
+      "value": 103
+    },
+    {
+      "text": "checklist",
+      "value": 103
+    },
+    {
+      "text": "year",
+      "value": 102
+    },
+    {
+      "text": "substantial",
+      "value": 102
+    },
+    {
+      "text": "carton",
+      "value": 101
+    },
+    {
+      "text": "container",
+      "value": 101
+    },
+    {
+      "text": "listed",
+      "value": 101
+    },
+    {
+      "text": "draft",
+      "value": 99
+    },
+    {
+      "text": "within",
+      "value": 99
+    },
+    {
+      "text": "available",
+      "value": 99
+    },
+    {
+      "text": "change",
+      "value": 96
+    },
+    {
+      "text": "lack",
+      "value": 95
+    },
+    {
+      "text": "exposure",
+      "value": 95
+    },
+    {
+      "text": "marked",
+      "value": 93
+    },
+    {
+      "text": "evidence",
+      "value": 92
+    },
+    {
+      "text": "findings",
+      "value": 91
+    },
+    {
+      "text": "using",
+      "value": 91
+    },
+    {
+      "text": "representation",
+      "value": 91
+    },
+    {
+      "text": "manifestations",
+      "value": 91
+    },
+    {
+      "text": "signed",
+      "value": 90
+    },
+    {
+      "text": "electronically",
+      "value": 90
+    },
+    {
+      "text": "signatures",
+      "value": 90
+    },
+    {
+      "text": "nonclinical",
+      "value": 89
+    },
+    {
+      "text": "type",
+      "value": 88
+    },
+    {
+      "text": "completed",
+      "value": 88
+    },
+    {
+      "text": "industry",
+      "value": 87
+    },
+    {
+      "text": "important",
+      "value": 86
+    },
+    {
+      "text": "dosage",
+      "value": 85
+    },
+    {
+      "text": "premature",
+      "value": 84
+    },
+    {
+      "text": "inspection",
+      "value": 84
+    },
+    {
+      "text": "withdraw",
+      "value": 83
+    },
+    {
+      "text": "extension",
+      "value": 83
+    },
+    {
+      "text": "dated",
+      "value": 83
+    },
+    {
+      "text": "documents",
+      "value": 82
+    },
+    {
+      "text": "encourage",
+      "value": 81
+    },
+    {
+      "text": "profile",
+      "value": 81
+    },
+    {
+      "text": "fully",
+      "value": 81
+    },
+    {
+      "text": "support",
+      "value": 81
+    },
+    {
+      "text": "level",
+      "value": 80
+    },
+    {
+      "text": "reasons",
+      "value": 80
+    },
+    {
+      "text": "report",
+      "value": 80
+    },
+    {
+      "text": "sections",
+      "value": 79
+    },
+    {
+      "text": "case",
+      "value": 79
+    },
+    {
+      "text": "event",
+      "value": 78
+    },
+    {
+      "text": "incidence",
+      "value": 78
+    },
+    {
+      "text": "less",
+      "value": 78
+    },
+    {
+      "text": "experience",
+      "value": 78
+    },
+    {
+      "text": "outlined",
+      "value": 77
+    },
+    {
+      "text": "discuss",
+      "value": 77
+    },
+    {
+      "text": "efficacy",
+      "value": 77
+    },
+    {
+      "text": "discontinuation",
+      "value": 77
+    },
+    {
+      "text": "suggests",
+      "value": 77
+    },
+    {
+      "text": "summary",
+      "value": 77
+    },
+    {
+      "text": "previously",
+      "value": 77
+    },
+    {
+      "text": "comments",
+      "value": 77
+    },
+    {
+      "text": "consideration",
+      "value": 76
+    },
+    {
+      "text": "incorporate",
+      "value": 76
+    },
+    {
+      "text": "regardless",
+      "value": 75
+    },
+    {
+      "text": "start",
+      "value": 75
+    },
+    {
+      "text": "content",
+      "value": 74
+    },
+    {
+      "text": "describing",
+      "value": 74
+    },
+    {
+      "text": "follows",
+      "value": 74
+    },
+    {
+      "text": "trends",
+      "value": 74
+    },
+    {
+      "text": "potential",
+      "value": 74
+    },
+    {
+      "text": "selected",
+      "value": 73
+    },
+    {
+      "text": "large",
+      "value": 73
+    },
+    {
+      "text": "bolded",
+      "value": 73
+    },
+    {
+      "text": "partial",
+      "value": 73
+    },
+    {
+      "text": "newly",
+      "value": 73
+    }
+  ],
+  "comparative": [
+    {
+      "text": "labeling",
+      "approved_count": 3054,
+      "unapproved_count": 934,
+      "difference": -75.13,
+      "total": 3988
+    },
+    {
+      "text": "spring",
+      "approved_count": 759,
+      "unapproved_count": 420,
+      "difference": -66.61,
+      "total": 1179
+    },
+    {
+      "text": "silver",
+      "approved_count": 761,
+      "unapproved_count": 420,
+      "difference": -66.5,
+      "total": 1181
+    },
+    {
+      "text": "administration",
+      "approved_count": 884,
+      "unapproved_count": 436,
+      "difference": -64.01,
+      "total": 1320
+    },
+    {
+      "text": "food",
+      "approved_count": 1017,
+      "unapproved_count": 423,
+      "difference": -53.59,
+      "total": 1440
+    },
+    {
+      "text": "safety",
+      "approved_count": 2346,
+      "unapproved_count": 670,
+      "difference": -45.6,
+      "total": 3016
+    },
+    {
+      "text": "adverse",
+      "approved_count": 2053,
+      "unapproved_count": 590,
+      "difference": -40.85,
+      "total": 2643
+    },
+    {
+      "text": "events",
+      "approved_count": 1788,
+      "unapproved_count": 519,
+      "difference": -36.89,
+      "total": 2307
+    },
+    {
+      "text": "proposed",
+      "approved_count": 1785,
+      "unapproved_count": 499,
+      "difference": -31.95,
+      "total": 2284
+    },
+    {
+      "text": "original",
+      "approved_count": 1096,
+      "unapproved_count": 342,
+      "difference": -28.7,
+      "total": 1438
+    },
+    {
+      "text": "action",
+      "approved_count": 631,
+      "unapproved_count": 24,
+      "difference": 27.59,
+      "total": 655
+    },
+    {
+      "text": "data",
+      "approved_count": 2680,
+      "unapproved_count": 669,
+      "difference": -27.5,
+      "total": 3349
+    },
+    {
+      "text": "clinical",
+      "approved_count": 1680,
+      "unapproved_count": 458,
+      "difference": -27.1,
+      "total": 2138
+    },
+    {
+      "text": "electronic",
+      "approved_count": 1096,
+      "unapproved_count": 327,
+      "difference": -24.87,
+      "total": 1423
+    },
+    {
+      "text": "prescription",
+      "approved_count": 159,
+      "unapproved_count": 127,
+      "difference": -23.91,
+      "total": 286
+    },
+    {
+      "text": "resubmission",
+      "approved_count": 1129,
+      "unapproved_count": 324,
+      "difference": -22.35,
+      "total": 1453
+    },
+    {
+      "text": "pregnancy",
+      "approved_count": 388,
+      "unapproved_count": 168,
+      "difference": -22.13,
+      "total": 556
+    },
+    {
+      "text": "regulatory",
+      "approved_count": 517,
+      "unapproved_count": 22,
+      "difference": 22.01,
+      "total": 539
+    },
+    {
+      "text": "evaluation",
+      "approved_count": 701,
+      "unapproved_count": 63,
+      "difference": 21.38,
+      "total": 764
+    },
+    {
+      "text": "treatment",
+      "approved_count": 242,
+      "unapproved_count": 134,
+      "difference": -21.26,
+      "total": 376
+    },
+    {
+      "text": "lactation",
+      "approved_count": 372,
+      "unapproved_count": 160,
+      "difference": -20.95,
+      "total": 532
+    },
+    {
+      "text": "https",
+      "approved_count": 277,
+      "unapproved_count": 139,
+      "difference": -20.67,
+      "total": 416
+    },
+    {
+      "text": "record",
+      "approved_count": 497,
+      "unapproved_count": 181,
+      "difference": -19.63,
+      "total": 678
+    },
+    {
+      "text": "director",
+      "approved_count": 374,
+      "unapproved_count": 3,
+      "difference": 19.22,
+      "total": 377
+    },
+    {
+      "text": "drugs",
+      "approved_count": 606,
+      "unapproved_count": 202,
+      "difference": -19.16,
+      "total": 808
+    },
+    {
+      "text": "trial",
+      "approved_count": 845,
+      "unapproved_count": 248,
+      "difference": -18.13,
+      "total": 1093
+    },
+    {
+      "text": "stability",
+      "approved_count": 347,
+      "unapproved_count": 2,
+      "difference": 18.03,
+      "total": 349
+    },
+    {
+      "text": "center",
+      "approved_count": 532,
+      "unapproved_count": 42,
+      "difference": 17.71,
+      "total": 574
+    },
+    {
+      "text": "resources",
+      "approved_count": 318,
+      "unapproved_count": 136,
+      "difference": -17.71,
+      "total": 454
+    },
+    {
+      "text": "dated",
+      "approved_count": 725,
+      "unapproved_count": 83,
+      "difference": 17.56,
+      "total": 808
+    },
+    {
+      "text": "office",
+      "approved_count": 367,
+      "unapproved_count": 10,
+      "difference": 17.06,
+      "total": 377
+    },
+    {
+      "text": "research",
+      "approved_count": 522,
+      "unapproved_count": 44,
+      "difference": 16.66,
+      "total": 566
+    },
+    {
+      "text": "indication",
+      "approved_count": 734,
+      "unapproved_count": 219,
+      "difference": -16.66,
+      "total": 953
+    },
+    {
+      "text": "resubmit",
+      "approved_count": 700,
+      "unapproved_count": 211,
+      "difference": -16.44,
+      "total": 911
+    },
+    {
+      "text": "serious",
+      "approved_count": 792,
+      "unapproved_count": 229,
+      "difference": -16.11,
+      "total": 1021
+    },
+    {
+      "text": "testing",
+      "approved_count": 345,
+      "unapproved_count": 11,
+      "difference": 15.63,
+      "total": 356
+    },
+    {
+      "text": "manager",
+      "approved_count": 295,
+      "unapproved_count": 1,
+      "difference": 15.51,
+      "total": 296
+    },
+    {
+      "text": "project",
+      "approved_count": 295,
+      "unapproved_count": 1,
+      "difference": 15.51,
+      "total": 296
+    },
+    {
+      "text": "http",
+      "approved_count": 441,
+      "unapproved_count": 33,
+      "difference": 15.14,
+      "total": 474
+    },
+    {
+      "text": "final",
+      "approved_count": 564,
+      "unapproved_count": 177,
+      "difference": -15.03,
+      "total": 741
+    },
+    {
+      "text": "describe",
+      "approved_count": 761,
+      "unapproved_count": 217,
+      "difference": -14.71,
+      "total": 978
+    },
+    {
+      "text": "rule",
+      "approved_count": 324,
+      "unapproved_count": 124,
+      "difference": -14.33,
+      "total": 448
+    },
+    {
+      "text": "identified",
+      "approved_count": 444,
+      "unapproved_count": 149,
+      "difference": -14.29,
+      "total": 593
+    },
+    {
+      "text": "deficiencies",
+      "approved_count": 1402,
+      "unapproved_count": 349,
+      "difference": -14.14,
+      "total": 1751
+    },
+    {
+      "text": "evidence",
+      "approved_count": 175,
+      "unapproved_count": 92,
+      "difference": -14.12,
+      "total": 267
+    },
+    {
+      "text": "take",
+      "approved_count": 801,
+      "unapproved_count": 220,
+      "difference": -13.34,
+      "total": 1021
+    },
+    {
+      "text": "device",
+      "approved_count": 306,
+      "unapproved_count": 12,
+      "difference": 13.29,
+      "total": 318
+    },
+    {
+      "text": "manufacturing",
+      "approved_count": 353,
+      "unapproved_count": 22,
+      "difference": 13.25,
+      "total": 375
+    },
+    {
+      "text": "health",
+      "approved_count": 274,
+      "unapproved_count": 7,
+      "difference": 12.85,
+      "total": 281
+    },
+    {
+      "text": "manifestations",
+      "approved_count": 195,
+      "unapproved_count": 91,
+      "difference": -12.8,
+      "total": 286
+    },
+    {
+      "text": "frequencies",
+      "approved_count": 697,
+      "unapproved_count": 196,
+      "difference": -12.77,
+      "total": 893
+    },
+    {
+      "text": "address",
+      "approved_count": 790,
+      "unapproved_count": 116,
+      "difference": 12.61,
+      "total": 906
+    },
+    {
+      "text": "signatures",
+      "approved_count": 194,
+      "unapproved_count": 90,
+      "difference": -12.6,
+      "total": 284
+    },
+    {
+      "text": "name",
+      "approved_count": 778,
+      "unapproved_count": 211,
+      "difference": -12.27,
+      "total": 989
+    },
+    {
+      "text": "validation",
+      "approved_count": 287,
+      "unapproved_count": 12,
+      "difference": 12.27,
+      "total": 299
+    },
+    {
+      "text": "possible",
+      "approved_count": 282,
+      "unapproved_count": 11,
+      "difference": 12.26,
+      "total": 293
+    },
+    {
+      "text": "method",
+      "approved_count": 259,
+      "unapproved_count": 7,
+      "difference": 12.05,
+      "total": 266
+    },
+    {
+      "text": "trials",
+      "approved_count": 1184,
+      "unapproved_count": 295,
+      "difference": -12.01,
+      "total": 1479
+    },
+    {
+      "text": "reserve",
+      "approved_count": 278,
+      "unapproved_count": 105,
+      "difference": -11.94,
+      "total": 383
+    },
+    {
+      "text": "proprietary",
+      "approved_count": 549,
+      "unapproved_count": 161,
+      "difference": -11.75,
+      "total": 710
+    },
+    {
+      "text": "cannot",
+      "approved_count": 337,
+      "unapproved_count": 25,
+      "difference": 11.63,
+      "total": 362
+    },
+    {
+      "text": "approve",
+      "approved_count": 250,
+      "unapproved_count": 7,
+      "difference": 11.57,
+      "total": 257
+    },
+    {
+      "text": "conditionally",
+      "approved_count": 20,
+      "unapproved_count": 49,
+      "difference": -11.43,
+      "total": 69
+    },
+    {
+      "text": "otherwise",
+      "approved_count": 288,
+      "unapproved_count": 105,
+      "difference": -11.4,
+      "total": 393
+    },
+    {
+      "text": "regulations",
+      "approved_count": 714,
+      "unapproved_count": 194,
+      "difference": -11.35,
+      "total": 908
+    },
+    {
+      "text": "used",
+      "approved_count": 360,
+      "unapproved_count": 31,
+      "difference": 11.33,
+      "total": 391
+    },
+    {
+      "text": "acts",
+      "approved_count": 75,
+      "unapproved_count": 60,
+      "difference": -11.3,
+      "total": 135
+    },
+    {
+      "text": "laws",
+      "approved_count": 75,
+      "unapproved_count": 60,
+      "difference": -11.3,
+      "total": 135
+    },
+    {
+      "text": "summaries",
+      "approved_count": 481,
+      "unapproved_count": 145,
+      "difference": -11.3,
+      "total": 626
+    },
+    {
+      "text": "subjects",
+      "approved_count": 463,
+      "unapproved_count": 141,
+      "difference": -11.24,
+      "total": 604
+    },
+    {
+      "text": "rules",
+      "approved_count": 77,
+      "unapproved_count": 60,
+      "difference": -11.19,
+      "total": 137
+    },
+    {
+      "text": "received",
+      "approved_count": 300,
+      "unapproved_count": 19,
+      "difference": 11.18,
+      "total": 319
+    },
+    {
+      "text": "division",
+      "approved_count": 279,
+      "unapproved_count": 15,
+      "difference": 11.08,
+      "total": 294
+    },
+    {
+      "text": "letters",
+      "approved_count": 210,
+      "unapproved_count": 1,
+      "difference": 10.97,
+      "total": 211
+    },
+    {
+      "text": "attention",
+      "approved_count": 276,
+      "unapproved_count": 15,
+      "difference": 10.92,
+      "total": 291
+    },
+    {
+      "text": "products",
+      "approved_count": 651,
+      "unapproved_count": 179,
+      "difference": -10.89,
+      "total": 830
+    },
+    {
+      "text": "human",
+      "approved_count": 342,
+      "unapproved_count": 29,
+      "difference": 10.87,
+      "total": 371
+    },
+    {
+      "text": "amendments",
+      "approved_count": 241,
+      "unapproved_count": 8,
+      "difference": 10.84,
+      "total": 249
+    },
+    {
+      "text": "narrative",
+      "approved_count": 485,
+      "unapproved_count": 144,
+      "difference": -10.83,
+      "total": 629
+    },
+    {
+      "text": "dear",
+      "approved_count": 249,
+      "unapproved_count": 10,
+      "difference": 10.75,
+      "total": 259
+    },
+    {
+      "text": "substantial",
+      "approved_count": 287,
+      "unapproved_count": 102,
+      "difference": -10.69,
+      "total": 389
+    },
+    {
+      "text": "significant",
+      "approved_count": 311,
+      "unapproved_count": 107,
+      "difference": -10.68,
+      "total": 418
+    },
+    {
+      "text": "common",
+      "approved_count": 493,
+      "unapproved_count": 145,
+      "difference": -10.66,
+      "total": 638
+    },
+    {
+      "text": "amended",
+      "approved_count": 228,
+      "unapproved_count": 6,
+      "difference": 10.65,
+      "total": 234
+    },
+    {
+      "text": "march",
+      "approved_count": 204,
+      "unapproved_count": 1,
+      "difference": 10.64,
+      "total": 205
+    },
+    {
+      "text": "comment",
+      "approved_count": 337,
+      "unapproved_count": 112,
+      "difference": -10.57,
+      "total": 449
+    },
+    {
+      "text": "cosmetic",
+      "approved_count": 220,
+      "unapproved_count": 5,
+      "difference": 10.48,
+      "total": 225
+    },
+    {
+      "text": "update",
+      "approved_count": 842,
+      "unapproved_count": 217,
+      "difference": -10.38,
+      "total": 1059
+    },
+    {
+      "text": "determined",
+      "approved_count": 308,
+      "unapproved_count": 24,
+      "difference": 10.33,
+      "total": 332
+    },
+    {
+      "text": "cover",
+      "approved_count": 472,
+      "unapproved_count": 139,
+      "difference": -10.25,
+      "total": 611
+    },
+    {
+      "text": "actions",
+      "approved_count": 554,
+      "unapproved_count": 156,
+      "difference": -10.2,
+      "total": 710
+    },
+    {
+      "text": "december",
+      "approved_count": 189,
+      "unapproved_count": 0,
+      "difference": 10.1,
+      "total": 189
+    },
+    {
+      "text": "consider",
+      "approved_count": 604,
+      "unapproved_count": 166,
+      "difference": -10.08,
+      "total": 770
+    },
+    {
+      "text": "federal",
+      "approved_count": 220,
+      "unapproved_count": 7,
+      "difference": 9.97,
+      "total": 227
+    },
+    {
+      "text": "revise",
+      "approved_count": 300,
+      "unapproved_count": 24,
+      "difference": 9.91,
+      "total": 324
+    },
+    {
+      "text": "include",
+      "approved_count": 1620,
+      "unapproved_count": 378,
+      "difference": -9.89,
+      "total": 1998
+    },
+    {
+      "text": "conditions",
+      "approved_count": 193,
+      "unapproved_count": 3,
+      "difference": 9.55,
+      "total": 196
+    },
+    {
+      "text": "year",
+      "approved_count": 310,
+      "unapproved_count": 102,
+      "difference": -9.46,
+      "total": 412
+    },
+    {
+      "text": "efficacy",
+      "approved_count": 191,
+      "unapproved_count": 77,
+      "difference": -9.44,
+      "total": 268
+    },
+    {
+      "text": "format",
+      "approved_count": 1073,
+      "unapproved_count": 261,
+      "difference": -9.26,
+      "total": 1334
+    }
+  ],
+  "stats": {
+    "approved_total_words": 187161,
+    "unapproved_total_words": 39193,
+    "approved_unique_words": 8376,
+    "unapproved_unique_words": 2679
+  }
+}

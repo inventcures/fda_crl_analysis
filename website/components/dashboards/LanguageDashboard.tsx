@@ -15,6 +15,7 @@ import {
 } from 'recharts'
 import { Brain, MessageSquare, TrendingUp, ChevronDown, ZoomIn, X, Layers, PieChart, Sparkles } from 'lucide-react'
 import EmbeddingExplorer from '../EmbeddingExplorer'
+import InteractiveWordCloud from '../InteractiveWordCloud'
 import ChartSkeleton, { StatCardSkeletonGrid } from '@/components/ui/ChartSkeleton'
 import { useChartAnimationConfig } from '@/lib/useReducedMotion'
 
@@ -541,27 +542,14 @@ export default function LanguageDashboard() {
           </AnimatePresence>
         </motion.section>
 
-        {/* SECTION 2: Word Clouds */}
+        {/* SECTION 2: Interactive Word Clouds */}
         <motion.section variants={itemVariants}>
           <div className="mb-4">
-            <h2 className="text-2xl font-bold text-gray-900">Term Frequency Analysis</h2>
-            <p className="text-gray-500 text-sm">Visualizing common terms in approved vs. unapproved letters. Click to zoom.</p>
+            <h2 className="text-2xl font-bold text-gray-900">Interactive Term Analysis</h2>
+            <p className="text-gray-500 text-sm">Explore word frequencies across approved and unapproved CRLs. Click any word to see detailed breakdown.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <ImageCard
-              src="/images/language/wordcloud_comparison.png"
-              alt="Word Cloud Comparison"
-              title="Comparative Word Clouds"
-              onZoom={handleZoom}
-            />
-            <ImageCard
-              src="/images/language/wordcloud_severity.png"
-              alt="Severity Word Cloud"
-              title="Severity-Weighted Terms"
-              onZoom={handleZoom}
-            />
-          </div>
+          <InteractiveWordCloud />
         </motion.section>
 
         {/* SECTION 3: N-gram Analysis (Tabbed) */}
