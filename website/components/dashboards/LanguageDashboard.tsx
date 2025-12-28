@@ -16,6 +16,7 @@ import {
 import { Brain, MessageSquare, TrendingUp, ChevronDown, ZoomIn, X, Layers, PieChart, Sparkles } from 'lucide-react'
 import EmbeddingExplorer from '../EmbeddingExplorer'
 import InteractiveWordCloud from '../InteractiveWordCloud'
+import InteractiveNgramChart from '../InteractiveNgramChart'
 import ChartSkeleton, { StatCardSkeletonGrid } from '@/components/ui/ChartSkeleton'
 import { useChartAnimationConfig } from '@/lib/useReducedMotion'
 
@@ -281,66 +282,6 @@ function ZoomModal({
   )
 }
 
-// Tab Component for N-gram Analysis
-function NgramTabs({
-  onZoom
-}: {
-  onZoom: (src: string, title: string) => void
-}) {
-  const [activeTab, setActiveTab] = useState<'bigrams' | 'trigrams'>('bigrams')
-
-  return (
-    <motion.section variants={itemVariants}>
-      <div className="mb-4 flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">Phrase Patterns</h2>
-          <p className="text-gray-500 text-sm">Identifying common multi-word sequences.</p>
-        </div>
-
-        <div className="flex items-center gap-1 p-1 bg-gray-100 rounded-lg">
-          <button
-            onClick={() => setActiveTab('bigrams')}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
-              activeTab === 'bigrams'
-                ? 'bg-white text-slate-800 shadow-sm'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            Bigrams (2-word)
-          </button>
-          <button
-            onClick={() => setActiveTab('trigrams')}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
-              activeTab === 'trigrams'
-                ? 'bg-white text-slate-800 shadow-sm'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            Trigrams (3-word)
-          </button>
-        </div>
-      </div>
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, x: activeTab === 'bigrams' ? -10 : 10 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: activeTab === 'bigrams' ? 10 : -10 }}
-          transition={{ duration: 0.2 }}
-        >
-          <ImageCard
-            src={`/images/language/${activeTab === 'bigrams' ? 'bigram' : 'trigram'}_comparison.png`}
-            alt={`${activeTab} Comparison`}
-            title={activeTab === 'bigrams' ? 'Top Bigrams by Outcome' : 'Top Trigrams by Outcome'}
-            onZoom={onZoom}
-          />
-        </motion.div>
-      </AnimatePresence>
-    </motion.section>
-  )
-}
-
 // Custom Tooltip
 function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload || !payload.length) return null
@@ -552,8 +493,14 @@ export default function LanguageDashboard() {
           <InteractiveWordCloud />
         </motion.section>
 
-        {/* SECTION 3: N-gram Analysis (Tabbed) */}
-        <NgramTabs onZoom={handleZoom} />
+        {/* SECTION 3: Interactive N-gram Analysis */}
+        <motion.section variants={itemVariants}>
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-gray-900">Phrase Patterns</h2>
+            <p className="text-gray-500 text-sm">Identifying common multi-word sequences in CRL documents.</p>
+          </div>
+          <InteractiveNgramChart />
+        </motion.section>
 
         {/* SECTION 4: Severity & Actions */}
         <motion.section variants={itemVariants} className="grid md:grid-cols-2 gap-6">

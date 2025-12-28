@@ -1,0 +1,962 @@
+{
+  "bigrams": {
+    "approved": [
+      {
+        "text": "adverse events",
+        "count": 1750
+      },
+      {
+        "text": "safety update",
+        "count": 746
+      },
+      {
+        "text": "serious adverse",
+        "count": 734
+      },
+      {
+        "text": "proprietary name",
+        "count": 540
+      },
+      {
+        "text": "clinical studies",
+        "count": 530
+      },
+      {
+        "text": "electronic record",
+        "count": 489
+      },
+      {
+        "text": "narrative summaries",
+        "count": 474
+      },
+      {
+        "text": "events original",
+        "count": 468
+      },
+      {
+        "text": "proposed indication",
+        "count": 465
+      },
+      {
+        "text": "clinical trials",
+        "count": 460
+      },
+      {
+        "text": "frequencies adverse",
+        "count": 453
+      },
+      {
+        "text": "studies trials",
+        "count": 434
+      },
+      {
+        "text": "srpi checklist",
+        "count": 423
+      },
+      {
+        "text": "regulations guidances",
+        "count": 423
+      },
+      {
+        "text": "respond deficiencies",
+        "count": 423
+      },
+      {
+        "text": "format items",
+        "count": 413
+      },
+      {
+        "text": "include updated",
+        "count": 408
+      },
+      {
+        "text": "electronic signature",
+        "count": 392
+      },
+      {
+        "text": "requirements prescribing",
+        "count": 375
+      },
+      {
+        "text": "pregnancy lactation",
+        "count": 367
+      },
+      {
+        "text": "guidance industry",
+        "count": 351
+      },
+      {
+        "text": "proposed proprietary",
+        "count": 341
+      },
+      {
+        "text": "lactation labeling",
+        "count": 328
+      },
+      {
+        "text": "labeling resources",
+        "count": 302
+      },
+      {
+        "text": "proposed labeling",
+        "count": 300
+      }
+    ],
+    "unapproved": [
+      {
+        "text": "adverse events",
+        "count": 507
+      },
+      {
+        "text": "serious adverse",
+        "count": 218
+      },
+      {
+        "text": "safety update",
+        "count": 211
+      },
+      {
+        "text": "electronic record",
+        "count": 180
+      },
+      {
+        "text": "proprietary name",
+        "count": 161
+      },
+      {
+        "text": "clinical studies",
+        "count": 160
+      },
+      {
+        "text": "pregnancy lactation",
+        "count": 158
+      },
+      {
+        "text": "lactation labeling",
+        "count": 144
+      },
+      {
+        "text": "narrative summaries",
+        "count": 144
+      },
+      {
+        "text": "events original",
+        "count": 139
+      },
+      {
+        "text": "proposed indication",
+        "count": 134
+      },
+      {
+        "text": "labeling final",
+        "count": 130
+      },
+      {
+        "text": "prescription labeling",
+        "count": 125
+      },
+      {
+        "text": "frequencies adverse",
+        "count": 124
+      },
+      {
+        "text": "respond deficiencies",
+        "count": 123
+      },
+      {
+        "text": "labeling resources",
+        "count": 122
+      },
+      {
+        "text": "studies trials",
+        "count": 116
+      },
+      {
+        "text": "clinical trials",
+        "count": 114
+      },
+      {
+        "text": "proposed labeling",
+        "count": 108
+      },
+      {
+        "text": "proposed proprietary",
+        "count": 106
+      },
+      {
+        "text": "comment proposed",
+        "count": 105
+      },
+      {
+        "text": "srpi checklist",
+        "count": 103
+      },
+      {
+        "text": "format items",
+        "count": 103
+      },
+      {
+        "text": "regulations guidances",
+        "count": 102
+      },
+      {
+        "text": "otherwise adequate",
+        "count": 101
+      }
+    ],
+    "comparative": [
+      {
+        "text": "adverse events",
+        "approved_count": 1750,
+        "unapproved_count": 507,
+        "approved_normalized": 8.6634,
+        "unapproved_normalized": 5.3368,
+        "difference": 3.3265,
+        "total": 2257
+      },
+      {
+        "text": "safety update",
+        "approved_count": 746,
+        "unapproved_count": 211,
+        "approved_normalized": 3.6931,
+        "unapproved_normalized": 2.2211,
+        "difference": 1.472,
+        "total": 957
+      },
+      {
+        "text": "electronic signature",
+        "approved_count": 392,
+        "unapproved_count": 45,
+        "approved_normalized": 1.9406,
+        "unapproved_normalized": 0.4737,
+        "difference": 1.4669,
+        "total": 437
+      },
+      {
+        "text": "project manager",
+        "approved_count": 274,
+        "unapproved_count": 0,
+        "approved_normalized": 1.3564,
+        "unapproved_normalized": 0.0,
+        "difference": 1.3564,
+        "total": 274
+      },
+      {
+        "text": "serious adverse",
+        "approved_count": 734,
+        "unapproved_count": 218,
+        "approved_normalized": 3.6337,
+        "unapproved_normalized": 2.2947,
+        "difference": 1.3389,
+        "total": 952
+      },
+      {
+        "text": "regulatory project",
+        "approved_count": 238,
+        "unapproved_count": 0,
+        "approved_normalized": 1.1782,
+        "unapproved_normalized": 0.0,
+        "difference": 1.1782,
+        "total": 238
+      },
+      {
+        "text": "cannot approve",
+        "approved_count": 239,
+        "unapproved_count": 6,
+        "approved_normalized": 1.1832,
+        "unapproved_normalized": 0.0632,
+        "difference": 1.12,
+        "total": 245
+      },
+      {
+        "text": "recommendations address",
+        "approved_count": 238,
+        "unapproved_count": 6,
+        "approved_normalized": 1.1782,
+        "unapproved_normalized": 0.0632,
+        "difference": 1.1151,
+        "total": 244
+      },
+      {
+        "text": "requirements prescribing",
+        "approved_count": 375,
+        "unapproved_count": 71,
+        "approved_normalized": 1.8564,
+        "unapproved_normalized": 0.7474,
+        "difference": 1.1091,
+        "total": 446
+      },
+      {
+        "text": "action possible",
+        "approved_count": 233,
+        "unapproved_count": 5,
+        "approved_normalized": 1.1535,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.1008,
+        "total": 238
+      },
+      {
+        "text": "approve present",
+        "approved_count": 234,
+        "unapproved_count": 6,
+        "approved_normalized": 1.1584,
+        "unapproved_normalized": 0.0632,
+        "difference": 1.0953,
+        "total": 240
+      },
+      {
+        "text": "determined cannot",
+        "approved_count": 233,
+        "unapproved_count": 6,
+        "approved_normalized": 1.1535,
+        "unapproved_normalized": 0.0632,
+        "difference": 1.0903,
+        "total": 239
+      },
+      {
+        "text": "address issues",
+        "approved_count": 235,
+        "unapproved_count": 7,
+        "approved_normalized": 1.1634,
+        "unapproved_normalized": 0.0737,
+        "difference": 1.0897,
+        "total": 242
+      },
+      {
+        "text": "possible recommendations",
+        "approved_count": 230,
+        "unapproved_count": 5,
+        "approved_normalized": 1.1386,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.086,
+        "total": 235
+      },
+      {
+        "text": "present form",
+        "approved_count": 231,
+        "unapproved_count": 6,
+        "approved_normalized": 1.1436,
+        "unapproved_normalized": 0.0632,
+        "difference": 1.0804,
+        "total": 237
+      },
+      {
+        "text": "clinical trials",
+        "approved_count": 460,
+        "unapproved_count": 114,
+        "approved_normalized": 2.2772,
+        "unapproved_normalized": 1.2,
+        "difference": 1.0772,
+        "total": 574
+      },
+      {
+        "text": "reasons action",
+        "approved_count": 227,
+        "unapproved_count": 5,
+        "approved_normalized": 1.1238,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0711,
+        "total": 232
+      },
+      {
+        "text": "include updated",
+        "approved_count": 408,
+        "unapproved_count": 91,
+        "approved_normalized": 2.0198,
+        "unapproved_normalized": 0.9579,
+        "difference": 1.0619,
+        "total": 499
+      },
+      {
+        "text": "form reasons",
+        "approved_count": 221,
+        "unapproved_count": 5,
+        "approved_normalized": 1.0941,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0414,
+        "total": 226
+      },
+      {
+        "text": "manager sincerely",
+        "approved_count": 209,
+        "unapproved_count": 0,
+        "approved_normalized": 1.0347,
+        "unapproved_normalized": 0.0,
+        "difference": 1.0347,
+        "total": 209
+      },
+      {
+        "text": "cosmetic act",
+        "approved_count": 219,
+        "unapproved_count": 5,
+        "approved_normalized": 1.0842,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0315,
+        "total": 224
+      },
+      {
+        "text": "regulations guidances",
+        "approved_count": 423,
+        "unapproved_count": 102,
+        "approved_normalized": 2.0941,
+        "unapproved_normalized": 1.0737,
+        "difference": 1.0204,
+        "total": 525
+      },
+      {
+        "text": "director division",
+        "approved_count": 204,
+        "unapproved_count": 0,
+        "approved_normalized": 1.0099,
+        "unapproved_normalized": 0.0,
+        "difference": 1.0099,
+        "total": 204
+      },
+      {
+        "text": "srpi checklist",
+        "approved_count": 423,
+        "unapproved_count": 103,
+        "approved_normalized": 2.0941,
+        "unapproved_normalized": 1.0842,
+        "difference": 1.0098,
+        "total": 526
+      },
+      {
+        "text": "federal cosmetic",
+        "approved_count": 213,
+        "unapproved_count": 5,
+        "approved_normalized": 1.0545,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0018,
+        "total": 218
+      },
+      {
+        "text": "proprietary name",
+        "approved_count": 540,
+        "unapproved_count": 161,
+        "approved_normalized": 2.6733,
+        "unapproved_normalized": 1.6947,
+        "difference": 0.9785,
+        "total": 701
+      },
+      {
+        "text": "appended electronic",
+        "approved_count": 291,
+        "unapproved_count": 45,
+        "approved_normalized": 1.4406,
+        "unapproved_normalized": 0.4737,
+        "difference": 0.9669,
+        "total": 336
+      },
+      {
+        "text": "action letters",
+        "approved_count": 194,
+        "unapproved_count": 0,
+        "approved_normalized": 0.9604,
+        "unapproved_normalized": 0.0,
+        "difference": 0.9604,
+        "total": 194
+      },
+      {
+        "text": "format items",
+        "approved_count": 413,
+        "unapproved_count": 103,
+        "approved_normalized": 2.0446,
+        "unapproved_normalized": 1.0842,
+        "difference": 0.9603,
+        "total": 516
+      },
+      {
+        "text": "nda dated",
+        "approved_count": 198,
+        "unapproved_count": 2,
+        "approved_normalized": 0.9802,
+        "unapproved_normalized": 0.0211,
+        "difference": 0.9591,
+        "total": 200
+      }
+    ]
+  },
+  "trigrams": {
+    "approved": [
+      {
+        "text": "serious adverse events",
+        "count": 727
+      },
+      {
+        "text": "adverse events original",
+        "count": 467
+      },
+      {
+        "text": "frequencies adverse events",
+        "count": 453
+      },
+      {
+        "text": "clinical studies trials",
+        "count": 433
+      },
+      {
+        "text": "proposed proprietary name",
+        "count": 339
+      },
+      {
+        "text": "pregnancy lactation labeling",
+        "count": 326
+      },
+      {
+        "text": "representation electronic record",
+        "count": 295
+      },
+      {
+        "text": "electronic record signed",
+        "count": 295
+      },
+      {
+        "text": "record signed electronically",
+        "count": 295
+      },
+      {
+        "text": "appended electronic signature",
+        "count": 291
+      },
+      {
+        "text": "lactation labeling final",
+        "count": 289
+      },
+      {
+        "text": "sincerely appended electronic",
+        "count": 284
+      },
+      {
+        "text": "submit meeting request",
+        "count": 267
+      },
+      {
+        "text": "carton container labeling",
+        "count": 264
+      },
+      {
+        "text": "processed resubmission start",
+        "count": 264
+      },
+      {
+        "text": "lack request withdraw",
+        "count": 263
+      },
+      {
+        "text": "resubmission fully address",
+        "count": 263
+      },
+      {
+        "text": "resubmission start cycle",
+        "count": 263
+      },
+      {
+        "text": "industry formal meetings",
+        "count": 263
+      },
+      {
+        "text": "comment proposed labeling",
+        "count": 262
+      },
+      {
+        "text": "labeling otherwise adequate",
+        "count": 262
+      },
+      {
+        "text": "approved wish meeting",
+        "count": 262
+      },
+      {
+        "text": "meeting submit meeting",
+        "count": 262
+      },
+      {
+        "text": "resubmit actions available",
+        "count": 261
+      },
+      {
+        "text": "fully address deficiencies",
+        "count": 260
+      }
+    ],
+    "unapproved": [
+      {
+        "text": "serious adverse events",
+        "count": 217
+      },
+      {
+        "text": "pregnancy lactation labeling",
+        "count": 144
+      },
+      {
+        "text": "adverse events original",
+        "count": 138
+      },
+      {
+        "text": "lactation labeling final",
+        "count": 130
+      },
+      {
+        "text": "frequencies adverse events",
+        "count": 124
+      },
+      {
+        "text": "clinical studies trials",
+        "count": 116
+      },
+      {
+        "text": "proposed proprietary name",
+        "count": 106
+      },
+      {
+        "text": "comment proposed labeling",
+        "count": 103
+      },
+      {
+        "text": "proposed labeling otherwise",
+        "count": 99
+      },
+      {
+        "text": "carton container labeling",
+        "count": 99
+      },
+      {
+        "text": "labeling otherwise adequate",
+        "count": 97
+      },
+      {
+        "text": "reserve comment proposed",
+        "count": 97
+      },
+      {
+        "text": "signature representation electronic",
+        "count": 90
+      },
+      {
+        "text": "representation electronic record",
+        "count": 90
+      },
+      {
+        "text": "electronic record signed",
+        "count": 90
+      },
+      {
+        "text": "record signed electronically",
+        "count": 90
+      },
+      {
+        "text": "signed electronically manifestations",
+        "count": 90
+      },
+      {
+        "text": "electronically manifestations electronic",
+        "count": 90
+      },
+      {
+        "text": "manifestations electronic signatures",
+        "count": 90
+      },
+      {
+        "text": "electronic signatures electronic",
+        "count": 90
+      },
+      {
+        "text": "signatures electronic record",
+        "count": 90
+      },
+      {
+        "text": "consider lack request",
+        "count": 78
+      },
+      {
+        "text": "lack request withdraw",
+        "count": 78
+      },
+      {
+        "text": "request withdraw cfr",
+        "count": 78
+      },
+      {
+        "text": "withdraw cfr request",
+        "count": 78
+      }
+    ],
+    "comparative": [
+      {
+        "text": "serious adverse events",
+        "approved_count": 727,
+        "unapproved_count": 217,
+        "approved_normalized": 3.599,
+        "unapproved_normalized": 2.2842,
+        "difference": 1.3148,
+        "total": 944
+      },
+      {
+        "text": "regulatory project manager",
+        "approved_count": 236,
+        "unapproved_count": 0,
+        "approved_normalized": 1.1683,
+        "unapproved_normalized": 0.0,
+        "difference": 1.1683,
+        "total": 236
+      },
+      {
+        "text": "possible recommendations address",
+        "approved_count": 230,
+        "unapproved_count": 5,
+        "approved_normalized": 1.1386,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.086,
+        "total": 235
+      },
+      {
+        "text": "action possible recommendations",
+        "approved_count": 230,
+        "unapproved_count": 5,
+        "approved_normalized": 1.1386,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.086,
+        "total": 235
+      },
+      {
+        "text": "cannot approve present",
+        "approved_count": 232,
+        "unapproved_count": 6,
+        "approved_normalized": 1.1485,
+        "unapproved_normalized": 0.0632,
+        "difference": 1.0854,
+        "total": 238
+      },
+      {
+        "text": "determined cannot approve",
+        "approved_count": 231,
+        "unapproved_count": 6,
+        "approved_normalized": 1.1436,
+        "unapproved_normalized": 0.0632,
+        "difference": 1.0804,
+        "total": 237
+      },
+      {
+        "text": "reasons action possible",
+        "approved_count": 227,
+        "unapproved_count": 5,
+        "approved_normalized": 1.1238,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0711,
+        "total": 232
+      },
+      {
+        "text": "approve present form",
+        "approved_count": 228,
+        "unapproved_count": 6,
+        "approved_normalized": 1.1287,
+        "unapproved_normalized": 0.0632,
+        "difference": 1.0656,
+        "total": 234
+      },
+      {
+        "text": "recommendations address issues",
+        "approved_count": 225,
+        "unapproved_count": 5,
+        "approved_normalized": 1.1139,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0612,
+        "total": 230
+      },
+      {
+        "text": "form reasons action",
+        "approved_count": 221,
+        "unapproved_count": 5,
+        "approved_normalized": 1.0941,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0414,
+        "total": 226
+      },
+      {
+        "text": "present form reasons",
+        "approved_count": 220,
+        "unapproved_count": 5,
+        "approved_normalized": 1.0891,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0365,
+        "total": 225
+      },
+      {
+        "text": "project manager sincerely",
+        "approved_count": 209,
+        "unapproved_count": 0,
+        "approved_normalized": 1.0347,
+        "unapproved_normalized": 0.0,
+        "difference": 1.0347,
+        "total": 209
+      },
+      {
+        "text": "manager sincerely appended",
+        "approved_count": 206,
+        "unapproved_count": 0,
+        "approved_normalized": 1.0198,
+        "unapproved_normalized": 0.0,
+        "difference": 1.0198,
+        "total": 206
+      },
+      {
+        "text": "federal cosmetic act",
+        "approved_count": 213,
+        "unapproved_count": 5,
+        "approved_normalized": 1.0545,
+        "unapproved_normalized": 0.0526,
+        "difference": 1.0018,
+        "total": 218
+      },
+      {
+        "text": "appended electronic signature",
+        "approved_count": 291,
+        "unapproved_count": 45,
+        "approved_normalized": 1.4406,
+        "unapproved_normalized": 0.4737,
+        "difference": 0.9669,
+        "total": 336
+      },
+      {
+        "text": "sincerely appended electronic",
+        "approved_count": 284,
+        "unapproved_count": 43,
+        "approved_normalized": 1.4059,
+        "unapproved_normalized": 0.4526,
+        "difference": 0.9533,
+        "total": 327
+      },
+      {
+        "text": "amended determined cannot",
+        "approved_count": 203,
+        "unapproved_count": 5,
+        "approved_normalized": 1.005,
+        "unapproved_normalized": 0.0526,
+        "difference": 0.9523,
+        "total": 208
+      },
+      {
+        "text": "frequencies adverse events",
+        "approved_count": 453,
+        "unapproved_count": 124,
+        "approved_normalized": 2.2426,
+        "unapproved_normalized": 1.3053,
+        "difference": 0.9373,
+        "total": 577
+      },
+      {
+        "text": "summaries patient died",
+        "approved_count": 189,
+        "unapproved_count": 1,
+        "approved_normalized": 0.9356,
+        "unapproved_normalized": 0.0105,
+        "difference": 0.9251,
+        "total": 190
+      },
+      {
+        "text": "clinical studies trials",
+        "approved_count": 433,
+        "unapproved_count": 116,
+        "approved_normalized": 2.1436,
+        "unapproved_normalized": 1.2211,
+        "difference": 0.9225,
+        "total": 549
+      },
+      {
+        "text": "patient died clinical",
+        "approved_count": 188,
+        "unapproved_count": 1,
+        "approved_normalized": 0.9307,
+        "unapproved_normalized": 0.0105,
+        "difference": 0.9202,
+        "total": 189
+      },
+      {
+        "text": "narrative summaries patient",
+        "approved_count": 187,
+        "unapproved_count": 1,
+        "approved_normalized": 0.9257,
+        "unapproved_normalized": 0.0105,
+        "difference": 0.9152,
+        "total": 188
+      },
+      {
+        "text": "completed amended determined",
+        "approved_count": 195,
+        "unapproved_count": 5,
+        "approved_normalized": 0.9653,
+        "unapproved_normalized": 0.0526,
+        "difference": 0.9127,
+        "total": 200
+      },
+      {
+        "text": "adverse events original",
+        "approved_count": 467,
+        "unapproved_count": 138,
+        "approved_normalized": 2.3119,
+        "unapproved_normalized": 1.4526,
+        "difference": 0.8592,
+        "total": 605
+      },
+      {
+        "text": "pursuant federal cosmetic",
+        "approved_count": 148,
+        "unapproved_count": 1,
+        "approved_normalized": 0.7327,
+        "unapproved_normalized": 0.0105,
+        "difference": 0.7221,
+        "total": 149
+      },
+      {
+        "text": "labeling resources plr",
+        "approved_count": 144,
+        "unapproved_count": 0,
+        "approved_normalized": 0.7129,
+        "unapproved_normalized": 0.0,
+        "difference": 0.7129,
+        "total": 144
+      },
+      {
+        "text": "notified writing approved",
+        "approved_count": 258,
+        "unapproved_count": 54,
+        "approved_normalized": 1.2772,
+        "unapproved_normalized": 0.5684,
+        "difference": 0.7088,
+        "total": 312
+      },
+      {
+        "text": "marketed notified writing",
+        "approved_count": 255,
+        "unapproved_count": 54,
+        "approved_normalized": 1.2624,
+        "unapproved_normalized": 0.5684,
+        "difference": 0.694,
+        "total": 309
+      },
+      {
+        "text": "legally marketed notified",
+        "approved_count": 255,
+        "unapproved_count": 54,
+        "approved_normalized": 1.2624,
+        "unapproved_normalized": 0.5684,
+        "difference": 0.694,
+        "total": 309
+      },
+      {
+        "text": "writing approved questions",
+        "approved_count": 181,
+        "unapproved_count": 20,
+        "approved_normalized": 0.896,
+        "unapproved_normalized": 0.2105,
+        "difference": 0.6855,
+        "total": 201
+      }
+    ]
+  },
+  "stats": {
+    "approved_documents": 202,
+    "unapproved_documents": 95
+  }
+}
