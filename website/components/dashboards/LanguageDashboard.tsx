@@ -17,6 +17,7 @@ import { Brain, MessageSquare, TrendingUp, ChevronDown, ZoomIn, X, Layers, PieCh
 import EmbeddingExplorer from '../EmbeddingExplorer'
 import InteractiveWordCloud from '../InteractiveWordCloud'
 import InteractiveNgramChart from '../InteractiveNgramChart'
+import InteractiveActionSeverity from '../InteractiveActionSeverity'
 import ChartSkeleton, { StatCardSkeletonGrid } from '@/components/ui/ChartSkeleton'
 import { useChartAnimationConfig } from '@/lib/useReducedMotion'
 
@@ -502,20 +503,13 @@ export default function LanguageDashboard() {
           <InteractiveNgramChart />
         </motion.section>
 
-        {/* SECTION 4: Severity & Actions */}
-        <motion.section variants={itemVariants} className="grid md:grid-cols-2 gap-6">
-          <ImageCard
-            src="/images/language/severity_distribution.png"
-            alt="Severity Distribution"
-            title="Severity Distribution"
-            onZoom={handleZoom}
-          />
-          <ImageCard
-            src="/images/language/action_radar.png"
-            alt="Action Type Radar"
-            title="Action Type Radar"
-            onZoom={handleZoom}
-          />
+        {/* SECTION 4: Interactive Action Types & Severity */}
+        <motion.section variants={itemVariants}>
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-gray-900">Action Types & Severity</h2>
+            <p className="text-gray-500 text-sm">Explore FDA action requests and language severity patterns.</p>
+          </div>
+          <InteractiveActionSeverity />
         </motion.section>
 
         {/* SECTION 5: Interactive Embedding Explorer */}

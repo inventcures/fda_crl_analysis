@@ -1,0 +1,131 @@
+{
+  "actions": [
+    {
+      "action_type": "facility_action",
+      "label": "Facility Action",
+      "approved_mean": 7.13,
+      "unapproved_mean": 3.13,
+      "approved_total": 1440,
+      "unapproved_total": 297,
+      "difference": 4.0
+    },
+    {
+      "action_type": "labeling",
+      "label": "Labeling",
+      "approved_mean": 4.73,
+      "unapproved_mean": 2.09,
+      "approved_total": 956,
+      "unapproved_total": 199,
+      "difference": 2.64
+    },
+    {
+      "action_type": "data_request",
+      "label": "Data Request",
+      "approved_mean": 1.65,
+      "unapproved_mean": 0.59,
+      "approved_total": 334,
+      "unapproved_total": 56,
+      "difference": 1.06
+    },
+    {
+      "action_type": "risk_management",
+      "label": "Risk Management",
+      "approved_mean": 0.61,
+      "unapproved_mean": 0.21,
+      "approved_total": 124,
+      "unapproved_total": 20,
+      "difference": 0.4
+    },
+    {
+      "action_type": "major_study",
+      "label": "Major Study",
+      "approved_mean": 0.27,
+      "unapproved_mean": 0.18,
+      "approved_total": 54,
+      "unapproved_total": 17,
+      "difference": 0.09
+    }
+  ],
+  "severity": {
+    "histogram": [
+      {
+        "range": "0.0-0.1",
+        "range_start": 0.0,
+        "range_end": 0.1,
+        "approved": 1,
+        "unapproved": 2
+      },
+      {
+        "range": "0.1-0.2",
+        "range_start": 0.1,
+        "range_end": 0.2,
+        "approved": 0,
+        "unapproved": 0
+      },
+      {
+        "range": "0.2-0.3",
+        "range_start": 0.2,
+        "range_end": 0.3,
+        "approved": 136,
+        "unapproved": 70
+      },
+      {
+        "range": "0.3-0.4",
+        "range_start": 0.3,
+        "range_end": 0.4,
+        "approved": 55,
+        "unapproved": 19
+      },
+      {
+        "range": "0.4-0.5",
+        "range_start": 0.4,
+        "range_end": 0.5,
+        "approved": 9,
+        "unapproved": 3
+      },
+      {
+        "range": "0.5-0.6",
+        "range_start": 0.5,
+        "range_end": 0.6,
+        "approved": 1,
+        "unapproved": 1
+      },
+      {
+        "range": "0.6-0.7",
+        "range_start": 0.6,
+        "range_end": 0.7,
+        "approved": 0,
+        "unapproved": 0
+      },
+      {
+        "range": "0.7-0.8",
+        "range_start": 0.7,
+        "range_end": 0.8,
+        "approved": 0,
+        "unapproved": 0
+      },
+      {
+        "range": "0.8-0.9",
+        "range_start": 0.8,
+        "range_end": 0.9,
+        "approved": 0,
+        "unapproved": 0
+      },
+      {
+        "range": "0.9-1.0",
+        "range_start": 0.9,
+        "range_end": 1.0,
+        "approved": 0,
+        "unapproved": 0
+      }
+    ],
+    "approved_mean": 0.285,
+    "unapproved_mean": 0.259,
+    "approved_count": 202,
+    "unapproved_count": 95
+  },
+  "stats": {
+    "approved_documents": 202,
+    "unapproved_documents": 95
+  }
+}
