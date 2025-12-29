@@ -18,6 +18,8 @@ import EmbeddingExplorer from '../EmbeddingExplorer'
 import InteractiveWordCloud from '../InteractiveWordCloud'
 import InteractiveNgramChart from '../InteractiveNgramChart'
 import InteractiveActionSeverity from '../InteractiveActionSeverity'
+import InteractiveTopicModel from '../InteractiveTopicModel'
+import InteractiveSentimentTrajectory from '../InteractiveSentimentTrajectory'
 import ChartSkeleton, { StatCardSkeletonGrid } from '@/components/ui/ChartSkeleton'
 import { useChartAnimationConfig } from '@/lib/useReducedMotion'
 
@@ -528,33 +530,28 @@ export default function LanguageDashboard() {
           <EmbeddingExplorer />
         </motion.section>
 
-        {/* SECTION 6: Topic & Sentiment */}
-        <motion.section variants={itemVariants} className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-              <Layers size={18} className="text-indigo-500" />
+        {/* SECTION 6: Topic Modeling */}
+        <motion.section variants={itemVariants}>
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <Layers size={24} className="text-indigo-500" />
               Topic Modeling (LDA)
-            </h3>
-            <ImageCard
-              src="/images/language/topic_model.png"
-              alt="Topic Model"
-              title="Latent Topics"
-              onZoom={handleZoom}
-            />
+            </h2>
+            <p className="text-gray-500 text-sm">Discover latent themes in CRL documents using Latent Dirichlet Allocation.</p>
           </div>
+          <InteractiveTopicModel />
+        </motion.section>
 
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-              <TrendingUp size={18} className="text-amber-500" />
+        {/* SECTION 7: Sentiment Trajectory */}
+        <motion.section variants={itemVariants}>
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <TrendingUp size={24} className="text-amber-500" />
               Sentiment Trajectory
-            </h3>
-            <ImageCard
-              src="/images/language/sentiment_trajectory_sample.png"
-              alt="Sentiment Trajectory"
-              title="Document Sentiment Flow"
-              onZoom={handleZoom}
-            />
+            </h2>
+            <p className="text-gray-500 text-sm">Track how sentiment and severity evolve through each CRL document.</p>
           </div>
+          <InteractiveSentimentTrajectory />
         </motion.section>
       </motion.div>
 

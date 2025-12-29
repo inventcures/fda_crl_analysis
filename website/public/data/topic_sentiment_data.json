@@ -1,0 +1,7851 @@
+{
+  "topic_model": {
+    "topics": [
+      {
+        "id": 0,
+        "label": "Topic 1",
+        "words": [
+          {
+            "word": "product",
+            "weight": 992.8241
+          },
+          {
+            "word": "nda",
+            "weight": 662.4645
+          },
+          {
+            "word": "use",
+            "weight": 607.8011
+          },
+          {
+            "word": "provide",
+            "weight": 587.2786
+          },
+          {
+            "word": "study",
+            "weight": 499.8644
+          },
+          {
+            "word": "risk",
+            "weight": 345.1461
+          },
+          {
+            "word": "safety",
+            "weight": 341.8281
+          },
+          {
+            "word": "id",
+            "weight": 326.021
+          },
+          {
+            "word": "device",
+            "weight": 312.9787
+          },
+          {
+            "word": "dose",
+            "weight": 267.9855
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "label": "Topic 2",
+        "words": [
+          {
+            "word": "safety",
+            "weight": 2226.8593
+          },
+          {
+            "word": "adverse",
+            "weight": 2149.2242
+          },
+          {
+            "word": "events",
+            "weight": 1896.0429
+          },
+          {
+            "word": "letter",
+            "weight": 1895.431
+          },
+          {
+            "word": "provide",
+            "weight": 1650.5804
+          },
+          {
+            "word": "id",
+            "weight": 1499.031
+          },
+          {
+            "word": "clinical",
+            "weight": 1355.5951
+          },
+          {
+            "word": "trials",
+            "weight": 1189.857
+          },
+          {
+            "word": "resubmission",
+            "weight": 1186.4024
+          },
+          {
+            "word": "original",
+            "weight": 1170.7785
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "label": "Topic 3",
+        "words": [
+          {
+            "word": "cid",
+            "weight": 3560.1995
+          },
+          {
+            "word": "72",
+            "weight": 398.8625
+          },
+          {
+            "word": "87",
+            "weight": 269.9679
+          },
+          {
+            "word": "76",
+            "weight": 260.2116
+          },
+          {
+            "word": "68",
+            "weight": 254.1795
+          },
+          {
+            "word": "81",
+            "weight": 230.1918
+          },
+          {
+            "word": "82",
+            "weight": 227.2083
+          },
+          {
+            "word": "85",
+            "weight": 223.1961
+          },
+          {
+            "word": "86",
+            "weight": 208.6805
+          },
+          {
+            "word": "71",
+            "weight": 151.1951
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "label": "Topic 4",
+        "words": [
+          {
+            "word": "study",
+            "weight": 605.5582
+          },
+          {
+            "word": "clinical",
+            "weight": 384.8574
+          },
+          {
+            "word": "patients",
+            "weight": 381.6545
+          },
+          {
+            "word": "treatment",
+            "weight": 350.3433
+          },
+          {
+            "word": "subjects",
+            "weight": 325.984
+          },
+          {
+            "word": "nda",
+            "weight": 287.9515
+          },
+          {
+            "word": "safety",
+            "weight": 272.3325
+          },
+          {
+            "word": "adverse",
+            "weight": 266.8698
+          },
+          {
+            "word": "trial",
+            "weight": 254.2501
+          },
+          {
+            "word": "studies",
+            "weight": 233.4706
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "label": "Topic 5",
+        "words": [
+          {
+            "word": "bla",
+            "weight": 868.5373
+          },
+          {
+            "word": "product",
+            "weight": 547.9951
+          },
+          {
+            "word": "provide",
+            "weight": 299.4506
+          },
+          {
+            "word": "study",
+            "weight": 195.1258
+          },
+          {
+            "word": "601",
+            "weight": 193.4182
+          },
+          {
+            "word": "studies",
+            "weight": 191.2845
+          },
+          {
+            "word": "safety",
+            "weight": 175.7799
+          },
+          {
+            "word": "stability",
+            "weight": 175.5198
+          },
+          {
+            "word": "id",
+            "weight": 172.1494
+          },
+          {
+            "word": "letter",
+            "weight": 159.8818
+          }
+        ]
+      }
+    ],
+    "document_topics": {
+      "approved": [
+        0.1808,
+        0.628,
+        0.0067,
+        0.0756,
+        0.1088
+      ],
+      "unapproved": [
+        0.0313,
+        0.7688,
+        0.0012,
+        0.1246,
+        0.0741
+      ]
+    },
+    "topic_differences": [
+      {
+        "topic_id": 0,
+        "label": "Topic 1",
+        "approved_weight": 0.1808,
+        "unapproved_weight": 0.0313,
+        "difference": 0.1496,
+        "top_words": [
+          "product",
+          "nda",
+          "use",
+          "provide",
+          "study"
+        ]
+      },
+      {
+        "topic_id": 1,
+        "label": "Topic 2",
+        "approved_weight": 0.628,
+        "unapproved_weight": 0.7688,
+        "difference": -0.1408,
+        "top_words": [
+          "safety",
+          "adverse",
+          "events",
+          "letter",
+          "provide"
+        ]
+      },
+      {
+        "topic_id": 2,
+        "label": "Topic 3",
+        "approved_weight": 0.0067,
+        "unapproved_weight": 0.0012,
+        "difference": 0.0055,
+        "top_words": [
+          "cid",
+          "72",
+          "87",
+          "76",
+          "68"
+        ]
+      },
+      {
+        "topic_id": 3,
+        "label": "Topic 4",
+        "approved_weight": 0.0756,
+        "unapproved_weight": 0.1246,
+        "difference": -0.049,
+        "top_words": [
+          "study",
+          "clinical",
+          "patients",
+          "treatment",
+          "subjects"
+        ]
+      },
+      {
+        "topic_id": 4,
+        "label": "Topic 5",
+        "approved_weight": 0.1088,
+        "unapproved_weight": 0.0741,
+        "difference": 0.0347,
+        "top_words": [
+          "bla",
+          "product",
+          "provide",
+          "study",
+          "601"
+        ]
+      }
+    ],
+    "stats": {
+      "n_documents": 297,
+      "n_approved": 202,
+      "n_unapproved": 95,
+      "n_topics": 5
+    }
+  },
+  "sentiment_trajectories": [
+    {
+      "doc_id": "eadc179315ffc967f287b7f38177788a",
+      "approval_status": "approved",
+      "sentence_count": 96,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 3,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 4,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 5,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 6,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 7,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 8,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 9,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 10,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 14,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.45
+        },
+        {
+          "position": 15,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 16,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 17,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 20,
+          "polarity": 0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 21,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 22,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 24,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 25,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 26,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 29,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 30,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 32,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 33,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 34,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 35,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 38,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 39,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 40,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 41,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 42,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 43,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 44,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.6
+        },
+        {
+          "position": 45,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 46,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 47,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 48,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 49,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 50,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 51,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 52,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 53,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 54,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 55,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 56,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 57,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 58,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 59,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 60,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 61,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 62,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 63,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 64,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 65,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 66,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 67,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 68,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 69,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 70,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 71,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 72,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 73,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 74,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 75,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 76,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 77,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 78,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 79,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 80,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 81,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 82,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 83,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 84,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 85,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 86,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 87,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 88,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 89,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 90,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 91,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 92,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 93,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 94,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 95,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          -0.2,
+          -0.2,
+          -0.6,
+          -0.8,
+          -0.6,
+          -0.333,
+          -0.333,
+          -0.133,
+          0.067,
+          -0.133,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.2,
+          0.2,
+          0.6,
+          0.6,
+          0.6,
+          0.4,
+          0.6,
+          0.4,
+          0.4,
+          0.2,
+          0.0,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.6,
+          -0.4,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.4,
+          0.4,
+          0.4,
+          0.2,
+          0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.6,
+          -0.6,
+          -0.4,
+          -0.4,
+          -0.267,
+          -0.267,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.4,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.3,
+          0.33,
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.4,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.4,
+          0.4,
+          0.4,
+          0.4,
+          0.42,
+          0.32,
+          0.32,
+          0.34,
+          0.34,
+          0.32,
+          0.32,
+          0.32,
+          0.3,
+          0.3,
+          0.3,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.36,
+          0.36,
+          0.36,
+          0.36,
+          0.36,
+          0.28,
+          0.26,
+          0.24,
+          0.22,
+          0.22,
+          0.22,
+          0.22,
+          0.22,
+          0.22,
+          0.22,
+          0.24,
+          0.26,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": -0.042,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.31,
+        "polarity_trend": -0.2
+      },
+      "drug_name": "213976"
+    },
+    {
+      "doc_id": "d784e31f22c9665d2399e4dd4ecb95ca",
+      "approval_status": "approved",
+      "sentence_count": 69,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 3,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 4,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 5,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 6,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 7,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 8,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 9,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.75
+        },
+        {
+          "position": 10,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 14,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 15,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 16,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.75
+        },
+        {
+          "position": 17,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.75
+        },
+        {
+          "position": 20,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 21,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 22,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 24,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 25,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 26,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 29,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.75
+        },
+        {
+          "position": 30,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 33,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 34,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 35,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 38,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 39,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 40,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 41,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 42,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 43,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 44,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 45,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 46,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 47,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 48,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 49,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 50,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 51,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 52,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 53,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 54,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 55,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 56,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 57,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 58,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 59,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 60,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 61,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 62,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 63,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 64,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 65,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 66,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 67,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 68,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.2,
+          0.4,
+          0.2,
+          0.2,
+          0.2,
+          -0.2,
+          -0.4,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.4,
+          0.4,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.3,
+          0.39,
+          0.39,
+          0.39,
+          0.39,
+          0.39,
+          0.3,
+          0.3,
+          0.39,
+          0.39,
+          0.39,
+          0.48,
+          0.48,
+          0.39,
+          0.39,
+          0.39,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.39,
+          0.39,
+          0.39,
+          0.39,
+          0.39,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.26,
+          0.26,
+          0.26,
+          0.26,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.28,
+          0.28
+        ]
+      },
+      "summary": {
+        "mean_polarity": 0.0,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.323,
+        "polarity_trend": -0.2
+      },
+      "drug_name": "211321"
+    },
+    {
+      "doc_id": "9f2fd3cd7864e037994634fcbf86a3f7",
+      "approval_status": "approved",
+      "sentence_count": 64,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 3,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 4,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 5,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 6,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 7,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 8,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 9,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 10,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.5
+        },
+        {
+          "position": 14,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 15,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 16,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 17,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 20,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 21,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 22,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 24,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 25,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 26,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 27,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 28,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 29,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 30,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 33,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 34,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 35,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 38,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 39,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 40,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 41,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 42,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 43,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 44,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 45,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 46,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 47,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 48,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 49,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 50,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 51,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 52,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 53,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 54,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 55,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 56,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 57,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 58,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 59,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 60,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 61,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 62,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 63,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.2,
+          0.0,
+          0.0,
+          -0.2,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.4,
+          0.0,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.6,
+          -0.6,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.2,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.4,
+          0.4,
+          0.6,
+          0.4,
+          0.6,
+          0.6,
+          0.6,
+          0.4,
+          0.4,
+          0.0,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.6,
+          -0.4,
+          -0.4,
+          -0.267,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.4,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.3,
+          0.3,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.3,
+          0.3,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.26,
+          0.24,
+          0.22,
+          0.22,
+          0.22,
+          0.24,
+          0.26,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.32,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": -0.036,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.298,
+        "polarity_trend": -0.2
+      },
+      "drug_name": "761184"
+    },
+    {
+      "doc_id": "d50e27d2c5a3416ed03d684feb82314f",
+      "approval_status": "approved",
+      "sentence_count": 62,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 3,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 4,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 5,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 6,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 7,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 8,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 9,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 10,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 12,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 13,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 14,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 15,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 16,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 17,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 18,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 19,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 20,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 21,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 22,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 24,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 25,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 26,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 29,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 30,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 33,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 34,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 35,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 38,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 39,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 40,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 41,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 42,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 43,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 44,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 45,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 46,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 47,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 48,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 49,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 50,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 51,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 52,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 53,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 54,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 55,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 56,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 57,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 58,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 59,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 60,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 61,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.2,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.4,
+          0.4,
+          0.4,
+          0.2,
+          0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.6,
+          -0.6,
+          -0.4,
+          -0.467,
+          -0.467,
+          -0.267,
+          -0.467,
+          -0.467,
+          -0.4,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.3,
+          0.3,
+          0.32,
+          0.32,
+          0.32,
+          0.28,
+          0.28,
+          0.26,
+          0.24,
+          0.22,
+          0.22,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.22,
+          0.22,
+          0.24,
+          0.26,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": -0.022,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.281,
+        "polarity_trend": -0.2
+      },
+      "drug_name": null
+    },
+    {
+      "doc_id": "c1b011f4d05d30a2366bb630ed9b666a",
+      "approval_status": "approved",
+      "sentence_count": 292,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 3,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 4,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 5,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 6,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 7,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 8,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 9,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 10,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 14,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 15,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 16,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 17,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 20,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 21,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 22,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 24,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 25,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 26,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 29,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 30,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 33,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 34,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 35,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 38,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 39,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 40,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 41,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 42,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 43,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 44,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 45,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 46,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 47,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 48,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 49,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 50,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 51,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 52,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 53,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 54,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 55,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 56,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 57,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 58,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 59,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 60,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 61,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 62,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 63,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 64,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 65,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 66,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 67,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 68,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 69,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 70,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 71,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 72,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 73,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 74,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 75,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 76,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 77,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 78,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 79,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 80,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 81,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 82,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 83,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 84,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 85,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 86,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 87,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 88,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 89,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 90,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 91,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 92,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 93,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 94,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 95,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 96,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 97,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 98,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 99,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 100,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 101,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 102,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.7
+        },
+        {
+          "position": 103,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 104,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 105,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 106,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 107,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 108,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 109,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.75
+        },
+        {
+          "position": 110,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 111,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 112,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 113,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 114,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 115,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 116,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 117,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 118,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 119,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.7
+        },
+        {
+          "position": 120,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 121,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 122,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 123,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 124,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 125,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 126,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 127,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 128,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.8
+        },
+        {
+          "position": 129,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 130,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.9
+        },
+        {
+          "position": 131,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 132,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.725
+        },
+        {
+          "position": 133,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.9
+        },
+        {
+          "position": 134,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 135,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 136,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 137,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 138,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 139,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 140,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 141,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 142,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 143,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 144,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 145,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 146,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 147,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 148,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 149,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 150,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 151,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 152,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 153,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 154,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 155,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 156,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 157,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 158,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 159,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 160,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 161,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 162,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 163,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 164,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 165,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 166,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 167,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 168,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 169,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 170,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 171,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 172,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 173,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 174,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 175,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 176,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 177,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 178,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 179,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 180,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 181,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 182,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 183,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 184,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 185,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 186,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 187,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 188,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 189,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 190,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 191,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 192,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.9
+        },
+        {
+          "position": 193,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 194,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 195,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 196,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 197,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 198,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 199,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.55
+        },
+        {
+          "position": 200,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.367
+        },
+        {
+          "position": 201,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 202,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 203,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 204,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 205,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 206,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 207,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 208,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 209,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 210,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 211,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 212,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 213,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 214,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 215,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 216,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 217,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 218,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 219,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 220,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 221,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 222,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 223,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 224,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 225,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 226,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 227,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 228,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 229,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.45
+        },
+        {
+          "position": 230,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 231,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 232,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 233,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 234,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 235,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 236,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 237,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 238,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.45
+        },
+        {
+          "position": 239,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 240,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 241,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 242,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 243,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 244,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 245,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 246,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 247,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 248,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 249,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 250,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 251,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 252,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 253,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 254,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 255,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 256,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 257,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 258,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.45
+        },
+        {
+          "position": 259,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 260,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 261,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 262,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 263,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 264,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 265,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 266,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 267,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 268,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 269,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 270,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 271,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 272,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 273,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 274,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 275,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 276,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 277,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 278,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 279,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 280,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 281,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 282,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 283,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 284,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 285,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 286,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 287,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 288,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 289,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 290,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 291,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.067,
+          -0.067,
+          -0.067,
+          -0.067,
+          -0.267,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.2,
+          -0.4,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.4,
+          0.4,
+          0.4,
+          0.4,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.4,
+          0.4,
+          0.6,
+          0.6,
+          0.6,
+          0.4,
+          0.4,
+          0.2,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.6,
+          -0.6,
+          -0.4,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.4,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.0,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.4,
+          0.4,
+          0.6,
+          0.6,
+          0.2,
+          0.0,
+          0.0,
+          -0.4,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.4,
+          0.4,
+          0.0,
+          0.0,
+          0.0,
+          -0.2,
+          0.0,
+          0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.2,
+          -0.4,
+          -0.6,
+          -0.6,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.6,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.2,
+          -0.4,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.2,
+          -0.4,
+          -0.4,
+          0.0,
+          0.2,
+          0.2,
+          0.4,
+          0.4,
+          0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.3,
+          0.3,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.3,
+          0.3,
+          0.28,
+          0.28,
+          0.38,
+          0.38,
+          0.38,
+          0.4,
+          0.4,
+          0.3,
+          0.3,
+          0.3,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.4,
+          0.4,
+          0.4,
+          0.4,
+          0.5,
+          0.4,
+          0.5,
+          0.5,
+          0.5,
+          0.4,
+          0.5,
+          0.4,
+          0.4,
+          0.5,
+          0.5,
+          0.4,
+          0.4,
+          0.4,
+          0.4,
+          0.4,
+          0.4,
+          0.5,
+          0.5,
+          0.4,
+          0.4,
+          0.4,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.26,
+          0.24,
+          0.24,
+          0.24,
+          0.26,
+          0.26,
+          0.26,
+          0.26,
+          0.26,
+          0.26,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.42,
+          0.42,
+          0.48,
+          0.49,
+          0.49,
+          0.39,
+          0.39,
+          0.31,
+          0.3,
+          0.39,
+          0.39,
+          0.39,
+          0.39,
+          0.39,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.38,
+          0.38,
+          0.38,
+          0.38,
+          0.38,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.4,
+          0.4,
+          0.52,
+          0.52,
+          0.605,
+          0.625,
+          0.625,
+          0.505,
+          0.505,
+          0.42,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.32,
+          0.3,
+          0.42,
+          0.42,
+          0.4,
+          0.42,
+          0.44,
+          0.32,
+          0.32,
+          0.39,
+          0.383,
+          0.363,
+          0.363,
+          0.383,
+          0.353,
+          0.36,
+          0.36,
+          0.36,
+          0.34,
+          0.32,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.32,
+          0.34,
+          0.34,
+          0.34,
+          0.37,
+          0.35,
+          0.33,
+          0.33,
+          0.33,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.33,
+          0.33,
+          0.33,
+          0.33,
+          0.35,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.32,
+          0.3,
+          0.3,
+          0.3,
+          0.32,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.32,
+          0.3,
+          0.33,
+          0.33,
+          0.33,
+          0.33,
+          0.33,
+          0.3,
+          0.32,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.32,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": -0.081,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.335,
+        "polarity_trend": 0.0
+      },
+      "drug_name": "761315"
+    },
+    {
+      "doc_id": "6d6b5789074a0e6e7e38deec82865d82",
+      "approval_status": "unapproved",
+      "sentence_count": 33,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 3,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 4,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 5,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 6,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 7,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 8,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 9,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 10,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 14,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 15,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 16,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 17,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 20,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 21,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 22,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 24,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 25,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 26,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 29,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 30,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.24,
+          0.22,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.22,
+          0.24,
+          0.26,
+          0.28,
+          0.28,
+          0.26,
+          0.24,
+          0.24,
+          0.24,
+          0.26,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": 0.03,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.267,
+        "polarity_trend": -0.2
+      },
+      "drug_name": "CRL"
+    },
+    {
+      "doc_id": "98c12750af0cc2ea1ba72b2173b160db",
+      "approval_status": "unapproved",
+      "sentence_count": 68,
+      "data": [
+        {
+          "position": 0,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 3,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 4,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 5,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 6,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 7,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 8,
+          "polarity": 0.333,
+          "subjectivity": 0.5,
+          "severity": 0.75
+        },
+        {
+          "position": 9,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 10,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 11,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 14,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 15,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 16,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 17,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 20,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 21,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 22,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 23,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 24,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 25,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 26,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 29,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 30,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 33,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 34,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 35,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 38,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 39,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 40,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 41,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 42,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 43,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 44,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 45,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 46,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 47,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 48,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 49,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 50,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 51,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 52,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 53,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 54,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 55,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 56,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 57,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 58,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 59,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 60,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 61,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 62,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 63,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 64,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 65,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 66,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 67,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          -0.2,
+          0.0,
+          -0.4,
+          -0.6,
+          -0.333,
+          -0.333,
+          -0.333,
+          0.067,
+          0.267,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.4,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.39,
+          0.4,
+          0.42,
+          0.42,
+          0.42,
+          0.33,
+          0.32,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.26,
+          0.24,
+          0.22,
+          0.2,
+          0.22,
+          0.24,
+          0.26,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.26,
+          0.24,
+          0.24,
+          0.24,
+          0.26,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.32,
+          0.34,
+          0.32,
+          0.32,
+          0.32,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": -0.132,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.299,
+        "polarity_trend": 0.2
+      },
+      "drug_name": "CRL"
+    },
+    {
+      "doc_id": "56e372d6380fea5805f2f69c5cc24c81",
+      "approval_status": "unapproved",
+      "sentence_count": 46,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 1,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 3,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 4,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 5,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 6,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 7,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 8,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 9,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 10,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 14,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 15,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 16,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 17,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 20,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 21,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 22,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 24,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 25,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 26,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 29,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 30,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 31,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 33,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 34,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 35,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 38,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 39,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 40,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 41,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 42,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 43,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 44,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 45,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.2,
+          0.4,
+          0.4,
+          0.4,
+          0.6,
+          0.4,
+          0.2,
+          0.2,
+          0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.4,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.0,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.2,
+          0.2,
+          0.22,
+          0.24,
+          0.26,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.26,
+          0.26,
+          0.26,
+          0.26,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": -0.051,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.282,
+        "polarity_trend": -0.2
+      },
+      "drug_name": "CRL"
+    },
+    {
+      "doc_id": "fa408a280f52263e1680540341f57343",
+      "approval_status": "unapproved",
+      "sentence_count": 54,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.4
+        },
+        {
+          "position": 3,
+          "polarity": 0.333,
+          "subjectivity": 0.5,
+          "severity": 0.55
+        },
+        {
+          "position": 4,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 5,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 6,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 7,
+          "polarity": 0.333,
+          "subjectivity": 0.5,
+          "severity": 0.75
+        },
+        {
+          "position": 8,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 9,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 10,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 14,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 15,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 16,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 17,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 20,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 21,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 22,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 24,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 25,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 26,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 29,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 30,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 33,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 34,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 35,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 38,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 39,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 40,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 41,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 42,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 43,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 44,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 45,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 46,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 47,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 48,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 49,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 50,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 51,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 52,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 53,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.467,
+          0.267,
+          0.267,
+          0.333,
+          0.467,
+          0.467,
+          0.467,
+          0.467,
+          0.4,
+          0.2,
+          0.2,
+          0.4,
+          0.4,
+          0.6,
+          0.6,
+          0.4,
+          0.2,
+          0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.467,
+          -0.4,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.2,
+          0.2,
+          0.0,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.37,
+          0.37,
+          0.37,
+          0.44,
+          0.39,
+          0.39,
+          0.39,
+          0.39,
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": 0.043,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.312,
+        "polarity_trend": -0.467
+      },
+      "drug_name": "CRL"
+    },
+    {
+      "doc_id": "de0d8e9693975c15fe25614440b665a0",
+      "approval_status": "unapproved",
+      "sentence_count": 39,
+      "data": [
+        {
+          "position": 0,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 1,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 2,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 3,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 4,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 5,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 6,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 7,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 8,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 9,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 10,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 11,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 12,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 13,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 14,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 15,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 16,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 17,
+          "polarity": -0.333,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 18,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 19,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 20,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.35
+        },
+        {
+          "position": 21,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 22,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 23,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 24,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 25,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.2
+        },
+        {
+          "position": 26,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 27,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 28,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 29,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 30,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 31,
+          "polarity": -1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 32,
+          "polarity": 1.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 33,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 34,
+          "polarity": 0.0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 35,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 36,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 37,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        },
+        {
+          "position": 38,
+          "polarity": 0,
+          "subjectivity": 0.5,
+          "severity": 0.3
+        }
+      ],
+      "smoothed": {
+        "polarity": [
+          0.4,
+          0.6,
+          0.8,
+          0.8,
+          0.6,
+          0.4,
+          0.2,
+          -0.2,
+          -0.2,
+          -0.4,
+          -0.6,
+          -0.6,
+          -0.4,
+          -0.467,
+          -0.467,
+          -0.267,
+          -0.467,
+          -0.467,
+          -0.4,
+          -0.2,
+          -0.2,
+          0.0,
+          0.0,
+          -0.2,
+          -0.2,
+          -0.2,
+          0.0,
+          -0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.0,
+          0.2,
+          0.0,
+          0.0
+        ],
+        "subjectivity": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "severity": [
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.31,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.28,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      "summary": {
+        "mean_polarity": -0.034,
+        "mean_subjectivity": 0.5,
+        "mean_severity": 0.299,
+        "polarity_trend": -0.4
+      },
+      "drug_name": "CRL"
+    }
+  ],
+  "sentiment_aggregate": {
+    "approved": {
+      "mean_polarity": -0.036,
+      "mean_severity": 0.309,
+      "count": 5
+    },
+    "unapproved": {
+      "mean_polarity": -0.029,
+      "mean_severity": 0.292,
+      "count": 5
+    }
+  }
+}
